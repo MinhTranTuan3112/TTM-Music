@@ -1,0 +1,114 @@
+input[type=range][orient=vertical] {
+    writing-mode: bt-lr;
+    /* IE */
+    -webkit-appearance: slider-vertical;
+    /* Chromium */
+    width: 8px;
+    height: 100px;
+    padding: 0 5px;
+}
+
+.control-bar {
+    height: 180px;
+    background-color: grey;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    
+}
+
+.control-bar-title {
+    text-align: center;
+}
+
+.artist-name {
+    font-weight: bold;
+}
+
+.current-song-img {
+    height: 100px;
+    aspect-ratio: 1/1;
+}
+
+.control-bar-content {
+    display: flex;
+    justify-content: center;
+
+}
+
+.control-buttons {
+    display: flex;
+    column-gap: 20px;
+    margin-right: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-buttons :is([class *='glyphicon']) {
+    font-size: 20px;
+    background-color: rgb(96, 96, 96);
+    padding: 10px;
+    border-radius: 100%;
+}
+
+.playing-song {
+    display: flex;
+    flex-direction: row;
+    row-gap: 10px;
+}
+
+.song-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+    row-gap: 10px;
+}
+
+.song-name {
+    font-size: large;
+}
+
+.song-progress-bar progress {
+    width: 100%;
+}
+
+.song-progress-bar {
+    display: flex;
+    column-gap: 10px;
+}
+
+.volume-control {
+    display: flex;
+    align-items: end;
+    margin-left: 10px;
+}
+
+#volume-icon {
+    font-size: 20px;
+}
+
+/*animation*/
+
+/*animation for cd spin*/
+.glyphicon-cd {
+    animation-name: spin;
+    animation-duration: 4000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/*animation for buttons*/
