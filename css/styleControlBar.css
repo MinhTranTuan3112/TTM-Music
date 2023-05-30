@@ -18,7 +18,6 @@ input[type=range][orient=vertical] {
     transform: translateX(-50%);
     width: 100%;
 }
-
 .control-bar-title {
     text-align: center;
 }
