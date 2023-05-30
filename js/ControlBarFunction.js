@@ -67,3 +67,14 @@ function modifyCDAnimation(play_button) {
         document.getElementById('cd-icon').style.animationPlayState = 'running';
     }
 }
+/*function for control bar transition*/
+function moveControlBarUpAndDown() {
+    let trigger_button = document.getElementsByClassName('trigger-button')[0];
+    let control_bar = document.getElementsByClassName('control-bar')[0];
+    control_bar.classList.add('move-above');
+    trigger_button.style.display = 'none';
+    setTimeout(function () {
+        control_bar.classList.remove('move-above');
+        trigger_button.style.display = 'unset';
+    }, 5000);
+}

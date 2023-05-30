@@ -8,15 +8,36 @@ input[type=range][orient=vertical] {
     padding: 0 5px;
 }
 
+/*added trigger button: trigger transition for
+control bar*/
+.trigger-button {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: grey;
+    text-align: center;
+    font-weight: bold;
+    opacity: 0.7;
+}
+.trigger-button .glyphicon-cd {
+    animation: spin 4000ms infinite linear;
+}
 .control-bar {
     height: 180px;
     background-color: grey;
     color: white;
     position: fixed;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: -100%;
+        /* left: 50%;
+        transform: translateX(-50%); */
     width: 100%;
+    transition: bottom 1.70s ease-in-out;
+}
+.move-above {
+    bottom: 0;
+}
+.move-down {
+    bottom: -100%;
 }
 .control-bar-title {
     text-align: center;
@@ -92,7 +113,7 @@ input[type=range][orient=vertical] {
 /*animation*/
 
 /*animation for cd spin*/
-.glyphicon-cd {
+.control-bar :is(.glyphicon-cd) {
     animation-name: spin;
     animation-duration: 4000ms;
     animation-iteration-count: infinite;

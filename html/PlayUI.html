@@ -56,13 +56,51 @@
                 </button>
             </div>
             <div class="lyric-content">
-                
+                <pre>
+                    It was just two lovers
+                    Sittin' in the car, listening to Blonde
+                    Fallin' for each other
+                    Pink and orange skies, feelin' super childish
+                    No Donald Glover
+                    Missed call from my mother
+                    Like, "Where you at tonight?" Got no alibi
+                    I was all alone with the love of my life
+                    She's got glitter for skin
+                    My radiant beam in the night
+                    I don't need no light to see you
+                    Shine
+                    It's your golden hour (oh)
+                    You slow down time
+                    In your golden hour (oh)
+                    We were just two lovers
+                    Feet up on the dash, drivin' nowhere fast
+                    Burnin' through the summer
+                    Radio on blast, make the moment last
+                    She got solar power
+                    Minutes feel like hours
+                    She knew she was the baddest, can you even imagine
+                    Fallin' like I did?
+                    For the love of my life
+                    She's got glow on her face
+                    A glorious look in her eyes
+                    My angel of light
+                    I was all alone with the love of my life
+                    She's got glitter for skin
+                    My radiant beam in the night
+                    I don't need no light to see you
+                    Shine
+                    It's your golden hour (oh)
+                    You slow down time
+                    In your golden hour (oh)</pre>
             </div>
         </div>
     </div>
     <style>
+        * {
+            --UIBackground: grey;
+        }
         .wrapper {
-            background-color: grey;
+            background-color: var(--UIBackground);
             color: white;
             height: 100vh;
             display: flex;
@@ -95,7 +133,7 @@
             height: 350px;
             aspect-ratio: 1/1;
             border-radius: 100%;
-            animation: spin 10000ms infinite linear;
+            animation: spin 11s infinite linear;
         }
 
         .artist-name {
@@ -150,10 +188,21 @@
         }
 
         .lyric-content {
-            font-size: 18px;
-            line-height: 1.5;
+          
         }
-
+        .lyric-content pre {
+            height: 500px;
+            width: 100%;
+            text-align: center;
+            background-color: transparent;
+            color: white;
+            border: none;
+            font-family: inherit;
+            font-size: medium;
+            overflow: auto; 
+            
+        }
+        
         /*animation for cd spin*/
         /* .glyphicon-cd {
             animation-name: spin;
@@ -172,7 +221,9 @@
             }
         }
     </style>
-    <script></script>
+    <script>
+
+    </script>
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
