@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="song-item">
+        <div class="song-cover" onmouseover="mouseOnSong()" onmouseleave="mouseOutSong()">
+            <div class="play-button glyphicon glyphicon-play" onclick="clickOnSongs()"></div><img class="song-cover-img"
+                src="https://avatar-ex-swe.nixcdn.com/song/2020/10/28/4/1/a/0/1603898014236_640.jpg" alt="" >
+        </div>
+        <div class="song-name">MORE - <span class="artist-name">K/DA ft.Madison Beer, (G)I-DLE, Lexie Liu, Jaira
+                Burns, Seraphine</span></div>
+    </div>
+    <style>
+        .song-cover-img {
+            height: 150px;
+            aspect-ratio: 1/1;
+        }
+
+        .song-cover {
+            display: inline-block;
+            position: relative;
+        }
+
+        .play-button {
+            background-color: grey;
+            height: 50px;
+            aspect-ratio: 1/1;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            border-radius: 100%;
+            font-size: 30px;
+            position: absolute;
+            inset: 0;
+            margin: auto;
+            z-index: 1;
+        }
+        .play-button:hover {
+            background-color: white;
+            color: grey;
+        }
+    </style>
+    <script>
+        function mouseOnSong() {
+            let song_cover_img = document.getElementsByClassName('song-cover-img')[0];
+            song_cover_img.style = 'filter: blur(2px);';
+            document.getElementsByClassName('play-button')[0].style.display = 'flex';
+        }
+        function mouseOutSong() {
+            let song_cover_img = document.getElementsByClassName('song-cover-img')[0];
+            song_cover_img.style = 'filter: none;';
+            document.getElementsByClassName('play-button')[0].style.display = 'none';
+        }
+        function clickOnSongs() {
+            alert('ok');
+        }
+    </script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

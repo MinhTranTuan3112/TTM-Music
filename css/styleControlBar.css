@@ -8,6 +8,23 @@ input[type=range][orient=vertical] {
     padding: 0 5px;
 }
 
+/*full screen button*/
+.full-screen-button {
+    height: 40px;
+    aspect-ratio: 1/1;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background-color: transparent;
+    color: white;
+    position: absolute;
+}
+
+.full-screen-button:hover {
+    background-color: white;
+    color: grey;
+}
+
 /*added trigger button: trigger transition for
 control bar*/
 .trigger-button {
@@ -19,26 +36,31 @@ control bar*/
     font-weight: bold;
     opacity: 0.7;
 }
+
 .trigger-button .glyphicon-cd {
     animation: spin 4000ms infinite linear;
 }
+
 .control-bar {
     height: 180px;
     background-color: grey;
     color: white;
     position: fixed;
     bottom: -100%;
-        /* left: 50%;
+    /* left: 50%;
         transform: translateX(-50%); */
     width: 100%;
     transition: bottom 1.70s ease-in-out;
 }
+
 .move-above {
     bottom: 0;
 }
+
 .move-down {
     bottom: -100%;
 }
+
 .control-bar-title {
     text-align: center;
 }
@@ -71,6 +93,12 @@ control bar*/
     background-color: rgb(96, 96, 96);
     padding: 10px;
     border-radius: 100%;
+}
+
+/*added hover effects for control buttons*/
+.control-buttons :is([class *='glyphicon']):hover {
+    background-color: white;
+    color: grey;
 }
 
 .playing-song {
