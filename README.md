@@ -16,3 +16,5 @@ git clone https://github.com/MinhTranTuan3112/TTM-Music.git
 - Find your favorite songs based on genres, artist and instrument
 
 # Wireframe or screenshots of the system: (Working On It)
+- The wireframe:
+![](wireframe.png)
