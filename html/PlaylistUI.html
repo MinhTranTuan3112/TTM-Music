@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--font css files-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200&display=swap" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>Playlist Page</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="playlist-title">
+            <h1 id="playlistname">My Playlist</h1>
+            <div class="playlist-edit-button">
+                <div class="glyphicon glyphicon-edit"></div>
+            </div>
+        </div>
+        <input type="text" id="changeplaylist"><input type="submit" id="submit"></input>
+        <div class="playlist-content">
+            <div class="playlist-song-item">
+                <div class="playlist-song-img"><img src="https://avatar-ex-swe.nixcdn.com/song/2022/12/13/a/f/7/3/1670903992722_640.jpg" alt=""></div>
+                <div class="playlist-song-name">Golden hour - <span class="artist-name">JVKE</span></div>
+            </div>
+            <div class="playlist-song-item">
+                <div class="playlist-song-img"><img src="https://avatar-ex-swe.nixcdn.com/song/2017/11/29/0/6/1/1/1511950269534_640.jpg" alt=""></div>
+                <div class="playlist-song-name">Sau tất cả - <span class="artist-name">Erik</span></div>
+            </div> 
+            <div class="playlist-song-item">
+                <div class="playlist-song-img"><img src="https://avatar-ex-swe.nixcdn.com/song/2023/04/17/1/9/a/e/1681723596712_640.jpg" alt=""></div>
+                <div class="playlist-song-name">夜に駆ける(Yoru ni kakeru) - <span class="artist-name">Yoasobi</span></div>
+            </div> 
+            <div class="playlist-song-item">
+                <div class="playlist-song-img"><img src="https://i.scdn.co/image/ab67616d0000b27375c9daf36578bdf30645492f" alt=""></div>
+                <div class="playlist-song-name">See you again - <span class="artist-name">Wiz Khalifa ft. Charlie Puth</span></div>
+            </div> 
+            <div class="playlist-song-item">
+                <div class="playlist-song-img"><img src="https://avatar-ex-swe.nixcdn.com/song/2020/10/28/4/1/a/0/1603898014236_640.jpg" alt=""></div>
+                <div class="playlist-song-name">MORE - <span class="artist-name">K/DA ft.Madison Beer, (G)I-DLE, Lexie Liu, Jaira
+                    Burns, Seraphine</span></div>
+            </div>
+        </div>
+    </div>
+    <style>
+        body{
+            background-color: black;
+            height: 100%;
+            width: 100%;
+            color: white;
+            font-family: 'Be Vietnam Pro', sans-serif;
+        }
+        input {
+            background-color: black;
+            color: white;
+        }
+        .playlist-title {
+            margin-left: 40px;
+            display: flex;
+        }
+        .playlist-song-img {
+            display: inline-block;
+            height: 100px;
+            aspect-ratio: 1/1;
+        }
+        .playlist-song-img img {
+         
+            width: 100%;
+            height: 100%;
+        }
+        .artist-name {
+            font-weight: bold;
+        }
+        .playlist-content {
+            display: flex;
+            flex-direction: column;
+            row-gap: 30px;
+        }
+        .playlist-song-item {
+            display: flex;
+        }
+        .playlist-song-name {
+            display: flex;
+            align-items: center;
+            margin-left: 50px;
+            font-size: large;
+        }
+        .playlist-edit-button {
+            display: flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+        .playlist-edit-button .glyphicon {
+            font-size: large;
+            background-color: grey;
+            color: white;
+            padding: 10px;
+            border-radius: 100%;
+        }
+        .playlist-edit-button .glyphicon:hover {
+            background-color: white;
+            color: grey;
+        }
+    </style>
+    <script>
+        document.getElementById('submit').addEventListener('click',function() {
+            var changeplaylist = document.getElementById('changeplaylist');
+            
+            document.getElementById('playlistname').innerHTML = changeplaylist + "";
+            
+        });
+    </script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
