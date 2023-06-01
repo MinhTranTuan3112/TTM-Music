@@ -4,6 +4,10 @@ TTM Music Page by TTM group
 ```
 git clone https://github.com/MinhTranTuan3112/TTM-Music.git
 ```
+# How to add new remote for this repository:
+```
+git remote add prjmain https://github.com/dunghuynh-teaching/prj301-se1726-09.git
+```
 # About this project
 # Requirement
 - Name of the system: **TTM Music**
