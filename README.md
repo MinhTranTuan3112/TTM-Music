@@ -17,7 +17,7 @@ git remote add prjmain https://github.com/dunghuynh-teaching/prj301-se1726-09.gi
 - Listen to all different genres of the songs and albums from all artists including 90s songs, 80s songs, classical, instrumental, …
 - Store all of your favorite tracks into playlists and share them with your friends and other users
 - Shuffle playlists
-- Find your favorite songs based on genres, artist and instrument
+- Find your favorite songs based on genres or artists
 
 # Wireframe or screenshots of the system: (Working On It)
 - The wireframe:
