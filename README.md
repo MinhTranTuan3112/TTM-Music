@@ -18,7 +18,8 @@ git remote add prjmain https://github.com/dunghuynh-teaching/prj301-se1726-09.gi
 - Add songs to playlists
 - Share your playlists
 - Shuffle your playlists
-- Find your favorite songs based on genres or artists
+- Search your favorite songs based on genres or artists or name
+
 
 # 2/ Wireframe or screenshots of the system: (Working On It)
 - The wireframe:
