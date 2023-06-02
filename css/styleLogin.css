@@ -1,0 +1,289 @@
+body,
+html {
+    /*background-color: grey;*/
+    box-sizing: border-box;
+
+    height: 100%;
+    background: #6441A5;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2a0845, #6441A5);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2a0845, #6441A5);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    /* background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1); */
+    /* background: linear-gradient(90deg, #C7C5F4, #776BCC); */
+}
+
+.login-form-title {
+    text-shadow: 3px 3px black;
+}
+
+.signup-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.signup-group a {
+    color: black;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.login-form-title {
+    text-align: center;
+    color: white;
+}
+
+.login-form-content {
+    min-height: 90vh;
+    width: 100%;
+}
+
+.login-form-content :is(input) {
+    color: white;
+    outline: none;
+}
+
+* {
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.login-form-content :is(label) {
+    color: white;
+    align-self: start;
+}
+
+.login-form-content :is(input[type='text'], input[type='password']) {
+    width: 100%;
+}
+
+::placeholder {
+    color: white;
+}
+
+.form-group :is(input) {
+    display: inline-block;
+    width: 50%;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.form-group ::placeholder {
+    color: black;
+}
+
+.login-form-content {
+
+    background-color: white;
+    padding: 20px;
+    width: 50%;
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0px 0px 5px rgb(72, 71, 71);
+    border-radius: 13px;
+
+}
+
+/*.submit-button {
+    column-gap: 20px;
+    justify-content: center;
+    cursor: pointer;
+    align-content: center;
+    text-align: center;
+}*/
+
+/*.google-account {
+    color: white;
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    column-gap: 5px;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.google-account:hover {
+    background-color: white;
+    color: grey;
+
+}*/
+
+.submit-button input {
+    background-color: black;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 24px;
+}
+
+.text-right {
+    text-align: left;
+}
+
+.signup-group {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    row-gap: 10px;
+}
+
+.google-logo {
+    transition: width 2s;
+}
+
+@media (min-width: 700px) {
+    .login-form-content {
+        width: 30%;
+    }
+}
+
+
+
+
+/*CHO T MOI CHHINH SUA NE */
+.form-group label,
+.rem-for label {
+    color: black;
+}
+
+.rem-for {
+    display: flex;
+    justify-content: center;
+    column-gap: 90px;
+    font-size: 14px;
+}
+
+.checkbox-group input {
+    height: 12px;
+}
+
+.checkbox-group {
+    align-items: center;
+}
+
+.checkbox-group label {
+    text-decoration: none;
+    font-style: bold;
+}
+
+.forget-password a {
+    color: blue;
+    font-weight: bold;
+    transition: 0.4s;
+    text-decoration: none;
+}
+
+.forget-password a:hover {
+    color: purple;
+}
+
+.submit-button {
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.btn-default {
+    width: 100%;
+    border: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 17px;
+    letter-spacing: 1px;
+    font-weight: bolder;
+    transition: 0.5s;
+    background-color: #747474;
+    color: #fff;
+}
+
+.btn-default:hover {
+    background-color: #444444;
+    color: #fff;
+}
+
+.login100-social-item {
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 5px;
+    transition: 0.5s;
+    color: white;
+}
+
+.login100-social-item:hover {
+    color: #fff;
+    background-color: #333333;
+    text-decoration: none;
+}
+
+.flex-c-m {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg1 {
+    background-color: #3b5998
+}
+
+.bg2 {
+    background-color: #1da1f2
+}
+
+.bg3 {
+    background-color: #ea4335
+}
+
+.social-signup-button {
+    color: black;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.text-last {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 155px;
+}
+
+.txt1 {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #666666;
+    padding-bottom: 14px;
+}
+
+.txt2 {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333333;
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+
+.txt2:hover {
+    color: purple;
+    text-decoration: none;
+}
