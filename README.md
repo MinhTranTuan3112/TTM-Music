@@ -15,8 +15,9 @@ git remote add prjmain https://github.com/dunghuynh-teaching/prj301-se1726-09.gi
 - Who will use the system? Everyone can use this web application to enjoy listening to music
 ## System features:
 - Listen to all different genres of the songs and albums from your favorite artists
-- Store all of your favorite tracks into playlists and share them with your friends and other users
-- Shuffle playlists
+- Store all of your favorite tracks into playlists
+- Share your playlists
+- Shuffle your playlists
 - Find your favorite songs based on genres or artists
 
 # 2/ Wireframe or screenshots of the system: (Working On It)
