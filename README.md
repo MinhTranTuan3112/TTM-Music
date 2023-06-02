@@ -20,5 +20,12 @@ git remote add prjmain https://github.com/dunghuynh-teaching/prj301-se1726-09.gi
 - Find your favorite songs based on genres or artists
 
 # Wireframe or screenshots of the system: (Working On It)
+
 - The wireframe:
 ![](wireframe.png)
+
+- The sitemap: 
+![](/TTM_Music_Sitemap.png)
+
+## GUI:
+
