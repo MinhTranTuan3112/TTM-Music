@@ -35,7 +35,7 @@ html {
 .login-form-title {
     text-align: center;
     color: white;
-    
+
 }
 
 .login-form-content {
@@ -283,29 +283,46 @@ html {
     color: #333333;
     text-transform: uppercase;
     transition: 0.5s;
+    position: relative;
 }
-
+.txt2:after {
+    content: "";
+    background-color: slateblue;
+    height: 3px;
+    position: absolute;
+    width: 0;
+    left: 0;
+    bottom: 0;
+    transition: 0.25s ease-in-out;
+    border-radius: 10px; 
+}
+.txt2:hover:after {
+    width: 100%;
+}
 .txt2:hover {
     color: purple;
     text-decoration: none;
 }
+
 /*Sửa màu lúc nhập chữ thành đen*/
-.login-form-content :is(input[type='text'], input[type='password']){
+.login-form-content :is(input[type='text'], input[type='password']) {
     color: black;
 }
+
 .form-group :is(label) {
     display: flex;
     flex-direction: row;
     column-gap: 5px;
 }
+
 /*For mobile*/
 @media only screen and (max-width: 768px) {
     .login-form-content {
         width: 70%;
     }
+
     .checkbox-group {
         display: flex;
-        column-gap: 10px;   
+        column-gap: 10px;
     }
 }
-
