@@ -14,8 +14,8 @@ git remote add prjmain https://github.com/dunghuynh-teaching/prj301-se1726-09.gi
 - Purpose of the system is to help users dive into the beautiful, relaxing and colorful world of music so they can relieve the stress after long hours of studying or working 
 - Who will use the system? Everyone can use this web application to enjoy listening to music
 ## System features:
-- Listen to all different genres of the songs and albums from your favorite artists
-- Store all of your favorite tracks into playlists
+- Listen to different genres of the songs and albums from your favorite artists
+- Add songs to playlists
 - Share your playlists
 - Shuffle your playlists
 - Find your favorite songs based on genres or artists
