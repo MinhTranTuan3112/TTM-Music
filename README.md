@@ -21,10 +21,10 @@ git remote add prjmain https://github.com/dunghuynh-teaching/prj301-se1726-09.gi
 
 # Wireframe or screenshots of the system: (Working On It)
 
-- The wireframe:
+## The wireframe:
 ![](wireframe.png)
 
-- The sitemap: 
+## The sitemap: 
 ![](/TTM_Music_Sitemap.png)
 
 ## GUI:
