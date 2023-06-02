@@ -2,7 +2,7 @@
 TTM Music Page by TTM group
 # How to clone this project:
 ```
-git clone https://github.com/MinhTranTuan3112/TTM-Music.git
+git clone [https://github.com/MinhTranTuan3112/TTM-Music.git](https://github.com/dunghuynh-teaching/prj301-se1726-09.git)
 ```
 # How to add new remote for this repository:
 ```
