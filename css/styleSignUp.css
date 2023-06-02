@@ -65,7 +65,7 @@ html {
     align-self: start;
 }
 
-.login-form-content :is(input[type='text'], input[type='password']) {
+.login-form-content :is(input[type='text'], input[type='password'], input[type='email']) {
     width: 100%;
 }
 
@@ -245,15 +245,15 @@ html {
 }
 
 .bg1 {
-    background-color: #3b5998;
+    background-color: #3b5998
 }
 
 .bg2 {
-    background-color: #1da1f2;
+    background-color: #1da1f2
 }
 
 .bg3 {
-    background-color: #ea4335;
+    background-color: #ea4335
 }
 
 .social-signup-button {
@@ -290,9 +290,10 @@ html {
     text-decoration: none;
 }
 /*Sửa màu lúc nhập chữ thành đen*/
-.login-form-content :is(input[type='text'], input[type='password']){
+.login-form-content :is(input[type='text'], input[type='password'], input[type='email']) {
     color: black;
 }
+/*label*/
 .form-group :is(label) {
     display: flex;
     flex-direction: row;
