@@ -19,7 +19,8 @@ html {
 }
 
 .login-form-title {
-    text-shadow: 3px 3px black;
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
 }
 
 .signup-group {
@@ -44,7 +45,6 @@ html {
 .login-form-content {
     min-height: 90vh;
     width: 100%;
-
 }
 
 .login-form-content :is(input) {
@@ -105,7 +105,7 @@ html {
     transform: translateX(-50%);
     box-shadow: 0px 0px 5px rgb(72, 71, 71);
     border-radius: 13px;
-
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 /*.submit-button {
@@ -196,9 +196,11 @@ html {
 .forget-password a:hover {
     color: slateblue;
 }
+
 .forget-password-link {
     position: relative;
 }
+
 .forget-password-link:after {
     content: "";
     position: absolute;
@@ -210,16 +212,18 @@ html {
     transition: 0.25s ease-in-out;
     padding-top: 2px;
 }
+
 .forget-password-link:hover:after {
     width: 100%;
 }
+
 .submit-button {
     align-items: center;
     text-align: center;
     margin-top: 20px;
 }
 
-.btn-default {
+/*.btn-default {
     width: 100%;
     border: 0px;
     border-radius: 5px;
@@ -236,7 +240,7 @@ html {
     background-color: #444444;
     color: #fff;
 }
-
+*/
 /*.login100-social-item {
     font-size: 25px;
     display: flex;
@@ -342,6 +346,7 @@ html {
 .password-form {
     position: relative;
 }
+
 .eye-icon-wrapper {
     position: absolute;
     /* top: 21.55%;
@@ -432,6 +437,7 @@ ul li a:before {
     .login-form-content {
         width: 70%;
     }
+
     .flex-c-m {
         margin-top: 100px;
     }
@@ -442,8 +448,55 @@ ul li a:before {
         width: 40%;
     }
 }
+
 @media (min-width: 1200px) {
     .login-form-content {
         width: 30%;
     }
+}
+
+
+/*Third Update (Second try CSS) */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.login-button {
+    text-align: center;
+}
+
+.btn-default {
+    width: 100%;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    text-align: center;
+    background-size: 300% 100%;
+
+    border-radius: 50px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-default:hover {
+    background-position: 100% 0;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+.btn-default:hover:focus {
+    outline: none;
+}
+
+.btn-default {
+    background-image: linear-gradient(to right, #6253e1, #852D91, #A3A1FF, #F24645);
+    box-shadow: 0 4px 15px 0 rgba(126, 52, 161, 0.75);
 }
