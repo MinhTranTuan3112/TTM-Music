@@ -1,3 +1,7 @@
+//check if browser is edge, hide eye icon
+if (/Edge|Edg/.test(navigator.userAgent)) {
+    document.getElementsByClassName('eye-icon')[0].style.display = 'none';
+}
 const pwShowHide = document.querySelectorAll(".eye-icon");
 
 pwShowHide.forEach(eyeIcon => {
