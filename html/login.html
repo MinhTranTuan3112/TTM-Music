@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/styleLogin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
     <title>Login Page</title>
 </head>
 
@@ -26,10 +30,11 @@
                     <label for="username"><div class="glyphicon glyphicon-user"></div> <span>Username</span></label>
                     <input type="text" placeholder="Enter your username" id="username" name="username" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group password-form">
                     <label for="password"><div class="glyphicon glyphicon-lock"></div> <span>Password</span></label>
                     <input type="password" name="password" id="password" name="password"
-                        placeholder="Enter your password" required>
+                        placeholder="Enter your password" class="password">
+                    <div class="eye-icon-wrapper"><i class='bx bx-hide eye-icon'></i></div>
                 </div>
                 <!--Cho t mới sửa lại theo ý mình-->
                 <div class="rem-for">
@@ -38,7 +43,7 @@
                         <label for="remember_me">Remember Me</label>
                     </div>
                     <div class="forget-password">
-                        <a href="#">
+                        <a href="#" class="forget-password-link">
                             Forgot password?
                         </a>
                     </div>
@@ -57,7 +62,7 @@
             </form>
             <div class="signup-group">
                 <div class="social-signup-button  p-t-54 p-b-20">
-                    Or Sign Up Using
+                    Or Login Using
                     <!--<span class="google-logo"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                             fill="currentColor" class="bi bi-google img-circle" viewBox="0 0 16 16">
                             <path
@@ -66,18 +71,25 @@
                     -->
                 </div>
             </div>
+            <!--Change here-->
             <div class="flex-c-m">
-                <a href="#" class="login100-social-item bg1">
-                    <i class="fa fa-facebook"></i>
-                </a>
-
-                <a href="#" class="login100-social-item bg2">
-                    <i class="fa fa-twitter"></i>
-                </a>
-
-                <a href="#" class="login100-social-item bg3">
-                    <i class="fa fa-google"></i>
-                </a>
+                <ul class="hover-social-icon">
+                    <li>
+                        <a href="#" class="login100-social-item bg1">
+                            <i class="fab fa-facebook-f icon"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="login100-social-item bg2">
+                            <i class="fab fa-twitter icon"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="login100-social-item bg3">
+                            <i class="fab fa-google-plus-g icon"></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
             <div class="text-last">
                 <span class="txt1">
@@ -91,6 +103,7 @@
             <!--Đến đây là hết-->
         </div>
     </div>
+    <script src="/js/LoginFunction.js"></script>
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
