@@ -10,47 +10,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200&display=swap" rel="stylesheet">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/styleLogin.css">
+    <link rel="stylesheet" href="/css/styleSignUp.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
-        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
-    <title>Login Page</title>
+    <title>Sign Up Page</title>
 </head>
 
 <body>
     <div class="login-form">
         <div class="login-form-title">
-            <h1>Welcome to TTM Music</h1>
+            <h1>Sign Up</h1>
         </div>
         <div class="login-form-content">
             <form action="">
                 <div class="form-group">
-                    <label for="username"><div class="glyphicon glyphicon-user"></div> <span>Username</span></label>
+                    <label for="username"><div class="glyphicon glyphicon-user"></div> Username</label>
                     <input type="text" placeholder="Enter your username" id="username" name="username" required>
                 </div>
                 <div class="form-group">
-                    <label for="password"><div class="glyphicon glyphicon-lock"></div> <span>Password</span></label>
+                    <label for="password"><div class="glyphicon glyphicon-lock"></div> Password</label>
                     <input type="password" name="password" id="password" name="password"
-                        placeholder="Enter your password" class="password">
-                    <i class='bx bx-hide eye-icon'></i>
+                        placeholder="Enter your password" required>
                 </div>
-                <!--Cho t mới sửa lại theo ý mình-->
-                <div class="rem-for">
-                    <div class="checkbox-group">
-                        <input type="checkbox" id="remember_me">
-                        <label for="remember_me">Remember Me</label>
-                    </div>
-                    <div class="forget-password">
-                        <a href="#">
-                            Forgot password?
-                        </a>
-                    </div>
+                <div class="form-group">
+                    <label for="password"><div class="glyphicon glyphicon-lock"></div> Confirm your password</label>
+                    <input type="password" name="password" id="password" name="password"
+                        placeholder="Enter your password again" required>
+                </div>
+                <div class="form-group">
+                    <label for="email"><div class="glyphicon glyphicon-envelope"></div> Email</label>
+                    <input type="email" name="email" id="email" placeholder="Enter your email" required>
                 </div>
                 <div class="submit-button">
                     <div class="login-button">
-                        <input type="submit" value="Log In" class="btn btn-default">
+                        <input type="submit" value="Sign Up" class="btn btn-default">
                     </div>
                     <!--<div class="google-account"><span class="google-logo"><svg xmlns="http://www.w3.org/2000/svg"
                                 width="16" height="16" fill="currentColor" class="bi bi-google" viewBox="0 0 16 16">
@@ -62,7 +54,7 @@
             </form>
             <div class="signup-group">
                 <div class="social-signup-button  p-t-54 p-b-20">
-                    Or Login Using
+                    Or Sign Up Using
                     <!--<span class="google-logo"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                             fill="currentColor" class="bi bi-google img-circle" viewBox="0 0 16 16">
                             <path
@@ -71,39 +63,31 @@
                     -->
                 </div>
             </div>
-            <!--Change here-->
             <div class="flex-c-m">
-                <ul class="hover-social-icon">
-                    <li>
-                        <a href="#" class="login100-social-item bg1">
-                            <i class="fab fa-facebook-f icon"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="login100-social-item bg2">
-                            <i class="fab fa-twitter icon"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="login100-social-item bg3">
-                            <i class="fab fa-google-plus-g icon"></i>
-                        </a>
-                    </li>
-                </ul>
+                <a href="#" class="login100-social-item bg1">
+                    <i class="fa fa-facebook"></i>
+                </a>
+
+                <a href="#" class="login100-social-item bg2">
+                    <i class="fa fa-twitter"></i>
+                </a>
+
+                <a href="#" class="login100-social-item bg3">
+                    <i class="fa fa-google"></i>
+                </a>
             </div>
             <div class="text-last">
                 <span class="txt1">
-                    Or Sign Up Using
+                    Or If you have an account, please
                 </span>
 
-                <a href="/html/SignUp.html" class="txt2">
-                    Sign Up
+                <a href="/html/login.html" class="txt2">
+                    Log In
                 </a>
             </div>
             <!--Đến đây là hết-->
         </div>
     </div>
-    <script src="/js/LoginFunction.js"></script>
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 

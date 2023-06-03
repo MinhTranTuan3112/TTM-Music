@@ -1,0 +1,70 @@
+
+* {
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+body {
+    background-color: black;
+    color: white;
+}
+span.artist-name {
+    font-weight: bold;
+}
+.album-title {
+    display: flex;
+    flex-direction: row;
+}
+.album-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.album-cover img {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+.album-cover {
+    height: 300px;
+    aspect-ratio: 1/1;
+    padding: 10px;
+}
+.album-buttons :is(.glyphicon) {
+    background-color: grey;
+    padding: 20px;
+    font-size: 30px;
+    border-radius: 100%;
+}
+.album-buttons {
+    display: flex;
+    column-gap: 10px;
+}
+.play-button {
+    display: flex;
+}
+.album-buttons :is(.glyphicon):hover {
+    background-color: white;
+    color: grey;
+}
+.album-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+.album-item {
+    display: flex;
+    column-gap: 20px;
+}
+.album-item-img img{
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+.album-item-img {
+    height: 125px;
+    aspect-ratio: 1/1;
+}
+.album-item-name {
+    display: flex;
+    align-items: center;
+    font-size: large;
+}
