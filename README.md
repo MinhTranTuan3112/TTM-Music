@@ -28,5 +28,8 @@ git remote add prjmain https://github.com/dunghuynh-teaching/prj301-se1726-09.gi
 ![](/TTM_Music_Sitemap.png)
 
 ## GUI:
+- Login page
+![](![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/16d76f32-33ac-4603-af23-0082f20af9a6))
++ Functions: allow user to login using username and password
 
 
