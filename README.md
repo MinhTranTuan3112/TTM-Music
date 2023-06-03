@@ -28,8 +28,17 @@ git remote add prjmain https://github.com/dunghuynh-teaching/prj301-se1726-09.gi
 ![](/TTM_Music_Sitemap.png)
 
 ## GUI:
-- Login page
+### Login page
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/16d76f32-33ac-4603-af23-0082f20af9a6)
-+ Functions: allow user to login using username and password
+- Functions: allow user to login using username and password
+### Sign up page
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/8118c619-43e2-40cb-a6f0-a7f013d1178d)
+- Functions: user can register an account to login into the page with username, password and email for password changing 
+### Home page:
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/cb84c50a-df54-4900-ab4d-14215852e54f)
+- This is the main page, with music, album and artist selection for users to play their music
+### Album page:
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/230ca5a5-d105-4e05-a8cd-690b9bdccd85)
+- This page displays album contents, with options to play, edit or add the whole album to the library 
 
 
