@@ -2,7 +2,8 @@ body,
 html {
     /*background-color: grey;*/
     box-sizing: border-box;
-
+    margin: 0;
+    padding: 0;
     height: 100%;
     background: #6441A5;
     /* fallback for old browsers */
@@ -82,6 +83,11 @@ html {
 
 .form-group ::placeholder {
     color: black;
+}
+
+.form-group img {
+    width: 35px;
+    cursor: pointer;
 }
 
 .login-form-content {
@@ -217,7 +223,7 @@ html {
     color: #fff;
 }
 
-.login100-social-item {
+/*.login100-social-item {
     font-size: 25px;
     display: flex;
     justify-content: center;
@@ -234,7 +240,7 @@ html {
     color: #fff;
     background-color: #333333;
     text-decoration: none;
-}
+}*/
 
 .flex-c-m {
     display: flex;
@@ -281,9 +287,123 @@ html {
     color: #333333;
     text-transform: uppercase;
     transition: 0.5s;
+    position: relative;
 }
 
 .txt2:hover {
     color: purple;
     text-decoration: none;
+}
+
+.txt2:after {
+    content: "";
+    background-color: slateblue;
+    height: 3px;
+    position: absolute;
+    width: 0;
+    left: 0;
+    bottom: 0;
+    transition: 0.25s ease-in-out;
+    border-radius: 10px;
+}
+
+.txt2:hover:after {
+    width: 100%;
+}
+
+.txt2:hover {
+    color: purple;
+    text-decoration: none;
+}
+
+.login-form-content :is(input[type='text']) {
+    color: black;
+}
+
+.login-form-content :is(input[type='password']) {
+    color: black;
+}
+
+/* */
+.eye-icon {
+    position: absolute;
+    top: 21.55%;
+    right: 25px;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #8b8b8b;
+    cursor: pointer;
+    padding: 5px;
+}
+
+/*Second update */
+.hover-social-icon {
+    display: flex;
+    position: absolute;
+    top: 55%;
+    left: 46.5%;
+    bottom: 40%;
+    transform: translate(-50%, -50%);
+}
+
+.hover-social-icon li {
+    list-style: none;
+
+}
+
+ul li a {
+    width: 70px;
+    height: 70px;
+    background-color: #fff;
+    text-align: center;
+    line-height: 70px;
+    font-size: 30px;
+    margin: 0 10px;
+    margin-top: 20px;
+    display: block;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid #fff;
+    z-index: 1;
+}
+
+ul li a .icon {
+    position: relative;
+    color: #262626;
+    transition: .5s;
+    z-index: 3;
+}
+
+ul li a:hover .icon {
+    color: #fff;
+    transform: rotateY(360deg);
+}
+
+ul li a:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f00;
+    transition: .5s;
+    z-index: 2;
+}
+
+.hover-social-icon li a:hover:before {
+    top: 0;
+}
+
+.hover-social-icon li:nth-child(1) a:before {
+    background: #3b5999;
+}
+
+.hover-social-icon li:nth-child(2) a:before {
+    background: #55acee;
+}
+
+.hover-social-icon li:nth-child(3) a:before {
+    background: #dd4b39;
 }
