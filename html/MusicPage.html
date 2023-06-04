@@ -17,7 +17,7 @@
     <title>Music page</title>
 </head>
 
-<body>
+<body>    
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -26,15 +26,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="">
-                    <div class="glyphicon glyphicon-headphones"></div> TTM Music
-                </a>
+                <div class="navbar-brand-wrapper">
+                    <a class="navbar-brand" href="">
+                        <div class="glyphicon glyphicon-headphones"></div> TTM Music
+                    </a>
+                </div>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="">Home</a></li>
-                    <li><a href="">Explore</a></li>
-                    <li><a href="PlaylistUI.html">Library</a></li>
+                    <li class="active nav-item"><a href="">Home</a></li>
+                    <li class="nav-item"><a href=""  >Explore</a></li>
+                    <li class="nav-item"><a href="PlaylistUI.html">Library</a></li>
                 </ul>
                 <form action="" class="navbar-form navbar-left">
                     <div class="input-group">
@@ -47,12 +49,30 @@
                     </div>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href=""><span class="glyphicon glyphicon-user"></span> Minh Tran</a></li>
-                    <li><a href=""><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
+                    <li class="nav-item"><a href=""><span class="glyphicon glyphicon-user"></span> Minh Tran</a></li>
+                    <li class="nav-item"><a href=""><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+    <div class="explore-section">
+        <div class="explore-section-title"><h1>Hi! What's in your mood today?</h1></div>
+        <div class="explore-section-content">
+            <div class="explore-item">
+                <button class="explore-button">Rap</button>
+            </div>
+            <div class="explore-item">
+                <button class="explore-button">Relaxing</button>
+            </div>
+            <div class="explore-item">
+                <button class="explore-button">Pop</button>
+            </div>
+            <div class="explore-item">
+                <button class="explore-button">EDM</button>
+            </div>
+
+        </div>
+    </div>
     <div class="recently-play-section">
         <h1 class="recently-play-title">Recently play songs</h1>
         <div class="song-list">

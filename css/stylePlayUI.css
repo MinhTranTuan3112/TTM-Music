@@ -1,7 +1,8 @@
 * {
-    --UIBackground: 	rgb(105,105,105);
+    --UIBackground: rgb(105, 105, 105);
     font-family: 'Be Vietnam Pro', sans-serif;
 }
+
 .UI-window {
     background-color: var(--UIBackground);
     color: white;
@@ -30,7 +31,6 @@
     display: flex;
     column-gap: 10px;
 }
-
 .playing-song-name {
     font-size: large;
     margin-top: 10px;
@@ -65,7 +65,7 @@
     display: flex;
     justify-content: center;
     margin-top: 10px;
-    
+
 }
 
 #volume-icon {
@@ -98,11 +98,11 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%); */
+    /* border: none;
+    outline: none; */
 }
 
-.lyric-content {
-    
-}
+.lyric-content {}
 
 .lyric-content pre {
     height: 500px;
@@ -118,7 +118,8 @@
     border-bottom: 1px solid white;
     transition: height 1s ease-in-out;
 }
-.next-songs-list {
+
+/* .next-songs-list {
     display: flex;
     justify-content: space-evenly;
 }
@@ -133,15 +134,27 @@
     height: 150px;
     width: 150px;
     margin-bottom: 3px;
+} */
+.next-songs-list {
+    padding-inline: 5vw;
+    display: grid;
+    grid-column-gap: 10vw;
+    grid-row-gap: 2.5vh;
+    grid-template-columns: repeat(auto-fit, minmax(115px, 1fr));
 }
-.next-song-img img{
+
+.next-song-img img {
     height: 100%;
-    width: 100%;    
+    width: 100%;
     border: none;
     outline: none;
+    border-radius: 5px;
+}
+.next-song-name {
+    margin-top: 5px;
 }
 /*hover effects*/
-.media-buttons :is([class *= 'button'] .glyphicon):hover {
+.media-buttons :is([class *='button'] .glyphicon):hover {
     background-color: white;
     color: grey;
 }
@@ -168,20 +181,25 @@
     .UI-window {
         flex-direction: column;
     }
+
     .playing-content {
-        padding-inline: 0;
+        padding-inline: 50px;
         border-right: none;
         border-bottom: 1px solid white;
         padding-bottom: 20px;
     }
+    
     .lyric-content {
         height: 100%;
         width: 100%;
+
     }
+
     .next-songs-list {
         height: 100%;
         padding-bottom: 50px;
     }
+
     /* .lyric-content pre {
         height: 100%;
         width: 100%;
