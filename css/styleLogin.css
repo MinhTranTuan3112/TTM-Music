@@ -211,6 +211,8 @@ html {
     width: 0;
     transition: 0.25s ease-in-out;
     padding-top: 2px;
+    border-radius: 3px;
+    margin-top: 4px;
 }
 
 .forget-password-link:hover:after {
@@ -497,6 +499,8 @@ ul li a:before {
 }
 
 .btn-default {
-    background-image: linear-gradient(to right, #6253e1, #852D91, #A3A1FF, #F24645);
-    box-shadow: 0 4px 15px 0 rgba(126, 52, 161, 0.75);
+    /* background-image: linear-gradient(to right, #6253e1, #852D91, #A3A1FF, #F24645);
+    box-shadow: 0 4px 15px 0 rgba(126, 52, 161, 0.75); */
+    background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7);
+    box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
 }
