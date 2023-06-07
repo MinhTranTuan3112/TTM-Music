@@ -5,6 +5,8 @@ body {
 body {
     background-color: black;
     color: white;
+    padding: 0;
+    margin: 0;
 }
 
 .navbar {}
@@ -159,7 +161,8 @@ div[class *=-cover] img,
 }
 
 .hover-play-button {
-    background-color: grey;
+    background-color: transparent;
+    border: 2px solid white;
     height: 50px;
     aspect-ratio: 1/1;
     display: none;
@@ -171,11 +174,11 @@ div[class *=-cover] img,
     inset: 0;
     margin: auto;
     z-index: 1;
-}
-
-.hover-play-button:hover {
-    background-color: white;
-    color: grey;
+    cursor: pointer;
+    &:hover {
+        background-color: slateblue;
+        color: white;
+    }
 }
 
 .empty {
@@ -261,7 +264,32 @@ div[class *=-cover] img,
 .suggest-item-song-name {
     /* text-align: center; */
 }
+/*album, artist, suggest playlist img hover effects*/
+.album-cover, .artist-img, .suggest-item {
+    transition: transform 0.25s ease-in-out;
+}
+.album-cover:hover, .artist-img:hover,.suggest-item:hover {
+    transform: scale(1.03);
+}
+/*load animations*/
+.hidden-load {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-100%);
+    transition: all 1s;
+}
 
+.show-load {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+
+@media(prefers-reduced-motion) {
+    .hidden-load {
+        transition: none;
+    }
+}
 @media screen and (max-width: 768px) {
     .suggest-item {
         width: 100%;

@@ -14,10 +14,10 @@
     height: 100%;
     width: 100%;
     position: fixed;
-    bottom: 0px;
+    bottom: -100%;
     display: flex;
     flex-direction: row;
-    transition: bottom 1.5s ease-in-out;
+    transition: all 1.5s ease-in-out;
 }
 
 .playing-content {
@@ -104,15 +104,53 @@
     font-size: large;
 }
 
-.lyric-button {
+button.lyric-button {
     /* display: inline-block;
     position: relative;
     left: 50%;
     transform: translateX(-50%); */
     /* border: none;
     outline: none; */
+    /* border: 2px solid white; */
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    outline: none;
+    border: none;
+    background-color: darkgray;
+    border-radius: 5px;
 }
-
+button.lyric-button:after {
+    content: "";
+    background-color: slategray;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 0;
+    transition: all 0.25s ease-in-out;
+    border-radius: 5px;
+    z-index: -1;
+    outline: none;
+    border: none;
+}
+button.lyric-button:hover:after {
+    width: 100%;
+}
+button.lyric-button:hover {
+    background-color: transparent;
+    color: inherit;
+}
+.minimize-button {
+    border: none;
+    outline: none;
+    padding: 5px;
+    padding-inline: 10px;
+    border-radius: 10px;
+}
+.minimize-button:hover {
+    background-color: slategray;
+}
 .lyric-content {}
 
 .lyric-content pre {

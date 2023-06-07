@@ -118,7 +118,7 @@ control bar*/
     color: slategrey;
 }
 
-.playing-song {
+.control-bar-content .playing-song {
     display: flex;
     flex-direction: row;
     row-gap: 10px;

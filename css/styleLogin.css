@@ -173,17 +173,24 @@ html {
     font-size: 14px;
 }
 
-.checkbox-group input {
-    height: 12px;
-}
-
 .checkbox-group {
     align-items: center;
+}
+.checkbox-group input {
+    height: 12px;
+    accent-color: slateblue;
+    height: 1em;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+}
+.checkbox-group input:focus {
+    accent-color: green;
 }
 
 .checkbox-group label {
     text-decoration: none;
     font-style: bold;
+    cursor: pointer;
 }
 
 .forget-password a {
@@ -212,7 +219,7 @@ html {
     transition: 0.25s ease-in-out;
     padding-top: 2px;
     border-radius: 3px;
-    margin-top: 4px;
+    margin-top: 10px;
 }
 
 .forget-password-link:hover:after {
@@ -433,6 +440,26 @@ ul li a:before {
 
 .hover-social-icon li:nth-child(3) a:before {
     background: #dd4b39;
+}
+
+/*load animations*/
+.hidden-load {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(-70%);
+    transition: all 1s;
+}
+
+.show-load {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
+@media(prefers-reduced-motion) {
+    .hidden-load {
+        transition: none;
+    }
 }
 
 @media (max-width: 768px) {

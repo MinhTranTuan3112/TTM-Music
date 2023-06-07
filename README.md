@@ -44,3 +44,8 @@ git remote add prjmain https://github.com/dunghuynh-teaching/prj301-se1726-09.gi
 ### Playlist page:
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/483a2f68-abba-4e1b-ba90-f3d52ef0191d)
 - This page displays playlist contents, with options to play, edit or add new songs to the library 
+
+## Database design:
+- ERD: 
+![](ERD.png)
+- Relational schema
