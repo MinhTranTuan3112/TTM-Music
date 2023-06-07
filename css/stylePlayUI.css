@@ -229,13 +229,16 @@ button.lyric-button:hover {
 @media (max-width: 768px) {
     .UI-window {
         flex-direction: column;
+        overflow-y: scroll;
     }
-
+    
     .playing-content {
         padding-inline: 50px;
         border-right: none;
         border-bottom: 1px solid white;
         padding-bottom: 20px;
+       
+
     }
     
     .lyric-content {

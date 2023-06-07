@@ -10,63 +10,66 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200&display=swap" rel="stylesheet">
-
     <!--customize CSS Files-->
     <link rel="stylesheet" href="/css/styleHomePage.css">
     <link rel="stylesheet" href="/css/styleControlBar.css">
     <link rel="stylesheet" href="/css/stylePlayUI.css">
-    <!--icon css file-->
+    <!--page icon css file-->
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2285/2285073.png">
     <title>TTM Music</title>
 </head>
 
 <body>
-    <section class="navbar-section hidden-load">
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <div class="navbar-brand-wrapper">
-                        <a class="navbar-brand" href="">
-                            <div class="glyphicon glyphicon-headphones"></div> TTM Music
-                        </a>
+    <header>
+        <section class="navbar-section hidden-load">
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div class="navbar-brand-wrapper">
+                            <a class="navbar-brand" href="">
+                                <div class="glyphicon glyphicon-headphones"></div> TTM Music
+                            </a>
+                        </div>
+                    </div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav">
+                            <li class="active nav-item"><a href="">Home</a></li>
+                            <li class="nav-item"><a href="">Explore</a></li>
+                            <li class="nav-item"><a href="PlaylistUI.html">Library</a></li>
+                        </ul>
+                        <form action="" class="navbar-form navbar-left" method="get">
+                            <div class="search-group">
+                                <div class="search-bar"><input type="text" class="form-control"
+                                        placeholder="Search your music here" name="Search" list="search-list">
+                                    <datalist id="search-list">
+                                        <option value="Golden Hour"></option>
+                                        <option value="Gaming Music"></option>
+                                        <option value=""></option>
+                                    </datalist>
+                                </div>
+                                <div class="search-button">
+                                    <button class="btn btn-default" type="submit">
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="nav-item"><a href=""><span class="glyphicon glyphicon-user"></span> Minh Tran</a>
+                            </li>
+                            <li class="nav-item"><a href=""><span class="glyphicon glyphicon-log-out"></span> Log
+                                    Out</a></li>
+                        </ul>
                     </div>
                 </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav">
-                        <li class="active nav-item"><a href="">Home</a></li>
-                        <li class="nav-item"><a href="">Explore</a></li>
-                        <li class="nav-item"><a href="PlaylistUI.html">Library</a></li>
-                    </ul>
-                    <form action="" class="navbar-form navbar-left" method="get">
-                        <div class="search-group">
-                            <div class="search-bar"><input type="text" class="form-control"
-                                placeholder="Search your music here" name="Search" list = "search-list">
-                                <datalist id="search-list">
-                                    <option value="Golden Hour"></option>
-                                    <option value="Gaming Music"></option>
-                                    <option value=""></option>
-                                </datalist>
-                            </div>
-                            <div class="search-button">
-                                <button class="btn btn-default" type="submit">
-                                    Search
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="nav-item"><a href=""><span class="glyphicon glyphicon-user"></span> Minh Tran</a></li>
-                        <li class="nav-item"><a href=""><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </section>
+            </nav>
+        </section>
+    </header>
     <section class="explore-section hidden-load">
         <div class="explore-section-title">
             <h1>Hi! What's in your mood today?</h1>
@@ -455,11 +458,14 @@
         </div>
         <div class="nav-content">
             <div class="nav-content-bar">
-                <button class="nav-item lyric-button" onclick="TriggerLyricTransition();HideAndShowLyrics(this)">Hide Lyric</button>
+                <button class="nav-item lyric-button" onclick="TriggerLyricTransition();HideAndShowLyrics(this)">Hide
+                    Lyric</button>
                 <button class="nav-item minimize-button" onclick="MinimizePlayUIWindow()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-fullscreen-exit" viewBox="0 0 16 16">
-                        <path d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10 4.5v-4a.5.5 0 0 1 .5-.5zM0 10.5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 6 11.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zm10 1a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4z"/>
-                      </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-fullscreen-exit" viewBox="0 0 16 16">
+                        <path
+                            d="M5.5 0a.5.5 0 0 1 .5.5v4A1.5 1.5 0 0 1 4.5 6h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5zm5 0a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 10 4.5v-4a.5.5 0 0 1 .5-.5zM0 10.5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 6 11.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zm10 1a1.5 1.5 0 0 1 1.5-1.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4z" />
+                    </svg>
                 </button>
             </div>
             <div class="lyric-content">
@@ -550,7 +556,7 @@
                 </div>
             </div>
         </div>
-    </div>  
+    </div>
     <div class="empty"></div>
     <!--trigger button for control bar transition-->
     <div class="trigger-button" onmouseover="moveControlBarUpAndDown()">
@@ -560,10 +566,11 @@
     <audio controls id="current-song" hidden>
         <source src="/audio/Golden Hour - JVKE.mp3" type="audio/mpeg">
     </audio>
-
+    <!--custom js files-->
     <script src="/js/HomePageFunction.js"></script>
     <script src="/js/ControlBarFunction.js"></script>
     <script src="/js/PlayUIFunction.js"></script>
+    <!--bootstrap js libraries-->
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
