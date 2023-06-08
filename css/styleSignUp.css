@@ -216,43 +216,6 @@ html {
     margin-top: 20px;
 }
 
-.btn-default {
-    width: 100%;
-    border: 0px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 17px;
-    letter-spacing: 1px;
-    font-weight: bolder;
-    transition: 0.5s;
-    background-color: #747474;
-    color: #fff;
-}
-
-.btn-default:hover {
-    background-color: #444444;
-    color: #fff;
-}
-
-.login100-social-item {
-    font-size: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin: 5px;
-    transition: 0.5s;
-    color: white;
-}
-
-.login100-social-item:hover {
-    color: #fff;
-    background-color: #333333;
-    text-decoration: none;
-}
-
 .flex-c-m {
     display: flex;
     justify-content: center;
@@ -344,3 +307,634 @@ html {
     }
 }
 
+.hover-social-icon {
+    display: flex;
+    position: absolute;
+    top: 55%;
+    left: 46.5%;
+    bottom: 40%;
+    transform: translate(-50%, -50%);
+}
+
+.hover-social-icon li {
+    list-style: none;
+
+}
+
+ul li a {
+    width: 70px;
+    height: 70px;
+    background-color: #fff;
+    text-align: center;
+    line-height: 70px;
+    font-size: 30px;
+    margin: 0 10px;
+    margin-top: 20px;
+    display: block;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid #fff;
+    z-index: 1;
+}
+
+ul li a .icon {
+    position: relative;
+    color: white;
+    transition: .5s;
+    z-index: 3;
+}
+
+ul li a:hover .icon {
+    color: #fff;
+    transform: rotateY(360deg);
+}
+
+ul li a:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f00;
+    transition: .5s;
+    z-index: 2;
+}
+
+.hover-social-icon li a:hover:before {
+    top: 0;
+}
+
+.hover-social-icon li:nth-child(1) a:before {
+    background: #3b5999;
+}
+
+.hover-social-icon li:nth-child(2) a:before {
+    background: #55acee;
+}
+
+.hover-social-icon li:nth-child(3) a:before {
+    background: #dd4b39;
+}
+@media(prefers-reduced-motion) {
+    .hidden-load {
+        transition: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-form-content {
+        width: 70%;
+    }
+
+    .flex-c-m {
+        margin-top: 100px;
+    }
+}
+
+@media (min-width: 1000px) {
+    .login-form-content {
+        width: 40%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .login-form-content {
+        width: 30%;
+    }
+}
+body,
+html {
+    /*background-color: grey;*/
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #6441A5;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2a0845, #6441A5);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2a0845, #6441A5);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    /* background-image: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1); */
+    /* background: linear-gradient(90deg, #C7C5F4, #776BCC); */
+}
+
+.login-form-title {
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
+.signup-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.signup-group a {
+    color: black;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.login-form-title {
+    text-align: center;
+    color: white;
+
+}
+
+.login-form-content {
+    min-height: 90vh;
+    width: 100%;
+}
+
+.login-form-content :is(input) {
+    color: white;
+    outline: none;
+}
+
+* {
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.login-form-content :is(label) {
+    color: white;
+    align-self: start;
+}
+
+.login-form-content :is(input[type='text'], input[type='password']) {
+    width: 100%;
+}
+
+::placeholder {
+    color: white;
+}
+
+.form-group :is(input) {
+    display: inline-block;
+    width: 50%;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.form-group ::placeholder {
+    color: black;
+}
+
+.form-group img {
+    width: 35px;
+    cursor: pointer;
+}
+
+.login-form-content {
+
+    background-color: white;
+    padding: 20px;
+    width: 50%;
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0px 0px 5px rgb(72, 71, 71);
+    border-radius: 13px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+/*.submit-button {
+    column-gap: 20px;
+    justify-content: center;
+    cursor: pointer;
+    align-content: center;
+    text-align: center;
+}*/
+
+/*.google-account {
+    color: white;
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    column-gap: 5px;
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.google-account:hover {
+    background-color: white;
+    color: grey;
+
+}*/
+
+.submit-button input {
+    background-color: black;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 24px;
+}
+
+.text-right {
+    text-align: left;
+}
+
+.signup-group {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    row-gap: 10px;
+}
+
+.google-logo {
+    transition: width 2s;
+}
+
+
+
+
+/*CHO T MOI CHHINH SUA NE */
+.form-group label,
+.rem-for label {
+    color: black;
+}
+
+.rem-for {
+    display: flex;
+    justify-content: center;
+    column-gap: 90px;
+    font-size: 14px;
+}
+
+.checkbox-group {
+    align-items: center;
+}
+.checkbox-group input {
+    height: 12px;
+    accent-color: slateblue;
+    height: 1em;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+}
+.checkbox-group input:focus {
+    accent-color: green;
+}
+
+.checkbox-group label {
+    text-decoration: none;
+    font-style: bold;
+    cursor: pointer;
+}
+
+.forget-password a {
+    color: blue;
+    font-weight: bold;
+    transition: 0.4s;
+    text-decoration: none;
+}
+
+.forget-password a:hover {
+    color: slateblue;
+}
+
+.forget-password-link {
+    position: relative;
+}
+
+.forget-password-link:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: slateblue;
+    height: 3px;
+    width: 0;
+    transition: 0.25s ease-in-out;
+    padding-top: 2px;
+    border-radius: 3px;
+    margin-top: 10px;
+}
+
+.forget-password-link:hover:after {
+    width: 100%;
+}
+
+.submit-button {
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/*.btn-default {
+    width: 100%;
+    border: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 17px;
+    letter-spacing: 1px;
+    font-weight: bolder;
+    transition: 0.5s;
+    background-color: #747474;
+    color: #fff;
+}
+
+.btn-default:hover {
+    background-color: #444444;
+    color: #fff;
+}
+*/
+/*.login100-social-item {
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 5px;
+    transition: 0.5s;
+    color: white;
+}
+
+.login100-social-item:hover {
+    color: #fff;
+    background-color: #333333;
+    text-decoration: none;
+}*/
+
+.flex-c-m {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bg1 {
+    background-color: #3b5998;
+}
+
+.bg2 {
+    background-color: #1da1f2;
+}
+
+.bg3 {
+    background-color: #ea4335;
+}
+
+.social-signup-button {
+    color: black;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.text-last {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 155px;
+}
+
+.txt1 {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #666666;
+    padding-bottom: 14px;
+
+}
+
+.txt2 {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333333;
+    text-transform: uppercase;
+    transition: 0.5s;
+    position: relative;
+}
+
+.txt2:hover {
+    color: purple;
+    text-decoration: none;
+}
+
+.txt2:after {
+    content: "";
+    background-color: slateblue;
+    height: 3px;
+    position: absolute;
+    width: 0;
+    left: 0;
+    bottom: 0;
+    transition: 0.25s ease-in-out;
+    border-radius: 10px;
+}
+
+.txt2:hover:after {
+    width: 100%;
+}
+
+.txt2:hover {
+    color: purple;
+    text-decoration: none;
+}
+
+.login-form-content :is(input[type='text']) {
+    color: black;
+}
+
+.login-form-content :is(input[type='password']) {
+    color: black;
+}
+
+/* sửa lại để center eye icon ra giữa*/
+.password-form {
+    position: relative;
+}
+
+.eye-icon-wrapper {
+    position: absolute;
+    /* top: 21.55%;
+    right: 25px;
+    transform: translateY(-50%); */
+    font-size: 20px;
+    color: #8b8b8b;
+    cursor: pointer;
+    /* padding: 5px; */
+    right: 0;
+    top: 50%;
+    padding-right: 5px;
+}
+
+/*Second update */
+.hover-social-icon {
+    display: flex;
+    position: absolute;
+    top: 67%;
+    left: 46.5%;
+    bottom: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hover-social-icon li {
+    list-style: none;
+
+}
+
+ul li a {
+    width: 70px;
+    height: 70px;
+    background-color: #fff;
+    text-align: center;
+    line-height: 70px;
+    font-size: 30px;
+    margin: 0 10px;
+    margin-top: 20px;
+    display: block;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid #fff;
+    z-index: 1;
+}
+
+ul li a .icon {
+    position: relative;
+    color: white;
+    transition: .5s;
+    z-index: 3;
+}
+
+ul li a:hover .icon {
+    color: #fff;
+    transform: rotateY(360deg);
+}
+
+ul li a:before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f00;
+    transition: .5s;
+    z-index: 2;
+}
+
+.hover-social-icon li a:hover:before {
+    top: 0;
+}
+
+.hover-social-icon li:nth-child(1) a:before {
+    background: #3b5999;
+}
+
+.hover-social-icon li:nth-child(2) a:before {
+    background: #55acee;
+}
+
+.hover-social-icon li:nth-child(3) a:before {
+    background: #dd4b39;
+}
+
+/*load animations*/
+.hidden-load {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(-70%);
+    transition: all 1s;
+}
+
+.show-load {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+}
+
+@media(prefers-reduced-motion) {
+    .hidden-load {
+        transition: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-form-content {
+        width: 70%;
+    }
+
+    .flex-c-m {
+        margin-top: 100px;
+    }
+}
+
+@media (min-width: 1000px) {
+    .login-form-content {
+        width: 40%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .login-form-content {
+        width: 30%;
+    }
+}
+
+
+/*Third Update (Second try CSS) */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.login-button {
+    text-align: center;
+}
+
+.btn-default {
+    width: 100%;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    text-align: center;
+    background-size: 300% 100%;
+
+    border-radius: 50px;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-default:hover {
+    background-position: 100% 0;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+.btn-default:hover:focus {
+    outline: none;
+}
+
+.btn-default {
+    /* background-image: linear-gradient(to right, #6253e1, #852D91, #A3A1FF, #F24645);
+    box-shadow: 0 4px 15px 0 rgba(126, 52, 161, 0.75); */
+    background-image: linear-gradient(to right, #667eea, #764ba2, #6B8DD6, #8E37D7);
+    box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
+}
