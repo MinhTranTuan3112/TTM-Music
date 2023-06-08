@@ -49,3 +49,4 @@ git remote add prjmain https://github.com/dunghuynh-teaching/prj301-se1726-09.gi
 - ERD: 
 ![](ERD.png)
 - Relational schema
+![](/images/relational_schema.png)
