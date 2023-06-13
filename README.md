@@ -47,6 +47,7 @@ git remote add prjmain https://github.com/dunghuynh-teaching/prj301-se1726-09.gi
 
 ## Database design:
 - ERD: 
-![](ERD.png)
-- Relational schema
-![](/images/relational_schema.png)
+![ERD](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/79c5c198-4307-4f9b-a087-72d5cded03b6)
+- Relational Schema:
+
+![relational_schema](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/48b052a6-e6d1-4ebe-b24d-ed504d992cc5)
