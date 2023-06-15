@@ -1,5 +1,5 @@
 # TTM Music
-TTM Music Page by TTM group
+TTM Music Page by group 9
 # How to clone this project:
 ```
 git clone https://github.com/dunghuynh-teaching/prj301-se1726-09.git
