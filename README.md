@@ -21,7 +21,7 @@ git clone https://github.com/dunghuynh-teaching/prj301-se1726-09.git
 - Listen to different genres of the songs and albums including pop, ballad, classical, instrumental and especially game soundtracks
 from various artists
 - Listen to specially designed playlists including gaming music playlists for gamers, study music playlists
-- Store your favorite tracks into playlists
+- Create and add songs to playlists
 - Edit your playlists
 - Shuffle playlists
 - Search your favorite songs based on genres or artists
