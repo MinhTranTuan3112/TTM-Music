@@ -24,7 +24,7 @@ from various artists
 - Shuffle playlists
 - Search your favorite songs based on genres or artists
 
-# Wireframe or screenshots of the system: (Working On It)
+# Wireframe or screenshots of the system:
 
 ## The wireframe:
 ![](wireframe.png)
