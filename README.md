@@ -20,7 +20,7 @@ git clone https://github.com/dunghuynh-teaching/prj301-se1726-09.git
 ## System features:
 - Listen to different genres of the songs and albums including pop, ballad, classical, instrumental and especially game soundtracks
 from various artists
-- Listen to specially designed playlists like gaming music playlists for gamers, study music playlists
+- Listen to specially designed playlists including gaming music playlists for gamers, study music playlists
 - Store your favorite tracks into playlists
 - Edit your playlists
 - Shuffle playlists
