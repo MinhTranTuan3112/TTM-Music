@@ -38,6 +38,8 @@ git remote add prjmain https://github.com/dunghuynh-teaching/prj301-se1726-09.gi
 ### Home page:
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/cb84c50a-df54-4900-ab4d-14215852e54f)
 - This is the main page, with music, album and artist selection for users to play their music
+### Library page:
+- This is the library page, which displays users' saved playlists, songs and album
 ### Album page:
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/230ca5a5-d105-4e05-a8cd-690b9bdccd85)
 - This page displays album contents, with options to play, edit or add the whole album to the library 
@@ -49,5 +51,6 @@ git remote add prjmain https://github.com/dunghuynh-teaching/prj301-se1726-09.gi
 - ERD: 
 ![ERD](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/79c5c198-4307-4f9b-a087-72d5cded03b6)
 - Relational Schema:
-
 ![relational_schema](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/48b052a6-e6d1-4ebe-b24d-ed504d992cc5)
+
+
