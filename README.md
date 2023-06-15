@@ -4,14 +4,16 @@ TTM Music Page by group 9
 - Trần Tuấn Minh - SE172842
 - Trịnh Sơn Tùng - SE172875
 - Nguyễn Công Thành - SE172947
+
+
+# About this project
   
 # How to clone this project:
 ```
 git clone https://github.com/dunghuynh-teaching/prj301-se1726-09.git
 ```
 
-# About this project
-# Requirement
+# Requirements
 - Name of the system: **TTM Music**
 - Purpose of the system is to help users dive into the beautiful, relaxing and colorful world of music so they can relieve the stress after long hours of studying or working 
 - Who will use the system? Everyone can use this website to listen to music
