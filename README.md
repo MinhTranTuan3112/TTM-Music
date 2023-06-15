@@ -15,7 +15,7 @@ git remote add prjmain https://github.com/dunghuynh-teaching/prj301-se1726-09.gi
 - Who will use the system? Everyone can use this website to listen to music
 ## System features:
 - Listen to different genres of the songs and albums including pop, ballad, classical, instrumental and especially game soundtracks
-- Listen to your favorite artists' songs
+from various artists
 - Listen to specially designed playlists like gaming music playlists for gamers, study music playlists
 - Store your favorite tracks into playlists and share them
 - Edit your playlists
