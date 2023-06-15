@@ -1,6 +1,6 @@
 # TTM Music
 TTM Music Page by group 9
-# Team member:
+# Team members:
 - Trần Tuấn Minh - SE172842
 - Trịnh Sơn Tùng - SE172875
 - Nguyễn Công Thành - SE172947
