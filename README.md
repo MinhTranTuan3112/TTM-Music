@@ -18,7 +18,7 @@ git clone https://github.com/dunghuynh-teaching/prj301-se1726-09.git
 - Purpose of the system is to help users dive into the beautiful, relaxing and colorful world of music so they can relieve the stress after long hours of studying or working 
 - Who will use the system? Everyone can use this website to listen to music
 ## System features:
-- Listen to different genres of the songs and albums including pop, ballad, edm and especially game soundtracks
+- Listen to different genres of the songs and albums including pop, ballad, edm, indie and especially game soundtracks
 - Listen to specially designed playlists including gaming music playlists for gamers, study music playlists
 - Create and add songs to playlists
 - Edit your playlists
