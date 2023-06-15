@@ -1,5 +1,10 @@
 # TTM Music
 TTM Music Page by group 9
+# Team member:
+- Trần Tuấn Minh - SE172842
+- Trịnh Sơn Tùng - SE172875
+- Nguyễn Công Thành - SE172947
+  
 # How to clone this project:
 ```
 git clone https://github.com/dunghuynh-teaching/prj301-se1726-09.git
