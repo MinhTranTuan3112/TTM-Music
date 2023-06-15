@@ -15,7 +15,7 @@ git clone https://github.com/dunghuynh-teaching/prj301-se1726-09.git
 
 # Requirements
 - Name of the system: **TTM Music**
-- Purpose of the system: this page is made to help people relax with music and relieve the stress after working or studying for a long time.
+- Purpose of the system: is to help people relax with music and relieve the stress after working or studying for a long time.
 - Who will use the system? Everyone can use this website to listen to music
 ## System features:
 - Listen to different genres of the songs and albums including pop, ballad, edm, indie and especially game soundtracks
