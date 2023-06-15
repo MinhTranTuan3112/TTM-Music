@@ -37,8 +37,9 @@ git remote add prjmain https://github.com/dunghuynh-teaching/prj301-se1726-09.gi
 - Functions: user can register an account to login into the page with username, password and email for password changing 
 ### Home page:
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/cb84c50a-df54-4900-ab4d-14215852e54f)
-- This is the main page, with music, album and artist selection for users to play their music
-### Library page:
+- This is the main page, with music, album and artist selection for users to play their music]
+Library page:
+### ![Library page](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/d2c02c0d-ea41-4cfb-a681-81176787bfd6)
 - This is the library page, which displays users' saved playlists, songs and album
 ### Album page:
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/230ca5a5-d105-4e05-a8cd-690b9bdccd85)
