@@ -1,4 +1,4 @@
-# TTM-Music
+# TTM Music
 TTM Music Page by TTM group
 # How to clone this project:
 ```
