@@ -16,6 +16,7 @@ git remote add prjmain https://github.com/dunghuynh-teaching/prj301-se1726-09.gi
 ## System features:
 - Listen to different genres of the songs and albums including pop, ballad, classical, instrumental and especially game soundtracks
 - Listen to your favorite artists' songs
+- Listen to specially designed playlists like gaming music playlists for gamers, study music playlists
 - Store your favorite tracks into playlists and share them
 - Edit your playlists
 - Shuffle playlists
