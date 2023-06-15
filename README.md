@@ -19,7 +19,6 @@ git clone https://github.com/dunghuynh-teaching/prj301-se1726-09.git
 - Who will use the system? Everyone can use this website to listen to music
 ## System features:
 - Listen to different genres of the songs and albums including pop, ballad, classical, instrumental and especially game soundtracks
-from various artists
 - Listen to specially designed playlists including gaming music playlists for gamers, study music playlists
 - Create and add songs to playlists
 - Edit your playlists
