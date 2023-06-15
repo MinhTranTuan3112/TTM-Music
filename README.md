@@ -23,7 +23,7 @@ git clone https://github.com/dunghuynh-teaching/prj301-se1726-09.git
 - Create and add songs to playlists
 - Edit your playlists
 - Shuffle playlists
-- Search your favorite songs based on genres or artists
+- Search songs based on genres or artists
 
 # Wireframe or screenshots of the system:
 
