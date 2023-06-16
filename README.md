@@ -27,7 +27,7 @@ git clone https://github.com/dunghuynh-teaching/prj301-se1726-09.git
 
 # Wireframe or screenshots of the system:
 
-## The wireframe:
+
 ![](wireframe.png)
 
 ## The sitemap: 
