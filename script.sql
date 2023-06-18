@@ -1,7 +1,7 @@
 
 create database TTMMusic;
 use TTMMusic;
-create table "user"(
+create table users (
 	username nvarchar(50) primary key,
 	password nvarchar(50)
 );
