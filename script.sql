@@ -1,12 +1,9 @@
-create database TTMMusic
 
-create table user(
+create database TTMMusic;
+use TTMMusic;
+create table "user"(
 	username nvarchar(50) primary key,
 	password nvarchar(50)
-);
-
-create table admin(
-
 );
 
 create table album(
@@ -37,19 +34,19 @@ create table song(
 	lyric nvarchar(1000),
 	image nvarchar(100),
 	url nvarchar(100),
-	albumid nvarchar(10) foreign key album(albumid) 
+	albumid nvarchar(10) foreign key references album(albumid) 
 );
 
 create table like_user_song(
 	primary key (songid,username),
 	songid nvarchar(100) foreign key references song(songid),
-	username nvarchar(50) foreign key references user(username)
+	username nvarchar(50) foreign key references "user"(username)
 );
 
 create table like_user_album(
 	primary key(albumid,username),
 	albumid nvarchar(10) foreign key references album(albumid),
-	username nvarchar(50) foreign key references user(username) 
+	username nvarchar(50) foreign key references "user"(username) 
 );
  
  create table have_song_categiries(
