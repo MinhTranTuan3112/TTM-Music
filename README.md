@@ -64,6 +64,5 @@ that they want to add to the playlist and be able to add them.
 - ERD: 
 ![ERD](ERD.png)
 - Relational Schema:
-![relational_schema](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/34b75a7a-ae51-4abf-a25f-19b7d492d5eb)
-
+![relational_schema](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/630f5040-399e-4c71-ab8c-1a5dcabaec74)
 
