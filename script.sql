@@ -41,13 +41,13 @@ create table song(
 create table like_user_song(
 	primary key (songid,username),
 	songid nvarchar(100) foreign key references song(songid),
-	username nvarchar(50) foreign key references "user"(username)
+	username nvarchar(50) foreign key references users(username)
 );
 
 create table like_user_album(
 	primary key(albumid,username),
 	albumid nvarchar(10) foreign key references album(albumid),
-	username nvarchar(50) foreign key references "user"(username) 
+	username nvarchar(50) foreign key references users(username) 
 );
  
  create table have_song_categiries(
