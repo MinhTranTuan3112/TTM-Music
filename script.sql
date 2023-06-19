@@ -10,7 +10,8 @@ create table users (
 create table album(
 	albumid nvarchar(10) primary key,
 	name nvarchar(100),
-	albumimage nvarchar(100)
+	albumimage nvarchar(100),
+	artistid nvarchar(10) foreign key references artist(artistid) 
 );
 
 create table categories(
