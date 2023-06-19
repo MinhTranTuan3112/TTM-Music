@@ -32,7 +32,7 @@ create table playlist(
 create table song(
 	songid nvarchar(100) primary key,
 	name nvarchar(100),
-	lyric nvarchar(1000),
+	lyric nvarchar(max),
 	image nvarchar(100),
 	url nvarchar(100),
 	albumid nvarchar(10) foreign key references album(albumid) 
