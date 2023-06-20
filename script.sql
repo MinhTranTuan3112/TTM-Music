@@ -1,4 +1,3 @@
-
 create database TTMMusic;
 use TTMMusic;
 create table users (
@@ -73,3 +72,17 @@ create table include(
 	songid nvarchar(100) foreign key references song(songid),
 	playlistid nvarchar(10) foreign key references playlist(playlistid)
 );
+create or alter procedure [dbo].[proc_get_basic_song] @songid nvarchar(255)
+as
+select s.name as 'song_name',s.url as 'song_url', s.image as 'song_image',
+(select a.name
+from dbo.artist a
+where a.artistid = 
+(select c.artistid
+from dbo.compose c
+where c.songid = s.songid)) as 'artist_name',
+(select al.name 
+from dbo.album al
+where al.albumid = s.albumid) as 'album_name'
+from dbo.song s
+where s.songid = @songid;
