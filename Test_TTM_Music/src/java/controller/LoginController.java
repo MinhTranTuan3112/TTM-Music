@@ -64,14 +64,14 @@ public class LoginController extends HttpServlet {
                     request.getRequestDispatcher("login.jsp").forward(request, response);
                 }
             } else if (action.equals("signup")) {
-                //Catch 3 paramters from signup.jsp: username, password and email
+                //Catch 3 parameters from signup.jsp: username, password and email
                 String username = request.getParameter("username");
                 String password = request.getParameter("password");
                 String email = request.getParameter("email");
                 if (!userDAO.checkUserNameExist(username)) {
                     //If username doesn't exist, add this account to table users by calling insert method
                     userDAO.SignUp(new UserDTO(username, password, email));
-                    //Forward users to home page
+                    //Forward users to login page
                     request.getRequestDispatcher("login.jsp").forward(request, response);
                 } else {
                     //else if the username is already existed, send users back to signup page 

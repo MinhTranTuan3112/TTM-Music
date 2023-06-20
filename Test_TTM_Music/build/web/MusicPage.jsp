@@ -42,7 +42,7 @@
                             <ul class="nav navbar-nav">
                                 <li class="active nav-item"><a href="">Home</a></li>
                                 <li class="nav-item"><a href="">Explore</a></li>
-                                <li class="nav-item"><a href="/html/library.html">Library</a></li>
+                                <li class="nav-item"><a href="library.jsp">Library</a></li>
                             </ul>
                             <form action="" class="navbar-form navbar-left" method="get">
                                 <div class="search-group">

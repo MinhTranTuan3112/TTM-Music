@@ -22,7 +22,6 @@
         <link rel="stylesheet" href="css/styleLogin.css">
         <!--icon css file-->
         <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6681/6681204.png">
-
         <title>Login Page</title>
         <script defer type="text/javascript">
             if (document.getElementById("remember_me").checked) {

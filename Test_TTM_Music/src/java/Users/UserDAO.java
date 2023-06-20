@@ -18,7 +18,7 @@ public class UserDAO {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 UserDTO user = new UserDTO(rs.getString("username"), rs.getString("password"),
-                        rs.getString("email"));
+                        rs.getString("email"), rs.getString("role"));
                 return user;
             }
         } catch (SQLException e) {
@@ -45,13 +45,14 @@ public class UserDAO {
 
     public void SignUp(UserDTO user) {
         String sql = "insert into dbo.users\n"
-                + "values(?,?,?);";
+                + "values(?,?,?,?);";
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getPassword());
             ps.setString(3, user.getEmail());
+            ps.setString(4, "user");
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Insert Error: " + e.getMessage());

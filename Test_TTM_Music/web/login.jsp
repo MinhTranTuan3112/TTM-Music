@@ -22,7 +22,6 @@
         <link rel="stylesheet" href="css/styleLogin.css">
         <!--icon css file-->
         <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/6681/6681204.png">
-
         <title>Login Page</title>
         <script defer type="text/javascript">
             if (document.getElementById("remember_me").checked) {
@@ -65,7 +64,7 @@
                         <!--Cho t mới sửa lại theo ý mình-->
                         <div class="rem-for">
                             <div class="checkbox-group">
-                                <input type="checkbox" name="remember_me" value="on" id="remember_me">
+                                <input type="checkbox" name="remember_me" value="on" id="remember_me" ${sessionScope.rememberedAccount ? 'checked' : ''}>
                                 <label for="remember_me">Remember Me</label>
                             </div>
                             <div class="forget-password">
