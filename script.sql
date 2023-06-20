@@ -4,7 +4,8 @@ use TTMMusic;
 create table users (
 	username nvarchar(50) primary key,
 	password nvarchar(50),
-	email nvarchar(100)
+	email nvarchar(100),
+	role nvarchar(10)
 );
 
 create table album(
