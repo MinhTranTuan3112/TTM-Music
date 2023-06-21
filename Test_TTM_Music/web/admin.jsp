@@ -1,3 +1,6 @@
+<%@page import="java.io.FileInputStream"%>
+<%@page import="java.io.InputStreamReader"%>
+<%@page import="java.io.InputStreamReader"%>
 <%@page import="java.io.FileReader"%>
 <%@page import="java.io.BufferedReader"%>
 <%@page import="Song.SongDTO"%>
@@ -35,23 +38,23 @@
                     <%
                         SongDTO mysong = (SongDTO) (request.getAttribute("mysong"));
                         StringBuilder fileContent = new StringBuilder();
-                        try (BufferedReader reader = new BufferedReader(new FileReader(mysong.getLyric()))) {
+                        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(mysong.getLyric()), "UTF-8"))) {
                             String line;
                             while ((line = reader.readLine()) != null) {
                                 fileContent.append(line).append("<br/>");
                             }
                         }
                     %>
-                <p><%= fileContent %></p>
-                </p>
-                <p>
-                    Song image:
-                    <img src="${requestScope.mysong.image}">
-                </p>
-                <p>
-                    Album ID: ${requestScope.mysong.albumid}
-                </p>
-            </section>
-        </c:if>
-    </body>
+                <p><%= fileContent%></p>
+            </p>
+            <p>
+                Song image:
+                <img src="${requestScope.mysong.image}">
+            </p>
+            <p>
+                Album ID: ${requestScope.mysong.albumid}
+            </p>
+        </section>
+    </c:if>
+</body>
 </html>
