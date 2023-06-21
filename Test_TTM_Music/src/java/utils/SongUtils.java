@@ -1,5 +1,6 @@
 package utils;
 
+import Song.SongDTO;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -85,7 +86,22 @@ public class SongUtils {
         }
         return lyrics;
     }
+    public void SaveSongToServer(SongDTO song) {
+        
+    }
+    public static String getValidServerFileName(String name) {
+        String splStrings[] = name.split("\\s+");
+        String result = "";
+        for (int i = 0;i < splStrings.length;++i) {
+            result += splStrings[i];
+            if (i != splStrings.length - 1) {
+                result += "_";
+            }
+        }
+        return result;
+    }
     public static void main(String[] args) {
-        System.out.println(getSongLyrics("GoldenHour.txt"));
+        String name = "http://localhost:8080";
+        System.out.println(name);
     }
 }

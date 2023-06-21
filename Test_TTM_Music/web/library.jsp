@@ -21,9 +21,6 @@
             <section class="home-section hidden-load">
                 <button class="home-button hidden-load"><a href="MusicPage.jsp">Home</a></button>
             </section>
-            <c:if test="${sessionScope.usersession.role == 'admin'}">
-                <button class="admin-button hidden-load"><a href="#admin-section">Edit</a></button>
-            </c:if>
         </header>
         <main>
             <section class="filter-section hidden-load">
@@ -358,9 +355,7 @@
                 </section>
             </section>
             <c:if test="${sessionScope.usersession.role == 'admin'}">
-                <section class="admin-section hidden-load" id="admin-section">
-                   <!--add admin edit content-->
-                </section>
+                <%--<jsp:include page="/admin.jsp" flush="true"/>--%>
             </c:if>
         </main>
         <script src="js/LibraryFunctions.js"></script>
