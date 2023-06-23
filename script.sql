@@ -55,6 +55,11 @@ create table like_user_album(
    username nvarchar(50) foreign key references users(username),
    playlistid nvarchar(10) foreign key references playlist(playlistid)
 );
+create table like_user_artist(
+	primary key(username, artistid),
+	username nvarchar(50) foreign key references users(username), 
+	artistid nvarchar(10) foreign key references artist(artistid),
+);
  create table have_song_categiries(
 	primary key (songid,categoryid),
 	songid nvarchar(100) foreign key references song(songid),
