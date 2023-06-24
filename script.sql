@@ -39,7 +39,7 @@ create table song(
 	albumid nvarchar(10) foreign key references album(albumid) 
 );
 
-create table like(
+create table LikeInformation (
 	primary key (username,songid,albumid,playlistid,artistid),
 	username nvarchar(50) foreign key references users(username),
 	songid nvarchar(100) foreign key references song(songid),
