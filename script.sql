@@ -39,27 +39,16 @@ create table song(
 	albumid nvarchar(10) foreign key references album(albumid) 
 );
 
-create table like_user_song(
-	primary key (songid,username),
+create table like(
+	primary key (username,songid,albumid,playlistid,artistid),
+	username nvarchar(50) foreign key references users(username),
 	songid nvarchar(100) foreign key references song(songid),
-	username nvarchar(50) foreign key references users(username)
+	albumid nvarchar(10) foreign key references album(albumid),
+	playlistid nvarchar(10) foreign key references playlist(playlistid),
+	artistid nvarchar(10) foreign key references artist(artistid)
 );
 
-create table like_user_album(
-	primary key(albumid,username),
-	albumid nvarchar(10) foreign key references album(albumid),
-	username nvarchar(50) foreign key references users(username) 
-);
- create table like_user_playlist(
-   primary key(username, playlistid),
-   username nvarchar(50) foreign key references users(username),
-   playlistid nvarchar(10) foreign key references playlist(playlistid)
-);
-create table like_user_artist(
-	primary key(username, artistid),
-	username nvarchar(50) foreign key references users(username), 
-	artistid nvarchar(10) foreign key references artist(artistid),
-);
+
  create table have_song_categiries(
 	primary key (songid,categoryid),
 	songid nvarchar(100) foreign key references song(songid),
@@ -91,3 +80,5 @@ from dbo.album al
 where al.albumid = s.albumid) as 'album_name'
 from dbo.song s
 where s.songid = @songid;
+
+insert into users values('tungtsse172875','172875','tung@gmail.com','admin')
