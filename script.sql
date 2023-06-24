@@ -1,10 +1,10 @@
-
 create database TTMMusic;
 use TTMMusic;
 create table users (
 	username nvarchar(50) primary key,
 	password nvarchar(50),
-	email nvarchar(100)
+	email nvarchar(100),
+	role nvarchar(10)
 );
 
 create table album(
@@ -39,22 +39,16 @@ create table song(
 	albumid nvarchar(10) foreign key references album(albumid) 
 );
 
-create table like_user_song(
-	primary key (songid,username),
+create table like(
+	primary key (username,songid,albumid,playlistid,artistid),
+	username nvarchar(50) foreign key references users(username),
 	songid nvarchar(100) foreign key references song(songid),
-	username nvarchar(50) foreign key references users(username)
+	albumid nvarchar(10) foreign key references album(albumid),
+	playlistid nvarchar(10) foreign key references playlist(playlistid),
+	artistid nvarchar(10) foreign key references artist(artistid)
 );
 
-create table like_user_album(
-	primary key(albumid,username),
-	albumid nvarchar(10) foreign key references album(albumid),
-	username nvarchar(50) foreign key references users(username) 
-);
- create table like_user_playlist(
-   primary key(username, playlistid),
-   username nvarchar(50) foreign key references users(username),
-   playlistid nvarchar(10) foreign key references playlist(playlistid)
-);
+
  create table have_song_categiries(
 	primary key (songid,categoryid),
 	songid nvarchar(100) foreign key references song(songid),
@@ -72,3 +66,19 @@ create table include(
 	songid nvarchar(100) foreign key references song(songid),
 	playlistid nvarchar(10) foreign key references playlist(playlistid)
 );
+create or alter procedure [dbo].[proc_get_basic_song] @songid nvarchar(255)
+as
+select s.name as 'song_name',s.url as 'song_url', s.image as 'song_image',
+(select a.name
+from dbo.artist a
+where a.artistid = 
+(select c.artistid
+from dbo.compose c
+where c.songid = s.songid)) as 'artist_name',
+(select al.name 
+from dbo.album al
+where al.albumid = s.albumid) as 'album_name'
+from dbo.song s
+where s.songid = @songid;
+
+insert into users values('tungtsse172875','172875','tung@gmail.com','admin')
