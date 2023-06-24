@@ -1,9 +1,15 @@
 package album;
+
+import Song.SongDTO;
+import java.util.ArrayList;
+
 public class AlbumDTO {
 
     private String albumid, artistid, name, albumimage;
+    private ArrayList<SongDTO> song_list;
 
     public AlbumDTO() {
+        this.song_list = new ArrayList<>();
     }
 
     public AlbumDTO(String albumid, String artistid, String name, String albumimage) {
@@ -11,6 +17,7 @@ public class AlbumDTO {
         this.artistid = artistid;
         this.name = name;
         this.albumimage = albumimage;
+        this.song_list = new ArrayList<>();
     }
 
     public String getAlbumid() {
@@ -43,6 +50,14 @@ public class AlbumDTO {
 
     public void setAlbumimage(String albumimage) {
         this.albumimage = albumimage;
+    }
+
+    public ArrayList<SongDTO> getSong_list() {
+        return song_list;
+    }
+
+    public void setSong_list(ArrayList<SongDTO> song_list) {
+        this.song_list = song_list;
     }
 
     @Override

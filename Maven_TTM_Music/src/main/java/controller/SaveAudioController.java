@@ -139,26 +139,12 @@ public class SaveAudioController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        String action = request.getParameter("action");
-//        if (action.equals("addsong")) {
-//            ProceedAddSongs(request, response);
-//        } else if (action.equals("addalbum")) {
-//            ProceedAddAlbum(request, response);
-//        }
-        //Audio handling part
-        Part audioFilePart = request.getPart("songaudio");
-        String songname = request.getParameter("name");
-        String audioFileName = SongUtils.getValidServerFileName(songname) + ".mp3";
-        String uploadPath = getServletContext().getRealPath("") + File.separator + "songs";
-        File uploadDir = new File(uploadPath);
-        if (!uploadDir.exists()) {
-            uploadDir.mkdir();
+        String action = request.getParameter("action");
+        if (action.equals("addsong")) {
+            ProceedAddSongs(request, response);
+        } else if (action.equals("addalbum")) {
+            ProceedAddAlbum(request, response);
         }
-        audioFilePart.write(uploadPath + File.separator + audioFileName);
-        String finalSongPath = "http://localhost:8080" + request.getContextPath() + "/songs/" + audioFileName;
-        request.setAttribute("path", finalSongPath);
-        request.getRequestDispatcher("test.jsp").forward(request, response);
-
     }
 
     /**
