@@ -110,3 +110,17 @@ where s.albumid = @albumid) as 'numberOfSong'
 from dbo.album a
 where a.albumid = @albumid;
 
+
+/*
+@return a table of songid, songname, song lyric, song image, song url, song albumid that
+belongs to a playlist
+@param @playlistid the id of the playlist that you want to get the information 
+*/
+create or alter procedure proc_getAllSongInfo_Of_A_PlayList @playlistid nvarchar(10)
+as
+select s.songid, s.name, s.lyric, s.image, s.url, s.albumid
+from dbo.song s
+where s.songid in (
+select i.songid
+from dbo.include i
+where i.playlistid = @playlistid)
