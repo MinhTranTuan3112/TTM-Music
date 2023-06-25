@@ -39,6 +39,7 @@ public class AlbumDAO extends utils.DBUtils {
             System.out.println("Insert new album error: " + e.getMessage());
         }
     }
+    
     public ArrayList<SongDTO> getAllSongsOfAnAlbum(String albumid) {
         ArrayList<SongDTO> song_list = new ArrayList<>();
         String sql = "select * from dbo.songs";
@@ -48,6 +49,9 @@ public class AlbumDAO extends utils.DBUtils {
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
+            if (albumid != null && !albumid.trim().isEmpty()) {
+                ps.setString(1, albumid);
+            }
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {                
                 SongDTO songDTO = new SongDTO(rs.getString("songid"),

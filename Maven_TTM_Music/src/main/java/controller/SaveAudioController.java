@@ -5,6 +5,7 @@ import album.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.annotation.MultipartConfig;
@@ -57,7 +58,10 @@ public class SaveAudioController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        SongDAO songDAO = new SongDAO();
+        ArrayList<SongDTO> song_list = songDAO.getAllSong();
+        request.setAttribute("song_list", song_list);
+        request.getRequestDispatcher("admin.jsp").forward(request, response);
     }
 
     /**
@@ -110,6 +114,9 @@ public class SaveAudioController extends HttpServlet {
         SongDTO song = new SongDTO(songid, songname, finalLyricPath, finalImagePath, finalSongPath, albumid);
         //Insert song to table song here
         //insert to table song and category
+        SongDAO songDAO = new SongDAO();
+        ArrayList<SongDTO> song_list = songDAO.getAllSong();
+        request.setAttribute("song_list", song_list);
         request.setAttribute("mysong", song);
         request.getRequestDispatcher("admin.jsp").forward(request, response);
     }
@@ -128,6 +135,9 @@ public class SaveAudioController extends HttpServlet {
         imageFilePart.write(imageUploadPath + File.separator + imageFileName);
         String finalImagePath = "http://localhost:8080" + request.getContextPath() + "/albumimages/" + imageFileName;
         AlbumDTO album = new AlbumDTO(albumid, artistid, albumname, finalImagePath);
+        SongDAO songDAO = new SongDAO();
+        ArrayList<SongDTO> song_list = songDAO.getAllSong();
+        request.setAttribute("song_list", song_list);
         request.setAttribute("myalbum", album);
         request.getRequestDispatcher("admin.jsp").forward(request, response);
     }
@@ -140,7 +150,9 @@ public class SaveAudioController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
-        if (action.equals("addsong")) {
+        if (action == null || action.trim().isEmpty()) {
+
+        } else if (action.equals("addsong")) {
             ProceedAddSongs(request, response);
         } else if (action.equals("addalbum")) {
             ProceedAddAlbum(request, response);

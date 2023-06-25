@@ -108,6 +108,24 @@
                     </div>
                 </form>
             </section>
+            <section class="song-list-section">
+                <c:if test="${requestScope.song_list != null}">
+                    <c:forEach items="${requestScope.song_list}" var="s">
+                        <p>Song id: ${s.songid}</p>
+                        <p>Song name: ${s.name}</p>
+                        <audio controls>
+                            <source src="${s.url}">
+                        </audio>
+                        <p>
+                            Song image:
+                            <img src="${s.image}" width="100" height="100">
+                        </p>
+                        <p>
+                            Album ID: ${s.albumid}
+                        </p>
+                    </c:forEach>
+                </c:if>
+            </section>
             <section class="album-section-wrapper">
                 <section class="album-section-title"><h1>Add album</h1></section>
                 <form action="saveaudio" method="post" enctype="multipart/form-data" onsubmit="return confirm('Add this album?');">
@@ -200,7 +218,7 @@
         <p>Artist id: ${requestScope.album.artistid}</p>
         <p>Album name: ${requestScope.album.name}</p>
         <p><img src="${requestScope.album.albumimage}" alt=""/></p>
-    </c:if>
+        </c:if>
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>

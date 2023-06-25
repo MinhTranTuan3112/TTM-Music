@@ -9,6 +9,25 @@ import java.util.ArrayList;
 import utils.*;
 
 public class SongDAO {
+
+    public ArrayList<SongDTO> getAllSong() {
+        ArrayList<SongDTO> song_list = new ArrayList<>();
+        String sql = "select * from dbo.song";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                song_list.add(new SongDTO(rs.getString("songid"), rs.getString("name"),
+                        rs.getString("lyric"), rs.getString("image"), rs.getString("url"),
+                        rs.getString("albumid")));
+            }
+        } catch (SQLException e) {
+            System.out.println("Query all songs error: " + e.getMessage());
+        }
+        return song_list;
+    }
+
     public SongDTO getSong(String songid) {
         String sql = "select songid, name, lyric, image, url, albumid from dbo.song";
         if (songid != null && !songid.trim().isEmpty()) {
@@ -32,9 +51,10 @@ public class SongDAO {
         }
         return null;
     }
+
     public void addNewSong(SongDTO newSong) {
         String sql = "insert into dbo.song(songid, name, lyric, image, url, albumid)"
-                + "\nvalues(?,?,?,?,?,?)";  
+                + "\nvalues(?,?,?,?,?,?)";
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -49,10 +69,11 @@ public class SongDAO {
             System.out.println("Insert song error: " + e.getMessage());
         }
     }
-    
+
     public void addNew_Song_Category() {
         
     }
+
     public void querySongInformationToPlay(String songid) {
         try {
             Connection conn = DBUtils.getConnection();
@@ -60,7 +81,7 @@ public class SongDAO {
             cs.setString(1, songid);
             cs.executeQuery();
             ResultSet rs = cs.getResultSet();
-            while (rs.next()) {                
+            while (rs.next()) {
                 System.out.println("Song name: " + rs.getString("song_name"));
                 System.out.println("Song url: " + rs.getString("song_url"));
                 System.out.println("Song image: " + rs.getString("song_image"));
@@ -71,9 +92,10 @@ public class SongDAO {
             System.out.println("Query song error: " + e.getMessage());
         }
     }
+
     public static void main(String[] args) {
         SongDAO cdb = new SongDAO();
-        cdb.querySongInformationToPlay("1re1AsvsAiN3ZTbkIuj0J4l7ybo4dMplT");
+        SongDTO song = cdb.getSong("1zXCKTG3oF-J-lZ46EBDnDXS4VAT-TJ62");
+        System.out.println(song.getLyric());
     }
 }
-

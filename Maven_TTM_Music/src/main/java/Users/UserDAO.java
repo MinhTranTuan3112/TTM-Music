@@ -5,6 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import utils.DBUtils;
+import Song.SongDTO;
+import album.AlbumDTO;
+import artist.ArtistDTO;
+import java.sql.CallableStatement;
+import java.util.ArrayList;
+import playlist.PlaylistDTO;
 
 public class UserDAO {
 
@@ -26,6 +32,7 @@ public class UserDAO {
         }
         return null;
     }
+
     public boolean checkUserNameExist(String username) {
         String sql = "select username"
                 + "\nfrom dbo.users where username = ?";
@@ -59,15 +66,133 @@ public class UserDAO {
         }
     }
 
+    public ArrayList<SongDTO> getAllFavoriteSongs(String username) {
+        ArrayList<SongDTO> fav_song_list = new ArrayList<>();
+        String keyword = "song";
+        String sql = "{call dbo.proc_getLikeInformation(?,?)}";
+        try {
+            Connection conn = DBUtils.getConnection();
+            CallableStatement cs = conn.prepareCall(sql);
+            cs.setString(1, username);
+            cs.setString(2, keyword);
+            ResultSet rs = cs.executeQuery();
+            while (rs.next()) {
+                fav_song_list.add(new SongDTO(rs.getString("songid"),
+                        rs.getString("name"), rs.getString("lyric"),
+                        rs.getString("image"), rs.getString("url"),
+                        rs.getString("albumid")));
+            }
+        } catch (SQLException e) {
+            System.out.println("Query favorite songs error: " + e.getMessage());
+        }
+        return fav_song_list;
+    }
+
+    public ArrayList<AlbumDTO> getAllFavoriteAlbums(String username) {
+        ArrayList<AlbumDTO> fav_album_list = new ArrayList<>();
+        String keyword = "album";
+        String sql = "{call dbo.proc_getLikeInformation(?,?)}";
+        try {
+            Connection conn = DBUtils.getConnection();
+            CallableStatement cs = conn.prepareCall(sql);
+            cs.setString(1, username);
+            cs.setString(2, keyword);
+            ResultSet rs = cs.executeQuery();
+            while (rs.next()) {
+                fav_album_list.add(new AlbumDTO(
+                        rs.getString("albumid"), rs.getString("artistid"),
+                        rs.getString("name"), rs.getString("albumimage")));
+            }
+        } catch (SQLException e) {
+            System.out.println("Query favorite albums error: " + e.getMessage());
+        }
+        return fav_album_list;
+    }
+
+    public ArrayList<PlaylistDTO> getAllFavoritePlaylists(String username) {
+        ArrayList<PlaylistDTO> fav_playlist_list = new ArrayList<>();
+        String keyword = "playlist";
+        String sql = "{call dbo.proc_getLikeInformation(?,?)}";
+        try {
+            Connection conn = DBUtils.getConnection();
+            CallableStatement cs = conn.prepareCall(sql);
+            cs.setString(1, username);
+            cs.setString(2, keyword);
+            ResultSet rs = cs.executeQuery();
+            while (rs.next()) {
+                fav_playlist_list.add(new PlaylistDTO(rs.getString("playlistid"), rs.getString("name")));
+            }
+        } catch (SQLException e) {
+            System.out.println("Query favorite playlists error: " + e.getMessage());
+        }
+        return fav_playlist_list;
+    }
+
+    public ArrayList<ArtistDTO> getAllFavoriteArtists(String username) {
+        ArrayList<ArtistDTO> fav_artist_list = new ArrayList<>();
+        String keyword = "artist";
+        String sql = "{call dbo.proc_getLikeInformation(?,?)}";
+        try {
+            Connection conn = DBUtils.getConnection();
+            CallableStatement cs = conn.prepareCall(sql);
+            cs.setString(1, username);
+            cs.setString(2, keyword);
+            ResultSet rs = cs.executeQuery();
+            while (rs.next()) {
+                fav_artist_list.add(new ArtistDTO(rs.getString("artistid"),
+                        rs.getString("name"), rs.getString("image")));
+            }
+        } catch (SQLException e) {
+            System.out.println("Query favorite artists error: " + e.getMessage());
+        }
+        return fav_artist_list;
+    }
+
+    public <T> ArrayList<T> getAllFavorites(Class<T> type, String username) {
+        ArrayList<T> fav_list = new ArrayList<>();
+        String keyword = "";
+        if (type == SongDTO.class) {
+            keyword = "song";
+        } else if (type == AlbumDTO.class) {
+            keyword = "album";
+        } else if (type == PlaylistDTO.class) {
+            keyword = "playlist";
+        } else if (type == ArtistDTO.class) {
+            keyword = "artist";
+        }
+        String sql = "{call dbo.proc_getLikeInformation(?,?)}";
+        try {
+            Connection conn = DBUtils.getConnection();
+            CallableStatement cs = conn.prepareCall(sql);
+            cs.setString(1, username);
+            cs.setString(2, keyword);
+            ResultSet rs = cs.executeQuery();
+            while (rs.next()) {
+                if (type == SongDTO.class) {
+                    fav_list.add((T) new SongDTO(rs.getString("songid"),
+                            rs.getString("name"), rs.getString("lyric"),
+                            rs.getString("image"), rs.getString("url"),
+                            rs.getString("albumid")));
+                } else if (type == AlbumDTO.class) {
+                    fav_list.add((T) new AlbumDTO(
+                            rs.getString("albumid"), rs.getString("artistid"),
+                            rs.getString("name"), rs.getString("albumimage")));
+                } else if (type == PlaylistDTO.class) {
+                    fav_list.add((T) new PlaylistDTO(rs.getString("playlistid"), rs.getString("name")));
+                } else if (type == ArtistDTO.class) {
+                    fav_list.add((T) new ArtistDTO(rs.getString("artistid"),
+                            rs.getString("name"), rs.getString("image")));
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Query favorite error: " + e.getMessage());
+        }
+        return fav_list;
+    }
+
     public static void main(String[] args) {
         UserDAO cdb = new UserDAO();
         String username = "minhttse172842";
-        String password = "172842";
-        UserDTO user = cdb.login(username, password);
-        if (user != null) {
-            System.out.println("Login Success");
-        } else {
-            System.out.println("Login failed!");
-        }
+        
     }
 }

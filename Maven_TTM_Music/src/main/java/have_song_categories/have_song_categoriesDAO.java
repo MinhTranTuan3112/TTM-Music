@@ -5,12 +5,15 @@
  */
 package have_song_categories;
 
+import Song.SongDTO;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import utils.DBUtils;
 
 public class have_song_categoriesDAO extends utils.DBUtils {
 
@@ -41,6 +44,33 @@ public class have_song_categoriesDAO extends utils.DBUtils {
             ps.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+    
+    public ArrayList<SongDTO> getSongsFromCategory(String categoryid) {
+        ArrayList<SongDTO> song_list = new ArrayList<>();
+        try {
+            Connection conn = DBUtils.getConnection();
+            CallableStatement cs = conn.prepareCall("{call proc_get_all_song_categories(?)}");
+            cs.setString(1, categoryid);
+            cs.executeQuery();
+            ResultSet rs = cs.getResultSet();
+            while (rs.next()) {
+                song_list.add(new SongDTO(rs.getString("songid"),rs.getString("name"),
+                        rs.getString("lyric"), rs.getString("image"), rs.getString("url"), 
+                rs.getString("albumid")));
+            }
+        } catch (SQLException e) {
+            System.out.println("Query songs based on category error: " + e.getMessage());
+        }
+        return song_list;
+    }
+
+    public static void main(String[] args) {
+        have_song_categoriesDAO cdb = new have_song_categoriesDAO();
+        ArrayList<SongDTO> song_list = cdb.getSongsFromCategory("POP");
+        for (SongDTO songDTO : song_list) {
+            System.out.println(songDTO.toString());
         }
     }
 }

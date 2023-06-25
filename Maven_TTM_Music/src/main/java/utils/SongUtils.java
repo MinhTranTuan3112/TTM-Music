@@ -1,15 +1,18 @@
 package utils;
 
+import Song.SongDAO;
 import Song.SongDTO;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 public class SongUtils {
 
     public static String getSongID(String GGDriveURL) {
@@ -63,26 +66,31 @@ public class SongUtils {
     public static String getSongLyrics(String inputFileName) {
         String lyrics = "";
         try {
-            InputStream inputStream = SongUtils.class.getResourceAsStream("/LyricsPackage/" + inputFileName);
+            InputStream inputStream = new FileInputStream("D:\\Dev\\Java\\Maven_TTM_Music\\src\\main\\java\\LyricsPackage\\" + inputFileName);
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             String line;
             while ((line = reader.readLine()) != null) {
-                for (int i = 0; i < line.length(); ++i) {
-                    if (line.charAt(i) == '\'') {
-                        line = line.substring(0, i) + "''" + line.substring(i + 1);
-                        i++;
-                    }
-                }
-                lyrics += String.format("'%s' + CHAR(13) + CHAR(10)", line);
-                if (reader.ready()) {
-                    lyrics += " + \n";
-                } else {
-                    lyrics += "\n";
-                }
+//                for (int i = 0; i < line.length(); ++i) {
+//                    if (line.charAt(i) == '\'') {
+//                       line = line.substring(0, i) + "''" + line.substring(i + 1);
+//                        i++;
+//                    }
+//                }
+//                lyrics += String.format("'%s' + CHAR(13) + CHAR(10)", line);
+                lyrics += String.format("%s\n", line);
+//                if (reader.ready()) {
+//                    lyrics += " + \n";
+//                } else {
+//                    lyrics += "\n";
+//                }
             }
             reader.close();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found error: " + e.getMessage());
+        } catch (IOException ioe) {
+            System.out.println("I/O file error: " + ioe);
+        } catch (NullPointerException e) {
+            System.out.println("File null error: " + e.getMessage());
         }
         return lyrics;
     }
@@ -90,6 +98,7 @@ public class SongUtils {
         
     }
     public static String getValidServerFileName(String name) {
+        name = name.replace("'", "");
         String splStrings[] = name.split("\\s+");
         String result = "";
         for (int i = 0;i < splStrings.length;++i) {
@@ -101,7 +110,13 @@ public class SongUtils {
         return result;
     }
     public static void main(String[] args) {
-        String name = "http://localhost:8080";
-        System.out.println(name);
+        System.out.println(getSongLyrics("MyGospel.txt"));
+        SongDAO cdb = new SongDAO();
+        ArrayList<SongDTO> song_list = new ArrayList<>();
+        
+        for (SongDTO song : song_list) {
+            cdb.addNewSong(song);
+        }
+        System.out.println("Done");
     }
 }
