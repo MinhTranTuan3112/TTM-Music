@@ -96,5 +96,17 @@ select * from
 dbo.song s
 where exists (select hsc.songid from dbo.have_song_categories hsc
 where hsc.categoryid = @categoryid);
+/*
+@return a table of albumid, albumname, albumimage, aritstname, number of songs in the album
+@param @albumid: the id of the album that needs to get the info
+*/
+create or alter procedure proc_get_basic_info_of_an_album @albumid nvarchar(10)
+as
+select a.albumid as 'albumid', a.name as 'albumname',
+a.albumimage as 'albumimage', (select ar.name from dbo.artist ar where ar.artistid = a.artistid) as 'artistname',
+(select count (s.songid)
+from dbo.song s
+where s.albumid = @albumid) as 'numberOfSong'
+from dbo.album a
+where a.albumid = @albumid;
 
-insert into users values('tungtsse172875','172875','tung@gmail.com','admin')
