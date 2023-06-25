@@ -66,6 +66,11 @@ create table include(
 	songid nvarchar(100) foreign key references song(songid),
 	playlistid nvarchar(10) foreign key references playlist(playlistid)
 );
+/*
+@return a table of song name, song url, song image, artist nmae, album name
+@param @songid 
+*/
+
 create or alter procedure [dbo].[proc_get_basic_song] @songid nvarchar(255)
 as
 select s.name as 'song_name',s.url as 'song_url', s.image as 'song_image',
@@ -80,5 +85,16 @@ from dbo.album al
 where al.albumid = s.albumid) as 'album_name'
 from dbo.song s
 where s.songid = @songid;
+/*
+@return a table with all song information
+@param @categoryid 
+get songs info from a categoryid
+*/
+create or alter procedure proc_get_all_song_categories @categoryid nvarchar(10)
+as
+select * from
+dbo.song s
+where exists (select hsc.songid from dbo.have_song_categories hsc
+where hsc.categoryid = @categoryid);
 
 insert into users values('tungtsse172875','172875','tung@gmail.com','admin')
