@@ -124,3 +124,19 @@ where s.songid in (
 select i.songid
 from dbo.include i
 where i.playlistid = @playlistid)
+
+/*
+@return a table of all songs info of an artist
+@param artistid: the id of the artist you want to find
+*/
+create or alter procedure proc_getAllSongInfo_Of_An_Artist @artistid nvarchar(10)
+as
+select s.*
+from dbo.song s
+where s.songid in (
+  select c.songid
+  from dbo.compose c
+  where c.artistid = @artistid
+)
+
+
