@@ -140,3 +140,56 @@ where s.songid in (
 )
 
 
+/*
+   @return a table of information of liked items of a user
+   @param @username: the username of the user that you want to get information
+   @param @keyword: the keyword that specifies the name of the item
+
+   @case 'song' -> return table of full of song information
+   @case 'album' -> return table of full of album information
+   @case 'playlist' -> return table of full of playlist information
+   @case 'artist' -> return table of full of artist information
+*/
+create or alter procedure proc_getLikeInformation @username nvarchar(50), @keyword nvarchar(50)
+as
+if @keyword = 'song'
+begin
+select s.*
+from dbo.song s
+where s.songid in (
+  select l.songid
+from dbo.LikeInformation l
+where l.username = @username
+)
+end
+if @keyword = 'album'
+begin
+select a.*
+from dbo.album a
+where a.albumid in(
+  select l.albumid
+  from dbo.LikeInformation l
+  where l.username = @username
+)
+end
+if @keyword = 'artist'
+begin
+  select ar.*
+  from dbo.artist ar
+  where ar.artistid in (
+    select l.artistid
+	from dbo.LikeInformation l
+	where username = @username
+  )
+end
+
+if @keyword = 'playlist'
+begin
+  select p.*
+  from dbo.playlist p
+  where p.playlistid in (
+    select l.playlistid
+	from dbo.LikeInformation l
+	where l.username = @username
+  )
+end
