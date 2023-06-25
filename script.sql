@@ -94,7 +94,7 @@ create or alter procedure proc_get_all_song_categories @categoryid nvarchar(10)
 as
 select * from
 dbo.song s
-where exists (select hsc.songid from dbo.have_song_categories hsc
+where s.songid in (select hsc.songid from dbo.have_song_categories hsc
 where hsc.categoryid = @categoryid);
 /*
 @return a table of albumid, albumname, albumimage, aritstname, number of songs in the album
