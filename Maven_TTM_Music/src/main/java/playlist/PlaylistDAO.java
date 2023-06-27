@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import utils.DBUtils;
-public class PlaylistDAO {
+public class PlaylistDAO extends utils.DBUtils{
     public List<PlaylistDTO> getAllplaylistDTO() {
         List<PlaylistDTO> list = new ArrayList<>();
         String sql = "select * from playlist";
