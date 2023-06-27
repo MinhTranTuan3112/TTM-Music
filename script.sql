@@ -10,7 +10,7 @@ create table users (
 create table album(
 	albumid nvarchar(10) primary key,
 	name nvarchar(100),
-	albumimage nvarchar(100),
+	albumimage nvarchar(max),
 	artistid nvarchar(10) foreign key references artist(artistid) 
 );
 
@@ -22,7 +22,7 @@ create table categories(
 create table artist(
 	artistid nvarchar(10) primary key,
 	name nvarchar(100),
-	image nvarchar(100)
+	image nvarchar(max)
 );
 
 create table playlist(
@@ -34,7 +34,7 @@ create table song(
 	songid nvarchar(100) primary key,
 	name nvarchar(100),
 	lyric nvarchar(max),
-	image nvarchar(100),
+	image nvarchar(max),
 	url nvarchar(100),
 	albumid nvarchar(10) foreign key references album(albumid) 
 );
