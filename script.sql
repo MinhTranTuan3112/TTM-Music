@@ -193,3 +193,14 @@ begin
 	where l.username = @username
   )
 end
+
+/*
+This method helps insert into table have_song_categories 
+@param @songname: pass the EXACT song name from song table
+@param @categoryname: pass the EXACT song category name from categories table
+*/
+create or alter procedure proc_add_new_song_with_categories
+@songname nvarchar(100), @categoryname nvarchar(100)
+as
+insert into dbo.have_song_categories(songid,categoryid)
+values((select s.songid from dbo.song s where s.name = @songname),(select c.categoryid from dbo.categories c where c.name = @categoryname));
