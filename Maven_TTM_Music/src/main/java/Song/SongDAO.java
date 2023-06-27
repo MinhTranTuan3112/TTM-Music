@@ -28,7 +28,7 @@ public class SongDAO {
         return song_list;
     }
 
-    public SongDTO getSong(String songid) {
+    public SongDTO getSongFromSongID(String songid) {
         String sql = "select songid, name, lyric, image, url, albumid from dbo.song";
         if (songid != null && !songid.trim().isEmpty()) {
             sql += " where songid=?";
@@ -95,7 +95,7 @@ public class SongDAO {
 
     public static void main(String[] args) {
         SongDAO cdb = new SongDAO();
-        SongDTO song = cdb.getSong("1zXCKTG3oF-J-lZ46EBDnDXS4VAT-TJ62");
+        SongDTO song = cdb.getSongFromSongID("1zXCKTG3oF-J-lZ46EBDnDXS4VAT-TJ62");
         System.out.println(song.getLyric());
     }
 }

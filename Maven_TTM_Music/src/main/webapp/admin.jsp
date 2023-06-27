@@ -203,49 +203,48 @@
                         }
                     %>
                 <p><%= fileContent%></p>
-            </p>
-            <p>
-                Song image:
-                <img src="${requestScope.mysong.image}">
-            </p>
-            <p>
-                Album ID: ${requestScope.mysong.albumid}
-            </p>
-        </section>
-    </c:if>
-    <c:if test="${requestScope.myalbum != null}">
-        <p>Album id: ${requestScope.album.albumid}</p>
-        <p>Artist id: ${requestScope.album.artistid}</p>
-        <p>Album name: ${requestScope.album.name}</p>
-        <p><img src="${requestScope.album.albumimage}" alt=""/></p>
+                <p>
+                    Song image:
+                    <img src="${requestScope.mysong.image}">
+                </p>
+                <p>
+                    Album ID: ${requestScope.mysong.albumid}
+                </p>
+            </section>
         </c:if>
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-                    // Get the input element that accepts the image file
-                    var input = document.querySelector("input[name='image']");
+        <c:if test="${requestScope.myalbum != null}">
+            <p>Album id: ${requestScope.album.albumid}</p>
+            <p>Artist id: ${requestScope.album.artistid}</p>
+            <p>Album name: ${requestScope.album.name}</p>
+            <p><img src="${requestScope.album.albumimage}" alt=""/></p>
+            </c:if>
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
+                        // Get the input element that accepts the image file
+                        var input = document.querySelector("input[name='image']");
 
-                    // Get the img element that displays the image
-                    var img = document.querySelector(".d-flex.flex-column.align-items-center.text-center img");
+                        // Get the img element that displays the image
+                        var img = document.querySelector(".d-flex.flex-column.align-items-center.text-center img");
 
-                    // Add an event listener to the input element
-                    input.addEventListener("change", function () {
-                        // Check if the input has a file
-                        if (this.files && this.files[0]) {
-                            // Create a new FileReader object
-                            var reader = new FileReader();
+                        // Add an event listener to the input element
+                        input.addEventListener("change", function () {
+                            // Check if the input has a file
+                            if (this.files && this.files[0]) {
+                                // Create a new FileReader object
+                                var reader = new FileReader();
 
-                            // Add an event listener to the reader object
-                            reader.addEventListener("load", function (e) {
-                                // Set the src attribute of the img element to the data URL of the file
-                                img.src = e.target.result;
-                            });
+                                // Add an event listener to the reader object
+                                reader.addEventListener("load", function (e) {
+                                    // Set the src attribute of the img element to the data URL of the file
+                                    img.src = e.target.result;
+                                });
 
-                            // Read the file as a data URL
-                            reader.readAsDataURL(this.files[0]);
-                        }
-                    });
-    </script>
-</body>
+                                // Read the file as a data URL
+                                reader.readAsDataURL(this.files[0]);
+                            }
+                        });
+        </script>
+    </body>
 </html>

@@ -1,20 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package include;
 
+import Song.SongDTO;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
+import utils.DBUtils;
 
 public class includeDAO extends utils.DBUtils {
-    public List<includeDTO> getAllinclude() {
-        List<includeDTO> list = new ArrayList<>();
+    public ArrayList<includeDTO> getAllinclude() {
+        ArrayList<includeDTO> list = new ArrayList<>();
         String sql = "select * from include";
         try {
             Connection conn = getConnection();
@@ -41,5 +38,23 @@ public class includeDAO extends utils.DBUtils {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    public ArrayList<SongDTO> getAllSongOfPlaylists(String playlistid) {
+        ArrayList<SongDTO> song_list = new ArrayList<>();
+        String sql = "{call proc_getAllSongInfo_Of_A_Playlist(?)}";
+        try {
+            Connection conn = DBUtils.getConnection();
+            CallableStatement cs = conn.prepareCall(sql);
+            cs.setString(1, playlistid);
+            ResultSet rs = cs.executeQuery();
+            while (rs.next()) {                
+                song_list.add(new SongDTO(rs.getString("songid"), 
+                        rs.getString("name"), rs.getString("lyric"),
+                        rs.getString("image"), rs.getString("url"), rs.getString("albumid")));
+            }
+        } catch (SQLException e) {
+            System.out.println("Query songs of an playlist error: " + e.getMessage());
+        }
+        return song_list;
     }
 }
