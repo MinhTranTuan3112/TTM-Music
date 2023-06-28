@@ -204,3 +204,9 @@ create or alter procedure proc_add_new_song_with_categories
 as
 insert into dbo.have_song_categories(songid,categoryid)
 values((select s.songid from dbo.song s where s.name = @songname),(select c.categoryid from dbo.categories c where c.name = @categoryname));
+
+create or alter procedure proc_add_song_with_artist
+@songname nvarchar(100), @artistname nvarchar(100)
+as
+insert into dbo.compose(songid,artistid)
+values((select s.songid from dbo.song s where s.name = @songname),(select a.artistid from dbo.artist a where a.name = @artistname));
