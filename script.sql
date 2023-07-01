@@ -10,7 +10,7 @@ create table users (
 create table album(
 	albumid nvarchar(10) primary key,
 	name nvarchar(100),
-	albumimage nvarchar(100),
+	albumimage nvarchar(max),
 	artistid nvarchar(10) foreign key references artist(artistid) 
 );
 
@@ -22,7 +22,7 @@ create table categories(
 create table artist(
 	artistid nvarchar(10) primary key,
 	name nvarchar(100),
-	image nvarchar(100)
+	image nvarchar(max)
 );
 
 create table playlist(
@@ -34,7 +34,7 @@ create table song(
 	songid nvarchar(100) primary key,
 	name nvarchar(100),
 	lyric nvarchar(max),
-	image nvarchar(100),
+	image nvarchar(max),
 	url nvarchar(100),
 	albumid nvarchar(10) foreign key references album(albumid) 
 );
@@ -193,3 +193,20 @@ begin
 	where l.username = @username
   )
 end
+
+/*
+This method helps insert into table have_song_categories 
+@param @songname: pass the EXACT song name from song table
+@param @categoryname: pass the EXACT song category name from categories table
+*/
+create or alter procedure proc_add_new_song_with_categories
+@songname nvarchar(100), @categoryname nvarchar(100)
+as
+insert into dbo.have_song_categories(songid,categoryid)
+values((select s.songid from dbo.song s where s.name = @songname),(select c.categoryid from dbo.categories c where c.name = @categoryname));
+
+create or alter procedure proc_add_song_with_artist
+@songname nvarchar(100), @artistname nvarchar(100)
+as
+insert into dbo.compose(songid,artistid)
+values((select s.songid from dbo.song s where s.name = @songname),(select a.artistid from dbo.artist a where a.name = @artistname));
