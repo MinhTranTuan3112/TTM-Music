@@ -134,7 +134,7 @@ public class SongDTO {
         for (int i = 0; i < artist_name_list.size(); ++i) {
             result += artist_name_list.get(i);
             if (i != artist_name_list.size() - 1) {
-                result += " - ";
+                result += " , ";
             }
         }
         return result;

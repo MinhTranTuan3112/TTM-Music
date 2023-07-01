@@ -133,12 +133,12 @@ function moveControlBarUpAndDown() {
         trigger_button.style.display = 'unset';
     }, 5000);
 }
-function playSong(songUrl, songName, songImage) {
+function playSong(songUrl, songName, songImage, songArtists, songLyrics) {
     console.log('songurl: ' + songUrl);
     console.log('song name: ' + songName);
     console.log('song image: ' + songImage);
     let song_name_divs = document.querySelectorAll('.playing-song-name-content');
-//    let artist_name_divs = document.querySelectorAll('.playing-artist-name');
+    let artist_name_divs = document.querySelectorAll('.playing-artist-name');
     let song_image_divs = document.querySelectorAll('.current-song-img');
     
     for (let i = 0;i < song_name_divs.length;++i) {
@@ -147,9 +147,10 @@ function playSong(songUrl, songName, songImage) {
     for (let i = 0;i < song_image_divs.length;++i) {
         song_image_divs[i].setAttribute('src', songImage);
     }
-//    for (let i = 0;i < artist_name_divs.length;++i) {
-//        artist_name_divs[i].textContent = songArtists;
-//    }
+    for (let i = 0;i < artist_name_divs.length;++i) {
+        artist_name_divs[i].textContent = songArtists;
+    }
+    document.getElementById('mylyrics').textContent = songLyrics;
     mysong.setAttribute('src', songUrl);
     mysong.load(songUrl);
     mysong.play();

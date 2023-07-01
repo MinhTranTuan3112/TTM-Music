@@ -11,6 +11,7 @@
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/styleLibrary.css">
+        
         <!--icon css file-->
         <link rel="icon" href="images/icons/library-music.png"> 
         <title>Library Page</title>
@@ -359,6 +360,8 @@
             </c:if>
         </main>
         <script src="js/LibraryFunctions.js"></script>
+
+        <jsp:include page="playcontent.jsp" flush="true"/>
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 

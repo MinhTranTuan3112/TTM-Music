@@ -16,7 +16,6 @@ import java.util.List;
 import utils.DBUtils;
 
 public class have_song_categoriesDAO extends utils.DBUtils {
-
     public List<have_song_categoriesDTO> getAllhave_song_categories() {
         List<have_song_categoriesDTO> list = new ArrayList<>();
         String sql = "select * from have_song_categories";
@@ -47,7 +46,7 @@ public class have_song_categoriesDAO extends utils.DBUtils {
         }
     }
     
-    public ArrayList<SongDTO> getSongsFromCategory(String categoryid) {
+    public static ArrayList<SongDTO> getSongsFromCategory(String categoryid) {
         ArrayList<SongDTO> song_list = new ArrayList<>();
         try {
             Connection conn = DBUtils.getConnection();

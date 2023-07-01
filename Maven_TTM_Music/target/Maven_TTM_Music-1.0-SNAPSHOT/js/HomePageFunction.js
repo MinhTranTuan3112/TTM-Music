@@ -42,6 +42,5 @@ function switchUI() {
         document.getElementsByClassName('trigger-button')[0].style.display = 'unset';
         document.getElementsByClassName('control-bar')[0].style.display = 'unset';
         document.getElementsByClassName('UI-window')[0].style.bottom = '-100%';
-       
     }
 }
