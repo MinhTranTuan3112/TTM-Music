@@ -19,7 +19,7 @@
     <body>
         <header>
             <section class="home-section hidden-load">
-                <button class="home-button hidden-load"><a href="MusicPage.jsp">Home</a></button>
+                <button class="home-button hidden-load"><a href="./home">Home</a></button>
             </section>
         </header>
         <main>

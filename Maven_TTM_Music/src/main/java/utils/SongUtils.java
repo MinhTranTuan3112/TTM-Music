@@ -1,5 +1,5 @@
 package utils;
-
+import have_song_categories.*;
 import Song.SongDAO;
 import Song.SongDTO;
 import java.io.BufferedReader;
@@ -67,22 +67,10 @@ public class SongUtils {
         String lyrics = "";
         try {
             InputStream inputStream = new FileInputStream("D:\\Dev\\Java\\Maven_TTM_Music\\src\\main\\java\\LyricsPackage\\" + inputFileName);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
             String line;
             while ((line = reader.readLine()) != null) {
-//                for (int i = 0; i < line.length(); ++i) {
-//                    if (line.charAt(i) == '\'') {
-//                       line = line.substring(0, i) + "''" + line.substring(i + 1);
-//                        i++;
-//                    }
-//                }
-//                lyrics += String.format("'%s' + CHAR(13) + CHAR(10)", line);
                 lyrics += String.format("%s\n", line);
-//                if (reader.ready()) {
-//                    lyrics += " + \n";
-//                } else {
-//                    lyrics += "\n";
-//                }
             }
             reader.close();
         } catch (FileNotFoundException e) {
@@ -110,12 +98,13 @@ public class SongUtils {
         return result;
     }
     public static void main(String[] args) {
-        System.out.println(getSongLyrics("MyGospel.txt"));
         SongDAO cdb = new SongDAO();
         ArrayList<SongDTO> song_list = new ArrayList<>();
-        
-        for (SongDTO song : song_list) {
-            cdb.addNewSong(song);
+        song_list.add(new SongDTO("https://drive.google.com/file/d/1W4pv8ugzV3xP0I2DNjX0tC1HGbA1MZEP/view?usp=sharing",
+                "Vùng Ký Ức", "VungKyUc.txt", "https://i.scdn.co/image/ab67616d0000b2734a5c0d176134cb5ab9db4924", 
+                "QKCS"));
+        for (SongDTO songDTO : song_list) {
+            cdb.addNewSong(songDTO);
         }
         System.out.println("Done");
     }

@@ -65,7 +65,18 @@ public class have_song_categoriesDAO extends utils.DBUtils {
         }
         return song_list;
     }
-
+    public void AddNewSong_Categories_With_Names(String song_name, String category_name) {
+        String sql = "{call proc_add_new_song_with_categories(?,?)}";
+        try {
+           Connection conn = DBUtils.getConnection();
+           CallableStatement cs = conn.prepareCall(sql);
+           cs.setString(1, song_name);
+           cs.setString(2, category_name);
+           cs.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Insert new song_categories error: " + e.getMessage());
+        }
+    }
     public static void main(String[] args) {
         have_song_categoriesDAO cdb = new have_song_categoriesDAO();
         ArrayList<SongDTO> song_list = cdb.getSongsFromCategory("POP");

@@ -33,6 +33,7 @@ public class LoginController extends HttpServlet {
             out.println("<title>Servlet LoginController</title>");
             out.println("</head>");
             out.println("<body>");
+            
             String action = request.getParameter("action");
             UserDAO userDAO = new UserDAO();
             if (action == null || action.trim().isEmpty() || action.equals("logout")) {
@@ -57,7 +58,7 @@ public class LoginController extends HttpServlet {
                     HttpSession session = request.getSession(true);
                     session.setAttribute("usersession", user);
                     session.setAttribute("rememberedAccount", rememberedAccount);
-                    request.getRequestDispatcher("MusicPage.jsp").forward(request, response);
+                    response.sendRedirect("./home");
                 } else {
                     //log in failed: sends user back to login page with error
                     request.setAttribute("error", "Wrong username or password");
@@ -79,6 +80,7 @@ public class LoginController extends HttpServlet {
                     request.getRequestDispatcher("signup.jsp").forward(request, response);
                 }
             }
+            
             out.println("</body>");
             out.println("</html>");
         }

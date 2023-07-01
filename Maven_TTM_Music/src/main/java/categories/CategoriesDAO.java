@@ -7,7 +7,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class CategoriesDAO extends utils.DBUtils {
-
+    public ArrayList<CategoryDTO> getTop4Categories() {
+        ArrayList<CategoryDTO> list = new ArrayList<>();
+        String sql = "select top 4 * from categories";
+        try {
+            Connection conn = getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new CategoryDTO(rs.getString("categoryid"), rs.getString("name")));
+            }
+        } catch (SQLException e) {
+            System.out.println("Query top 4 categories error: " + e.getMessage());
+        }
+        return list;
+    }
     public ArrayList<CategoryDTO> getAllCategories() {
         ArrayList<CategoryDTO> list = new ArrayList<>();
         String sql = "select * from categories";

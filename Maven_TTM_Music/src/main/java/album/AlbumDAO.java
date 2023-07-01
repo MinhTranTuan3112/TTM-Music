@@ -24,7 +24,21 @@ public class AlbumDAO extends utils.DBUtils {
         }
         return list;
     }
-
+     public ArrayList<AlbumDTO> getTop3Albums() {
+        ArrayList<AlbumDTO> list = new ArrayList<>();
+        String sql = "select top 3 * from album";
+        try {
+            Connection conn = getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(new AlbumDTO(rs.getString("albumid"), rs.getString("artistid"), rs.getString("name"), rs.getString("albumimage")));
+            }
+        } catch (SQLException e) {
+            System.out.println("Query top 3 albums error: " + e.getMessage());
+        }
+        return list;
+    }
     public void addNewAlbum(AlbumDTO album) {
         String sql = "insert into album values(?,?,?,?)";
         try {
@@ -65,6 +79,7 @@ public class AlbumDAO extends utils.DBUtils {
         }
         return song_list;
     }
+    
     public static void main(String[] args) {
         AlbumDAO d = new AlbumDAO();
         ArrayList<AlbumDTO> list = d.getAllAlbum();
