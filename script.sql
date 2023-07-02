@@ -210,3 +210,55 @@ create or alter procedure proc_add_song_with_artist
 as
 insert into dbo.compose(songid,artistid)
 values((select s.songid from dbo.song s where s.name = @songname),(select a.artistid from dbo.artist a where a.name = @artistname));
+
+CREATE OR ALTER   procedure [dbo].[proc_search_song] @keyword nvarchar(max)
+as
+select s.*
+from dbo.song s
+where s.name like '%' + @keyword 
+or s.name like '%' + @keyword + '%' 
+or s.name like @keyword + '%';
+
+CREATE OR ALTER   procedure [dbo].[proc_search_playlist] @keyword nvarchar(max)
+as
+select p.*
+from dbo.playlist p
+where p.name like '%' + @keyword 
+or p.name like '%' + @keyword + '%' 
+or p.name like @keyword + '%';
+
+CREATE OR ALTER   procedure [dbo].[proc_search_artist] @keyword nvarchar(max)
+as
+select a.*
+from dbo.artist a
+where a.name like '%' + @keyword 
+or a.name like '%' + @keyword + '%' 
+or a.name like @keyword + '%';
+
+
+CREATE OR ALTER   procedure [dbo].[proc_search_album] @keyword nvarchar(max)
+as
+select a.*
+from dbo.album a
+where a.name like '%' + @keyword 
+or a.name like '%' + @keyword + '%' 
+or a.name like @keyword + '%';
+
+create or alter procedure proc_searchAll @keyword nvarchar(max), @type nvarchar(50)
+as
+if @type = 'song'
+begin
+exec dbo.proc_search_song @keyword = @keyword
+end
+if @type = 'album'
+begin
+exec dbo.proc_search_album @keyword = @keyword
+end
+if @type = 'artist'
+begin
+exec dbo.proc_search_artist @keyword = @keyword
+end
+if @type = 'playlist'
+begin
+exec dbo.proc_search_playlist @keyword = @keyword
+end
