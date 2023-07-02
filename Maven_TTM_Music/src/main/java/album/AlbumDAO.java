@@ -26,7 +26,7 @@ public class AlbumDAO extends utils.DBUtils {
     }
      public ArrayList<AlbumDTO> getTop3Albums() {
         ArrayList<AlbumDTO> list = new ArrayList<>();
-        String sql = "select top 3 * from album";
+        String sql = "select top 3 * from album order by newid()";
         try {
             Connection conn = getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);

@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,6 +55,27 @@
                     <h1>Your favorite songs</h1>
                 </section>
                 <section class="song-list">
+                <%--<c:if test="${requestScope.user_song_list != null}">
+                        <c:forEach items="${requestScope.user_song_list}" var="song">
+                            <article class="song-item">
+                                <div class="song-cover">
+                                    <div class="hover-play-button glyphicon glyphicon-play" data-lyric ="${song.lyric}" onclick="playSong('${song.url}', '${song.name}', '${song.image}', '${song.getArtistInfo()}', this.getAttribute('data-lyric'))"></div>
+                                    <img class="song-cover-img" src="${song.image}"
+                                         alt="">
+                                </div>
+                                <div class="song-name">${song.name} - <span class="artist-name">
+                                        <c:set var="song_artist_list" value="${song.getArtistNameList()}"/>
+                                        <c:forEach items="${song_artist_list}" var="song_artist">
+                                            ${song_artist}
+                                        </c:forEach>
+                                    </span>
+                                </div>
+                            </article>
+                        </c:forEach>
+                    </c:if>
+                    <c:if test="${requestScope.user_song_list == null}">
+                        <h2>[No Song Data]</h2>
+                    </c:if>--%>
                     <article class="song-item">
                         <div class="song-cover">
                             <div class="hover-play-button glyphicon glyphicon-play"></div>

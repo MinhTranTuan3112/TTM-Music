@@ -1,3 +1,5 @@
+
+
 //for song playing events
 const modeButtonColor = 'rgb(48, 162, 255)';
 let mysong = document.getElementById('current-song');
@@ -140,14 +142,14 @@ function playSong(songUrl, songName, songImage, songArtists, songLyrics) {
     let song_name_divs = document.querySelectorAll('.playing-song-name-content');
     let artist_name_divs = document.querySelectorAll('.playing-artist-name');
     let song_image_divs = document.querySelectorAll('.current-song-img');
-    
-    for (let i = 0;i < song_name_divs.length;++i) {
+
+    for (let i = 0; i < song_name_divs.length; ++i) {
         song_name_divs[i].textContent = songName;
     }
-    for (let i = 0;i < song_image_divs.length;++i) {
+    for (let i = 0; i < song_image_divs.length; ++i) {
         song_image_divs[i].setAttribute('src', songImage);
     }
-    for (let i = 0;i < artist_name_divs.length;++i) {
+    for (let i = 0; i < artist_name_divs.length; ++i) {
         artist_name_divs[i].textContent = songArtists;
     }
     document.getElementById('mylyrics').textContent = songLyrics;
@@ -156,4 +158,12 @@ function playSong(songUrl, songName, songImage, songArtists, songLyrics) {
     mysong.play();
     firstPlayButtonContent.className = 'glyphicon glyphicon-pause';
     secondPlayButtonContent.className = 'glyphicon glyphicon-pause';
+    //trigger control bar
+    let event = new MouseEvent("mouseover", {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+    });
+    let target = document.querySelector('.trigger-button');
+    target.dispatchEvent(event);
 }

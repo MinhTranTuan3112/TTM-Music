@@ -99,13 +99,12 @@ public class SongUtils {
     }
     public static void main(String[] args) {
         SongDAO cdb = new SongDAO();
-        ArrayList<SongDTO> song_list = new ArrayList<>();
-        song_list.add(new SongDTO("https://drive.google.com/file/d/1W4pv8ugzV3xP0I2DNjX0tC1HGbA1MZEP/view?usp=sharing",
-                "Vùng Ký Ức", "VungKyUc.txt", "https://i.scdn.co/image/ab67616d0000b2734a5c0d176134cb5ab9db4924", 
-                "QKCS"));
-        for (SongDTO songDTO : song_list) {
-            cdb.addNewSong(songDTO);
-        }
+        cdb.updateLyrics(getSongLyrics("GoldenHour.txt"), "1M7xKVGNOM8HM06wpZILjqIR41orkq5cO");
+//        ArrayList<SongDTO> song_list = new ArrayList<>();
+//        
+//        for (SongDTO songDTO : song_list) {
+//            cdb.addNewSong(songDTO);
+//        }
         System.out.println("Done");
     }
 }

@@ -1,5 +1,6 @@
 package controller;
 
+import Song.SongDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -8,7 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import Users.*;
+import album.AlbumDTO;
+import artist.ArtistDTO;
+import java.util.ArrayList;
 @WebServlet(name="LibraryController", urlPatterns={"/library"})
 public class LibraryController extends HttpServlet {
    
@@ -32,11 +36,19 @@ public class LibraryController extends HttpServlet {
             out.println("<body>");
             String action = request.getParameter("action");
             if (action == null || action.trim().isEmpty()) {
-                
+                HttpSession session = request.getSession();
+                UserDTO usersession = (UserDTO)(session.getAttribute("usersession"));
+                if (usersession != null) {
+                   String username = usersession.getUsername();
+                   ArrayList<SongDTO> user_song_list = UserDAO.getAllFavorites(SongDTO.class, username);
+                   ArrayList<AlbumDTO> user_album_list = UserDAO.getAllFavorites(AlbumDTO.class, username);
+                   ArrayList<ArtistDTO> user_artist_list = UserDAO.getAllFavorites(ArtistDTO.class, username);
+                   request.setAttribute("user_song_list", user_song_list);
+                   request.setAttribute("user_album_list", user_album_list);
+                   request.setAttribute("user_artist_list", user_artist_list);
+                }
                 request.getRequestDispatcher("library.jsp").forward(request, response);
             }
-            
-            
             out.println("</body>");
             out.println("</html>");
         }

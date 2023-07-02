@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -25,7 +26,7 @@
                     <div class="song-content">
                         <div class="song-name">
                             <div class="glyphicon glyphicon-cd" id="cd-icon"></div> <span class="playing-song-name-content">Golden Hour</span> - 
-                            <span class="playing-artist-name">JVKE</span>
+                            <span class="playing-artist-name" style="font-weight: bold;">JVKE</span>
                             from &nbsp;<span class="current-playlist-name">My Playlist</span>
                         </div>
                         <div class="control-buttons">
@@ -72,7 +73,7 @@
                     </div>
                     <div class="playing-song-name">
                         <div class="glyphicon glyphicon-cd" id="cd-icon"></div> <span class="playing-song-name-content">Golden Hour</span> - 
-                        <span class="playing-artist-name">JVKE</span>
+                        <span class="playing-artist-name" style="font-weight: bold;">JVKE</span>
                     </div>
                 </div>
                 <div class="media-buttons">

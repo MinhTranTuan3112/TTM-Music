@@ -30,7 +30,7 @@ public class SongDAO {
     }
     public ArrayList<SongDTO> getTop8Songs() {
         ArrayList<SongDTO> song_list = new ArrayList<>();
-        String sql = "select top 8 * from dbo.song";
+        String sql = "select top 8 * from dbo.song order by newid()";
         try {
             Connection conn = DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -110,11 +110,22 @@ public class SongDAO {
             System.out.println("Query song error: " + e.getMessage());
         }
     }
+    public void updateLyrics(String lyrics, String songid) {
+        String sql = "update dbo.song"
+                + "\nset lyric=?"
+                + "\nwhere songid=?";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, lyrics);
+            ps.setString(2, songid);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
     public static void main(String[] args) {
         SongDAO cdb = new SongDAO();
-        ArrayList<SongDTO> song_list = cdb.getAllSong();
-        for (SongDTO song : song_list) {
-            System.out.println(song);
-        }
+        
     }
 }

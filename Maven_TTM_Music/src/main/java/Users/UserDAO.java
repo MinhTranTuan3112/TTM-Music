@@ -148,7 +148,7 @@ public class UserDAO {
         return fav_artist_list;
     }
 
-    public <T> ArrayList<T> getAllFavorites(Class<T> type, String username) {
+    public static <T> ArrayList<T> getAllFavorites(Class<T> type, String username) {
         ArrayList<T> fav_list = new ArrayList<>();
         String keyword = "";
         if (type == SongDTO.class) {
@@ -185,14 +185,57 @@ public class UserDAO {
                 }
             }
         } catch (SQLException e) {
-            System.out.println("Query favorite error: " + e.getMessage());
+            System.out.println("Query favorite items error: " + e.getMessage());
         }
         return fav_list;
     }
-
+    public static <T> ArrayList<T> searchAll(Class<T> type, String search_keyword) {
+        ArrayList<T> search_list = new ArrayList<>();
+        String type_keyword = "";
+        if (type == SongDTO.class) {
+            type_keyword = "song";
+        } else if (type == AlbumDTO.class) {
+            type_keyword = "album";
+        } else if (type == PlaylistDTO.class) {
+            type_keyword = "playlist";
+        } else if (type == ArtistDTO.class) {
+            type_keyword = "artist";
+        }
+        String sql = "{call proc_searchAll(?,?)}";
+        try {
+            Connection conn = DBUtils.getConnection();
+            CallableStatement cs = conn.prepareCall(sql);
+            cs.setString(1, search_keyword);
+            cs.setString(2, type_keyword);
+            ResultSet rs = cs.executeQuery();
+            while (rs.next()) {                
+                if (type == SongDTO.class) {
+                    search_list.add((T) new SongDTO(rs.getString("songid"),
+                            rs.getString("name"), rs.getString("lyric"),
+                            rs.getString("image"), rs.getString("url"),
+                            rs.getString("albumid")));
+                } else if (type == AlbumDTO.class) {
+                    search_list.add((T) new AlbumDTO(
+                            rs.getString("albumid"), rs.getString("artistid"),
+                            rs.getString("name"), rs.getString("albumimage")));
+                } else if (type == PlaylistDTO.class) {
+                    search_list.add((T) new PlaylistDTO(rs.getString("playlistid"), rs.getString("name")));
+                } else if (type == ArtistDTO.class) {
+                    search_list.add((T) new ArtistDTO(rs.getString("artistid"),
+                            rs.getString("name"), rs.getString("image")));
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Search errors: " + e.getMessage());
+        }
+        return search_list;
+    }
     public static void main(String[] args) {
         UserDAO cdb = new UserDAO();
         String username = "minhttse172842";
-        
+        ArrayList<SongDTO> song_list = UserDAO.getAllFavorites(SongDTO.class, username);
+        for (SongDTO song : song_list) {
+            System.out.println(song.toString());
+        }
     }
 }

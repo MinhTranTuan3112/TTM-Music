@@ -3,6 +3,7 @@ package controller;
 import album.*;
 import Song.SongDAO;
 import Song.SongDTO;
+import Users.UserDAO;
 import artist.ArtistDAO;
 import artist.ArtistDTO;
 import categories.CategoriesDAO;
@@ -42,10 +43,10 @@ public class HomeController extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             String action = request.getParameter("action");
-            ArrayList<SongDTO> home_song_list = new ArrayList<>();
-            ArrayList<AlbumDTO> home_album_list = new ArrayList<>();
-            ArrayList<ArtistDTO> home_artist_list = new ArrayList<>();
-            ArrayList<CategoryDTO> home_category_list = new ArrayList<>();
+            ArrayList<SongDTO> home_song_list;
+            ArrayList<AlbumDTO> home_album_list;
+            ArrayList<ArtistDTO> home_artist_list;
+            ArrayList<CategoryDTO> home_category_list;
             SongDAO songDAO = new SongDAO();
             AlbumDAO albumDAO = new AlbumDAO();
             ArtistDAO artistDAO = new ArtistDAO();
@@ -66,6 +67,25 @@ public class HomeController extends HttpServlet {
                 home_song_list = have_song_categoriesDAO.getSongsFromCategory(categoryid);
                 home_album_list = albumDAO.getTop3Albums();
                 home_artist_list = artistDAO.getTop4Artist();
+                request.setAttribute("home_album_list", home_album_list);
+                request.setAttribute("home_song_list", home_song_list);
+                request.setAttribute("home_artist_list", home_artist_list);
+                request.setAttribute("home_category_list", home_category_list);
+                request.getRequestDispatcher("MusicPage.jsp").forward(request, response);
+            } else if (action.equals("search")) {
+                String search_keyword = request.getParameter("keyword");
+                if ((search_keyword == null || search_keyword.trim().isEmpty())) {
+                    response.sendRedirect("./home");
+                    return;
+                }
+                HttpSession session = request.getSession();
+                session.setAttribute("search_session", search_keyword);
+                String search_message = String.format("Search Results for \"%s\"", search_keyword);
+                home_category_list = categoriesDAO.getTop4Categories();
+                home_song_list = UserDAO.searchAll(SongDTO.class, search_keyword);
+                home_album_list = UserDAO.searchAll(AlbumDTO.class, search_keyword);
+                home_artist_list = UserDAO.searchAll(ArtistDTO.class, search_keyword);
+                request.setAttribute("search_message", search_message);
                 request.setAttribute("home_album_list", home_album_list);
                 request.setAttribute("home_song_list", home_song_list);
                 request.setAttribute("home_artist_list", home_artist_list);

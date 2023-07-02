@@ -1,5 +1,6 @@
 controller\HomeController.class
 playlist\PlaylistDAO.class
+controller\LibraryController.class
 artist\ArtistDTO.class
 utils\SongUtils.class
 album\AlbumDAO.class

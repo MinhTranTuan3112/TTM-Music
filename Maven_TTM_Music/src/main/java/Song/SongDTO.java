@@ -146,11 +146,8 @@ public class SongDTO {
     }
 
     public static void main(String[] args) {
-        SongDTO songDTO = new SongDTO();
-        songDTO.setSongid("1hZLt4c4j0sUlbp_0vojiXdD8Wd52B8m3");
-        ArrayList<String> artist_name_list = songDTO.getArtistNameList();
-        for (String name : artist_name_list) {
-            System.out.println(name);
-        }
+        SongDTO song = new SongDTO();
+        song.setName("We Don't Talk Anymore");
+        System.out.println(song.getName());
     }
 }

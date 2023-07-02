@@ -1,5 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,8 +16,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200&display=swap" rel="stylesheet">
         <!--customize CSS Files-->
         <link rel="stylesheet" href="css/styleHomePage.css">
-        <link rel="stylesheet" href="css/styleControlBar.css">
-        <link rel="stylesheet" href="css/stylePlayUI.css">
+        <!--        <link rel="stylesheet" href="css/styleControlBar.css">
+                <link rel="stylesheet" href="css/stylePlayUI.css">-->
         <!--page icon css file-->
         <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2285/2285073.png">
         <title>TTM Music</title>
@@ -33,22 +35,23 @@
                                 <span class="icon-bar"></span>
                             </button>
                             <div class="navbar-brand-wrapper">
-                                <a class="navbar-brand" href="">
+                                <a class="navbar-brand" href="./home">
                                     <div class="glyphicon glyphicon-headphones"></div> TTM Music
                                 </a>
                             </div>
                         </div>
                         <div class="collapse navbar-collapse" id="myNavbar">
                             <ul class="nav navbar-nav">
-                                <li class="active nav-item"><a href="">Home</a></li>
+                                <li class="active nav-item"><a href="./home">Home</a></li>
                                 <li class="nav-item"><a href="">Explore</a></li>
-                                <li class="nav-item"><a href="library.jsp">Library</a></li>
+                                <li class="nav-item"><a href="./library">Library</a></li>
                             </ul>
                             <form action="./home" class="navbar-form navbar-left">
                                 <input type="hidden" name="action" value="search">
                                 <div class="search-group">
                                     <div class="search-bar"><input type="text" class="form-control"
-                                                                   placeholder="Search your music here" name="keyword" list="search-list">
+                                                                   placeholder="Search your music here" name="keyword" list="search-list" 
+                                                                   value="${sessionScope.search_session}">
                                         <datalist id="search-list">
                                             <option value="Golden Hour"></option>
                                             <option value="Gaming Music"></option>
@@ -73,6 +76,9 @@
             </section>
         </header>
         <main>
+            <c:if test="${requestScope.search_message != null}">
+                <h1 style="text-align: center;" class="hidden-load">${requestScope.search_message}</h1>
+            </c:if>
             <section class="explore-section hidden-load">
                 <article class="explore-section-title">
                     <h1>Hi! What's in your mood today?</h1>
@@ -82,7 +88,7 @@
                         <c:forEach items="${requestScope.home_category_list}" var="category">
                             <div class="explore-item">
                                 <button class="explore-button" 
-                                        onclick="location.href='home?action=searchbycategory&categoryid=${category.categoryid}">${category.name}</button>
+                                        onclick="location.href = 'home?action=searchbycategory&categoryid=${category.categoryid}';">${category.name}</button>
                             </div>
                         </c:forEach>
                     </c:if>
@@ -92,13 +98,14 @@
                 </article>
             </section>
             <section class="recently-play-section hidden-load">
-                <h1 class="recently-play-title">Songs you might like</h1>
+                <h1 class="recently-play-title">${requestScope.search_message == null ? 'Songs you might like' : 'Song results'} </h1>
                 <section class="song-list">
                     <c:if test="${requestScope.home_song_list != null}">
                         <c:forEach items="${requestScope.home_song_list}" var="song">
                             <article class="song-item">
                                 <div class="song-cover">
-                                    <div class="hover-play-button glyphicon glyphicon-play" data-lyric ="${song.lyric}" onclick="playSong('${song.url}', '${song.name}', '${song.image}', '${song.getArtistInfo()}', this.getAttribute('data-lyric'))"></div>
+                                    <div class="hover-play-button glyphicon glyphicon-play" data-lyric ="${song.lyric}" 
+                                         onclick="playSong('${song.url}', '${fn:replace(song.name, "'", "\\'")}', '${song.image}', '${song.getArtistInfo()}', this.getAttribute('data-lyric'))"></div>
                                     <img class="song-cover-img" src="${song.image}"
                                          alt="">
                                 </div>
@@ -118,7 +125,7 @@
                 </section>
             </section>
             <section class="album-list-section hidden-load">
-                <h1 class="album-list-title">Albums you might like</h1>
+                <h1 class="album-list-title">${requestScope.search_message == null ? 'Albums you might like' : 'Album results'} </h1>
                 <article class="album-list-content">
                     <c:if test="${requestScope.home_album_list != null}">
                         <c:forEach items="${requestScope.home_album_list}" var="album">
@@ -139,7 +146,7 @@
             </section>
             <section class="artist-section hidden-load">
                 <div class="artist-section-title">
-                    <h1>Artists you might like</h1>
+                    <h1>${requestScope.search_message == null ? 'Artists you might like' : 'Artist results'} </h1>
                 </div>
                 <div class="artist-section-content">
                     <c:if test="${requestScope.home_artist_list != null}">
@@ -308,11 +315,11 @@
             </section>
         </main>
         <div class="search-content"></div>
-        <jsp:include page="playcontent.jsp" flush="true"/>
+        <jsp:include page="playcontent.jsp" flush="true"></jsp:include>
         <!--custom js files-->
         <script src="js/HomePageFunction.js"></script>
-        <script src="js/ControlBarFunction.js"></script>
-        <script src="js/PlayUIFunction.js"></script>
+        <!--        <script src="js/ControlBarFunction.js"></script>
+                <script src="js/PlayUIFunction.js"></script>-->
         <!--bootstrap js libraries-->
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
