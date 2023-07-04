@@ -7,6 +7,31 @@
         <link rel="stylesheet" href="css/styleControlBar.css">
         <link rel="stylesheet" href="css/stylePlayUI.css">
         <title>JSP Page</title>
+        <script type="text/javascript">
+            function playNextSong() {
+                if (songs === null) {
+                    return;
+                }
+                currentSongIndex++;
+                if (currentSongIndex >= songs.length) {
+                    currentSongIndex = 0;
+                }
+                let song = songs[currentSongIndex];
+                playSong(song.songUrl, song.songName, song.songImage, song.songArtists, song.songLyrics);
+            }
+
+            function playPreviousSong() {
+                if (songs === null) {
+                    return;
+                }
+                currentSongIndex--;
+                if (currentSongIndex < 0) {
+                    currentSongIndex = songs.length - 1;
+                }
+                let song = songs[currentSongIndex];
+                playSong(song.songUrl, song.songName, song.songImage, song.songArtists, song.songLyrics);
+            }
+        </script>
     </head>
     <body>
         <!--control bar-->
@@ -30,13 +55,13 @@
                             from &nbsp;<span class="current-playlist-name">My Playlist</span>
                         </div>
                         <div class="control-buttons">
-                            <div class="prev-button">
+                            <div class="prev-button" onclick="playPreviousSong()">
                                 <div class="glyphicon glyphicon-step-backward"></div>
                             </div>
                             <div class="play-button" onclick="modifyCDAnimation(this)">
                                 <div class="glyphicon glyphicon-play" id="play-button-content"></div>
                             </div>
-                            <div class="next-button">
+                            <div class="next-button" onclick="playNextSong()">
                                 <div class="glyphicon glyphicon-step-forward"></div>
                             </div>
                             <div class="mode-button" onclick="changeModeButtonColor(this);repeatSong(this)">
@@ -59,7 +84,8 @@
                 <div class="volume-control">
                     <div class="glyphicon glyphicon-volume-down" id="volume-icon"></div>
                     <div id="volume-bar"><input type="range" min="0" max="100" orient="vertical" id="volume-value"
-                                                onchange="changeVolumeIcon(this);changeSongVolume(this);"></div>
+                                                onchange="changeVolumeIcon(this);
+                                                        changeSongVolume(this);"></div>
                 </div>
             </section>
         </section>
@@ -214,7 +240,6 @@
         <script src="js/ControlBarFunction.js"></script>
         <script src="js/PlayUIFunction.js"></script>
         <script src="js/playContentFunctions.js">
-            
         </script>
     </body>
 </html>

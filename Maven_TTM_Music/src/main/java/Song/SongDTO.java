@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import utils.*;
-
 public class SongDTO {
 
     private String songid;
@@ -139,7 +138,7 @@ public class SongDTO {
         }
         return result;
     }
-
+    
     @Override
     public String toString() {
         return "SongDTO{" + "songid=" + songid + ", name=" + name + ", lyric=" + lyric + ", image=" + image + ", url=" + url + ", albumid=" + albumid + '}';

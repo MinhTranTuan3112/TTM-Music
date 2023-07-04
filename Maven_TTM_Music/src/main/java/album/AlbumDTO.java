@@ -1,7 +1,12 @@
 package album;
 
 import Song.SongDTO;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import utils.DBUtils;
 
 public class AlbumDTO {
 
@@ -23,7 +28,7 @@ public class AlbumDTO {
     public String getAlbumid() {
         return albumid;
     }
-    
+
     public void setAlbumid(String albumid) {
         this.albumid = albumid;
     }
@@ -60,9 +65,31 @@ public class AlbumDTO {
         this.song_list = song_list;
     }
 
+    public String getArtistName() {
+        String sql = "select a.name as 'artist_name'\n"
+                + "from dbo.artist a\n"
+                + "where a.artistid=?";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, this.artistid);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getString("artist_name");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
         return "AlbumDTO{" + "albumid=" + albumid + ", artistid=" + artistid + ", name=" + name + ", albumimage=" + albumimage + '}';
     }
-    
+    public static void main(String[] args) {
+        AlbumDTO albumDTO = new AlbumDTO();
+        albumDTO.setArtistid("ATC");
+        System.out.println(albumDTO.getArtistName());
+    }
 }

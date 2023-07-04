@@ -78,8 +78,7 @@ public class HomeController extends HttpServlet {
                     response.sendRedirect("./home");
                     return;
                 }
-                HttpSession session = request.getSession();
-                session.setAttribute("search_session", search_keyword);
+                request.setAttribute("search_keyword", search_keyword);
                 String search_message = String.format("Search Results for \"%s\"", search_keyword);
                 home_category_list = categoriesDAO.getTop4Categories();
                 home_song_list = UserDAO.searchAll(SongDTO.class, search_keyword);

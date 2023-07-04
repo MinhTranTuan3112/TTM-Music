@@ -70,6 +70,7 @@ mysong.addEventListener('loadedmetadata', () => {
 mysong.onloadedmetadata = function () {
     firstSongTime.max = mysong.duration;
     secondSongTime.max = mysong.duration;
+
 }
 firstSongTime.oninput = function () {
     mysong.currentTime = firstSongTime.value;
@@ -87,6 +88,7 @@ mysong.ontimeupdate = function () {
     document.getElementById('current-time').textContent = convertTime(firstSongTime.value);
     document.getElementById('second-current-time').textContent = convertTime(firstSongTime.value);
 }
+
 //for volume
 function changeVolumeIcon(volumeInput) {
     let volumeValue = volumeInput.value;
@@ -152,7 +154,7 @@ function playSong(songUrl, songName, songImage, songArtists, songLyrics) {
     for (let i = 0; i < artist_name_divs.length; ++i) {
         artist_name_divs[i].textContent = songArtists;
     }
-    document.getElementById('mylyrics').textContent = songLyrics;
+    document.getElementById('mylyrics').setHTML(songLyrics);
     mysong.setAttribute('src', songUrl);
     mysong.load(songUrl);
     mysong.play();

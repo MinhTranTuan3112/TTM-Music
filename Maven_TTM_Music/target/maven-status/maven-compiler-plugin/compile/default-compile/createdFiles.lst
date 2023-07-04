@@ -18,6 +18,7 @@ Users\UserDAO.class
 LikePackage\LikeInformationDTO.class
 have_song_categories\have_song_categoriesDAO.class
 compose\composeDAO.class
+controller\AlbumController.class
 include\includeDTO.class
 categories\CategoryDTO.class
 album\AlbumDTO.class

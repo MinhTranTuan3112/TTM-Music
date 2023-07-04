@@ -51,7 +51,7 @@
                                 <div class="search-group">
                                     <div class="search-bar"><input type="text" class="form-control"
                                                                    placeholder="Search your music here" name="keyword" list="search-list" 
-                                                                   value="${sessionScope.search_session}">
+                                                                   value="${requestScope.search_keyword}">
                                         <datalist id="search-list">
                                             <option value="Golden Hour"></option>
                                             <option value="Gaming Music"></option>
@@ -130,7 +130,7 @@
                     <c:if test="${requestScope.home_album_list != null}">
                         <c:forEach items="${requestScope.home_album_list}" var="album">
                             <div class="album-item">
-                                <div class="album-cover"><img
+                                <div class="album-cover" onclick="location.href='album?albumid=${album.albumid}';"><img
                                         src="${album.albumimage}"
                                         alt=""></div>
                                 <div class="album-name">

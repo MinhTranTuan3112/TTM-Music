@@ -8,7 +8,21 @@ import java.util.ArrayList;
 import utils.DBUtils;
 
 public class AlbumDAO extends utils.DBUtils {
-
+    public AlbumDTO load(String albumid) {
+        String sql = "select * from album where albumid=?";
+        try {
+            Connection conn = getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, albumid);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return new AlbumDTO(rs.getString("albumid"), rs.getString("artistid"), rs.getString("name"), rs.getString("albumimage"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Query album error: " + e.getMessage());
+        }
+        return null;
+    }
     public ArrayList<AlbumDTO> getAllAlbum() {
         ArrayList<AlbumDTO> list = new ArrayList<>();
         String sql = "select * from album";
@@ -56,9 +70,9 @@ public class AlbumDAO extends utils.DBUtils {
     
     public ArrayList<SongDTO> getAllSongsOfAnAlbum(String albumid) {
         ArrayList<SongDTO> song_list = new ArrayList<>();
-        String sql = "select * from dbo.songs";
+        String sql = "select * from dbo.song";
         if (albumid != null && !albumid.trim().isEmpty()) {
-            sql += "where albumid=?";
+            sql += "\nwhere albumid=?";
         }
         try {
             Connection conn = DBUtils.getConnection();
@@ -81,10 +95,8 @@ public class AlbumDAO extends utils.DBUtils {
     }
     
     public static void main(String[] args) {
-        AlbumDAO d = new AlbumDAO();
-        ArrayList<AlbumDTO> list = d.getAllAlbum();
-        for (AlbumDTO a : list) {
-            System.out.println(a);
-        }
+        AlbumDAO cdb = new AlbumDAO();
+        AlbumDTO albumDTO = cdb.load("NTM");
+        System.out.println(albumDTO.toString());
     }
 }
