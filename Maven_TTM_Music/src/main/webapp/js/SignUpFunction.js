@@ -6,7 +6,7 @@ const observer = new IntersectionObserver((entries) => {
         } else {
             entry.target.classList.remove('show-load');
         }
-    })
+    });
 });
 const hiddenElements = document.querySelectorAll('.hidden-load');
 hiddenElements.forEach((el) => observer.observe(el));

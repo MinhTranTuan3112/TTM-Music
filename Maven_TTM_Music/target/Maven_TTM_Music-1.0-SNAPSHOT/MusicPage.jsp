@@ -16,8 +16,6 @@
         <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200&display=swap" rel="stylesheet">
         <!--customize CSS Files-->
         <link rel="stylesheet" href="css/styleHomePage.css">
-        <!--        <link rel="stylesheet" href="css/styleControlBar.css">
-                <link rel="stylesheet" href="css/stylePlayUI.css">-->
         <!--page icon css file-->
         <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2285/2285073.png">
         <title>TTM Music</title>
@@ -93,7 +91,7 @@
                         </c:forEach>
                     </c:if>
                     <c:if test="${requestScope.home_category_list == null}">
-                        <h2>[No category data]</h2>
+                        <h2 style="color: white;text-align: center;">[No Category Data]</h2>
                     </c:if>
                 </article>
             </section>
@@ -118,9 +116,21 @@
                                 </div>
                             </article>
                         </c:forEach>
+                        <c:if test="${requestScope.home_song_list.size() < 4}">
+                            <c:forEach begin="1" end="${4 - requestScope.home_song_list.size()}" varStatus="loop">
+                                <article class="song-item">
+                                    <div class="song-cover">
+                                        <img class="song-cover-img" alt="">
+                                    </div>
+                                    <div class="song-name">
+                                        <span class="artist-name"></span>
+                                    </div>
+                                </article>
+                            </c:forEach>
+                        </c:if>
                     </c:if>
                     <c:if test="${requestScope.home_song_list == null}">
-                        <h2>[No Song Data]</h2>
+                        <h2 style="color: white;text-align: center;">[No Song Data]</h2>
                     </c:if>
                 </section>
             </section>
@@ -130,7 +140,7 @@
                     <c:if test="${requestScope.home_album_list != null}">
                         <c:forEach items="${requestScope.home_album_list}" var="album">
                             <div class="album-item">
-                                <div class="album-cover" onclick="location.href='album?albumid=${album.albumid}';"><img
+                                <div class="album-cover" onclick="location.href = 'album?albumid=${album.albumid}';"><img
                                         src="${album.albumimage}"
                                         alt=""></div>
                                 <div class="album-name">
@@ -138,9 +148,18 @@
                                 </div>
                             </div>
                         </c:forEach>
+                         <c:if test="${requestScope.home_album_list.size() < 3}">
+                            <c:forEach begin="1" end="${3 - requestScope.home_album_list.size()}" varStatus="loop">
+                                <div class="album-item">
+                                    <div class="album-cover"><img alt=""></div>
+                                    <div class="album-name">
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </c:if>
                     </c:if>
                     <c:if test="${requestScope.home_album_list == null}">
-                        <h2>[No album data]</h2>
+                        <h2 style="color: white;text-align: center;">[No Album Data]</h2>
                     </c:if>
                 </article>
             </section>
@@ -157,9 +176,17 @@
                                 <div class="artist-name">${artist.name}</div>
                             </div>
                         </c:forEach>
+                         <c:if test="${requestScope.home_artist_list.size() < 4}">
+                            <c:forEach begin="1" end="${4 - requestScope.home_artist_list.size()}" varStatus="loop">
+                                <div class="artist">
+                                    <div class="artist-img"></div>
+                                    <div class="artist-name"></div>
+                                </div>
+                            </c:forEach>
+                        </c:if>
                     </c:if>
                     <c:if test="${requestScope.home_artist_list == null}">
-                        <h2>[No artist data]</h2>
+                        <h2 style="color: white;text-align: center;">[No Artist Data]</h2>
                     </c:if>
                 </div>
             </section>
@@ -318,8 +345,6 @@
         <jsp:include page="playcontent.jsp" flush="true"></jsp:include>
         <!--custom js files-->
         <script src="js/HomePageFunction.js"></script>
-        <!--        <script src="js/ControlBarFunction.js"></script>
-                <script src="js/PlayUIFunction.js"></script>-->
         <!--bootstrap js libraries-->
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

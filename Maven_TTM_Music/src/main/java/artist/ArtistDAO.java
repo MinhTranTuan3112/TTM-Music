@@ -11,7 +11,7 @@ public class ArtistDAO {
 
     public ArrayList<ArtistDTO> getTop4Artist() {
         ArrayList<ArtistDTO> list = new ArrayList<>();
-        String sql = "select top 4 * from artist";
+        String sql = "select top 4 * from artist order by newid()";
         try {
             Connection conn = getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);

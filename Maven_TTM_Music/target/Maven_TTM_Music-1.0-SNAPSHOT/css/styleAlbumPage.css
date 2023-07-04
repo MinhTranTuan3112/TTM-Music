@@ -71,6 +71,9 @@ span.artist-name {
 .current-playlist-name {
     font-weight: bold;
 }
+.empty {
+    padding-top: 100px;
+}
 /*load animations*/
 .hidden-load {
     opacity: 0;

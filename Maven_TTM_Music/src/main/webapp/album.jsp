@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="css/styleAlbumPage.css">
     <!--icon file -->
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1754/1754224.png"/>
-    <title>Album page</title>
+    <title>${requestScope.album.name}</title>
     <script type="text/javascript">
         class Song {
             constructor(songUrl, songName, songImage, songArtists, songLyrics) {
@@ -55,6 +55,9 @@
             document.querySelector('.current-playlist-name').textContent = `${requestScope.album.name}`;
             playAlbum(songs);
         }
+        function changeSongIndex(newIndex) {
+            currentSongIndex = newIndex;
+        }
     </script>
 </head>
 
@@ -76,16 +79,19 @@
         </div>
         <div class="album-content hidden-load">
             <c:if test="${requestScope.song_list != null}">
+                <c:set var="songIndex" value="${0}"/>
                 <c:forEach items="${requestScope.song_list}" var="song">
                     <div class="album-item hidden-load">
-                        <div class="album-item-img"><img src="${song.image}" alt=""></div>
+                        <div class="album-item-img" data-lyric ="${song.lyric}" 
+                             onclick="playSong('${song.url}', '${fn:replace(song.name, "'", "\\'")}', '${song.image}', '${song.getArtistInfo()}', this.getAttribute('data-lyric'));changeSongIndex(${songIndex})"><img src="${song.image}" alt=""></div>
                         <div class="album-item-name">${song.name} - <span class="artist-name"> &nbsp;
                                 <c:set var="song_artist_list" value="${song.getArtistNameList()}"/>
                                 <c:forEach items="${song_artist_list}" var="song_artist">
                                     ${song_artist}
                                 </c:forEach>
                             </span></div>
-                    </div>
+                    </div>  
+                    <c:set var="songIndex" value="${songIndex + 1}"/>
                 </c:forEach>
             </c:if>
             <c:if test="${requestScope.song_list == null}">
@@ -93,9 +99,9 @@
             </c:if>
         </div>
     </div>
+    <div class="empty"></div>
     <script src="js/AlbumPageFunctions.js"></script>
     <jsp:include page="playcontent.jsp" flush="true"/>
-
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 

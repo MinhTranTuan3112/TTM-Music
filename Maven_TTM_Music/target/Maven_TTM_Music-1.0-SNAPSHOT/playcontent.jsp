@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -52,7 +52,9 @@
                         <div class="song-name">
                             <div class="glyphicon glyphicon-cd" id="cd-icon"></div> <span class="playing-song-name-content">Golden Hour</span> - 
                             <span class="playing-artist-name" style="font-weight: bold;">JVKE</span>
-                            from &nbsp;<span class="current-playlist-name">My Playlist</span>
+                            <c:if test="${requestScope.song_list != null}">
+                                from &nbsp;<span class="current-playlist-name">My Playlist</span>
+                            </c:if>
                         </div>
                         <div class="control-buttons">
                             <div class="prev-button" onclick="playPreviousSong()">
@@ -129,8 +131,7 @@
             </section>
             <section class="nav-content">
                 <div class="nav-content-bar">
-                    <button class="nav-item lyric-button" onclick="TriggerLyricTransition();HideAndShowLyrics(this)">Hide
-                        Lyric</button>
+                    <button class="nav-item lyric-button" onclick="TriggerLyricTransition();HideAndShowLyrics(this)">Hide Lyric</button>
                     <button class="nav-item minimize-button" onclick="MinimizePlayUIWindow()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                              class="bi bi-fullscreen-exit" viewBox="0 0 16 16">

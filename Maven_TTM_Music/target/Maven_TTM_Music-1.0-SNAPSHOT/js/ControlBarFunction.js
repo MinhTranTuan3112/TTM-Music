@@ -1,5 +1,3 @@
-
-
 //for song playing events
 const modeButtonColor = 'rgb(48, 162, 255)';
 let mysong = document.getElementById('current-song');
@@ -70,29 +68,28 @@ mysong.addEventListener('loadedmetadata', () => {
 mysong.onloadedmetadata = function () {
     firstSongTime.max = mysong.duration;
     secondSongTime.max = mysong.duration;
-
-}
+};
 firstSongTime.oninput = function () {
     mysong.currentTime = firstSongTime.value;
     document.getElementById('current-time').textContent = convertTime(firstSongTime.value);
     document.getElementById('second-current-time').textContent = convertTime(firstSongTime.value);
-}
+};
 secondSongTime.oninput = function () {
     mysong.currentTime = secondSongTime.value;
     document.getElementById('current-time').textContent = convertTime(secondSongTime.value);
     document.getElementById('second-current-time').textContent = convertTime(secondSongTime.value);
-}
+};
 mysong.ontimeupdate = function () {
     firstSongTime.value = mysong.currentTime;
     secondSongTime.value = mysong.currentTime;
     document.getElementById('current-time').textContent = convertTime(firstSongTime.value);
     document.getElementById('second-current-time').textContent = convertTime(firstSongTime.value);
-}
+};
 
 //for volume
 function changeVolumeIcon(volumeInput) {
     let volumeValue = volumeInput.value;
-    if (volumeValue == 0) {
+    if (volumeValue === 0) {
         document.getElementById('volume-icon').className = 'glyphicon glyphicon-volume-off';
     } else if (volumeValue > 0 && volumeValue <= 50) {
         document.getElementById('volume-icon').className = 'glyphicon glyphicon-volume-down';
@@ -105,7 +102,7 @@ function changeSongVolume(volumeInput) {
 }
 function changeModeButtonColor(modeButton) {
     let modeButtonContent = document.getElementById('mode-button-content');
-    if (modeButtonContent.style.color != modeButtonColor) {
+    if (modeButtonContent.style.color !== modeButtonColor) {
         modeButtonContent.style.color = modeButtonColor;
     } else {
         modeButtonContent.style.color = 'white';
@@ -113,14 +110,14 @@ function changeModeButtonColor(modeButton) {
 }
 function repeatSong(modeButton) {
     let modeButtonContent = document.getElementById('mode-button-content');
-    if (modeButtonContent.style.color == modeButtonColor) {
+    if (modeButtonContent.style.color === modeButtonColor) {
         mysong.setAttribute("loop", "");
     } else {
         mysong.removeAttribute("loop");
     }
 }
 function modifyCDAnimation(play_button) {
-    if (document.getElementById('play-button-content').className == 'glyphicon glyphicon-play') {
+    if (document.getElementById('play-button-content').className === 'glyphicon glyphicon-play') {
         document.getElementById('cd-icon').style.animationPlayState = 'paused';
     } else {
         document.getElementById('cd-icon').style.animationPlayState = 'running';
@@ -164,7 +161,7 @@ function playSong(songUrl, songName, songImage, songArtists, songLyrics) {
     let event = new MouseEvent("mouseover", {
         view: window,
         bubbles: true,
-        cancelable: true,
+        cancelable: true
     });
     let target = document.querySelector('.trigger-button');
     target.dispatchEvent(event);
