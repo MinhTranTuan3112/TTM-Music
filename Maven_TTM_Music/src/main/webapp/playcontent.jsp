@@ -105,18 +105,18 @@
                     </div>
                 </div>
                 <div class="media-buttons">
-                    <div class="prev-button">
+                    <div class="prev-button" onclick="playPreviousSong()">
                         <div class="glyphicon glyphicon-step-backward"></div>
                     </div>
                     <div class="second-play-button" onclick="modifyCDAnimation(this)">
                         <div class="glyphicon glyphicon-play" id="second-play-button-content"></div>
                     </div>
-                    <div class="next-button">
+                    <div class="next-button" onclick="playNextSong()">
                         <div class="glyphicon glyphicon-step-forward"></div>
                     </div>
-                    <div class="mode-button" onclick="changeModeButtonColor(this);repeatSong(this)">
+<!--                    <div class="mode-button" onclick="changeModeButtonColor(this);repeatSong(this)">
                         <div class="glyphicon glyphicon-retweet" id="mode-button-content"></div>
-                    </div>
+                    </div>-->
                 </div>
                 <div class="second-song-progress-bar">
                     <div id="second-current-time">0:00</div>

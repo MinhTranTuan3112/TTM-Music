@@ -9,7 +9,7 @@ import java.sql.SQLException;
 public class CategoriesDAO extends utils.DBUtils {
     public ArrayList<CategoryDTO> getTop4Categories() {
         ArrayList<CategoryDTO> list = new ArrayList<>();
-        String sql = "select top 4 * from categories";
+        String sql = "select top 4 * from categories order by newid()";
         try {
             Connection conn = getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);

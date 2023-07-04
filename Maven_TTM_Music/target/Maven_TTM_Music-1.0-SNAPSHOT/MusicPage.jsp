@@ -102,7 +102,7 @@
                         <c:forEach items="${requestScope.home_song_list}" var="song">
                             <article class="song-item">
                                 <div class="song-cover">
-                                    <div class="hover-play-button glyphicon glyphicon-play" data-lyric ="${song.lyric}" 
+                                    <div class="hover-play-button glyphicon glyphicon-play" data-lyric ="${song.getLyric()}" 
                                          onclick="playSong('${song.url}', '${fn:replace(song.name, "'", "\\'")}', '${song.image}', '${song.getArtistInfo()}', this.getAttribute('data-lyric'))"></div>
                                     <img class="song-cover-img" src="${song.image}"
                                          alt="">
@@ -148,7 +148,7 @@
                                 </div>
                             </div>
                         </c:forEach>
-                         <c:if test="${requestScope.home_album_list.size() < 3}">
+                        <c:if test="${requestScope.home_album_list.size() < 3}">
                             <c:forEach begin="1" end="${3 - requestScope.home_album_list.size()}" varStatus="loop">
                                 <div class="album-item">
                                     <div class="album-cover"><img alt=""></div>
@@ -176,7 +176,7 @@
                                 <div class="artist-name">${artist.name}</div>
                             </div>
                         </c:forEach>
-                         <c:if test="${requestScope.home_artist_list.size() < 4}">
+                        <c:if test="${requestScope.home_artist_list.size() < 4}">
                             <c:forEach begin="1" end="${4 - requestScope.home_artist_list.size()}" varStatus="loop">
                                 <div class="artist">
                                     <div class="artist-img"></div>

@@ -1,7 +1,6 @@
-
 //load animations
 const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry)=> {
+    entries.forEach((entry) => {
         if (entry.isIntersecting) {
             entry.target.classList.add('show-load');
             observer.unobserve(entry.target);
@@ -29,7 +28,7 @@ songCovers.forEach(function (songCover) {
     });
 });
 function transferSongTimeBasedOnUI() {
-    
+
 }
 function switchUI() {
     let songTimeBar = document.querySelectorAll('.song-bar');
@@ -37,7 +36,7 @@ function switchUI() {
         document.getElementsByClassName('trigger-button')[0].style.display = 'none';
         document.getElementsByClassName('control-bar')[0].style.display = 'none';
         document.getElementsByClassName('UI-window')[0].style.bottom = '0px';
-       
+
     } else {
         document.getElementsByClassName('trigger-button')[0].style.display = 'unset';
         document.getElementsByClassName('control-bar')[0].style.display = 'unset';

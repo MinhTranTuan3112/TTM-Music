@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import utils.*;
+import org.apache.commons.text.StringEscapeUtils;
 public class SongDTO {
 
     private String songid;
@@ -57,7 +58,7 @@ public class SongDTO {
     }
 
     public String getLyric() {
-        return lyric;
+        return StringEscapeUtils.escapeHtml4(this.lyric);
     }
 
     public void setLyric(String lyric) {

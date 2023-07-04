@@ -82,8 +82,10 @@
                 <c:set var="songIndex" value="${0}"/>
                 <c:forEach items="${requestScope.song_list}" var="song">
                     <div class="album-item hidden-load">
-                        <div class="album-item-img" data-lyric ="${song.lyric}" 
-                             onclick="playSong('${song.url}', '${fn:replace(song.name, "'", "\\'")}', '${song.image}', '${song.getArtistInfo()}', this.getAttribute('data-lyric'));changeSongIndex(${songIndex})"><img src="${song.image}" alt=""></div>
+                        <div class="album-item-img" data-lyric ="${song.getLyric()}" 
+                             onclick="playSong('${song.url}', '${fn:replace(song.name, "'", "\\'")}', '${song.image}', '${song.getArtistInfo()}', this.getAttribute('data-lyric'));changeSongIndex(${songIndex})">
+                            <img src="${song.image}" alt="">
+                        </div>
                         <div class="album-item-name">${song.name} - <span class="artist-name"> &nbsp;
                                 <c:set var="song_artist_list" value="${song.getArtistNameList()}"/>
                                 <c:forEach items="${song_artist_list}" var="song_artist">

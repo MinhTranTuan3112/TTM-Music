@@ -100,8 +100,9 @@ public class SongUtils {
     public static void main(String[] args) {
         SongDAO cdb = new SongDAO();
         ArrayList<SongDTO> song_list = new ArrayList<>();
-        
-        
+        song_list.add(new SongDTO("https://drive.google.com/file/d/12sDMBmkJHZsFKYpZlAfUq7evfFuJkHo1/view?usp=sharing", 
+                "Đã Lỡ Yêu Em Nhiều", "DaLoYeuEmNhieu.txt", "https://photo-resize-zmp3.zmdcdn.me/w600_r1x1_jpeg/covers/d/a/dae7488899bf6ee55f4127cb6a889391_1510557125.jpg", 
+                "DLYEN"));
         for (SongDTO songDTO : song_list) {
             cdb.addNewSong(songDTO);
         }
