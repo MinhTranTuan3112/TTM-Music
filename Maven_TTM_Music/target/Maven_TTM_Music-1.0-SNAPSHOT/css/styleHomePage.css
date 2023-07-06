@@ -184,8 +184,8 @@ div[class *=-cover] img,
     padding-top: 100px;
 }
 
-/*suggest section*/
-.suggest-section {
+/*playlist section*/
+.playlist-section {
     margin-top: 50px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -193,7 +193,7 @@ div[class *=-cover] img,
     column-gap: 50px;
 }
 
-.suggest-item {
+.playlist-item {
     display: flex;
     flex-direction: column;
     background: #4B79A1;
@@ -207,51 +207,51 @@ div[class *=-cover] img,
     width: 100%;
 }
 
-.suggest-item-header {
+.playlist-item-header {
     display: flex;
     justify-content: space-around;
     border-bottom: 2px solid white;
 }
 
-.suggest-item-name {
+.playlist-item-name {
     display: flex;
     align-items: center;
 }
 
-.suggest-item-img {
+.playlist-item-img {
     object-fit: contain;
     padding-block: 10px;
 }
 
-.suggest-item-img img {
+.playlist-item-img img {
     border-radius: 20px;
     height: 80px;
     aspect-ratio: 1/1;
 }
 
-.suggest-item-content {
+.playlist-item-content {
     display: flex;
     flex-direction: column;
 }
 
-.suggest-item-song {
+.playlist-item-song {
     display: flex;
     padding: 20px;
 }
 
-.suggest-item-song-img {
+.playlist-item-song-img {
     height: 100px;
     aspect-ratio: 1/1;
 
 }
 
-.suggest-item-song-img img {
+.playlist-item-song-img img {
     height: 100%;
     width: 100%;
     border-radius: 5px;
 }
 
-.suggest-item-song-description {
+.playlist-item-song-description {
     display: flex;
     flex-direction: column;
     /* text-align: center; */
@@ -260,14 +260,14 @@ div[class *=-cover] img,
     margin-left: 15px;
 }
 
-.suggest-item-song-name {
+.playlist-item-song-name {
     /* text-align: center; */
 }
-/*album, artist, suggest playlist img hover effects*/
-.album-cover, .artist-img, .suggest-item {
+/*album, artist, playlist playlist img hover effects*/
+.album-cover, .artist-img, .playlist-item {
     transition: transform 0.25s ease-in-out;
 }
-.album-cover:hover, .artist-img:hover,.suggest-item:hover {
+.album-cover:hover, .artist-img:hover,.playlist-item:hover {
     transform: scale(1.03);
 }
 /*load animations*/
@@ -292,11 +292,11 @@ div[class *=-cover] img,
     }
 }
 @media screen and (max-width: 768px) {
-    .suggest-item {
+    .playlist-item {
         width: 100%;
     }
 
-    .suggest-section {
+    .playlist-section {
         display: flex;
         flex-direction: column;
         row-gap: 20px;

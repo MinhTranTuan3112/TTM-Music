@@ -124,6 +124,24 @@ public class SongDAO {
             System.out.println(e.getMessage());
         }
     }
+    public static ArrayList<SongDTO> getAllSongsOfArtist(String artistid) {
+        ArrayList<SongDTO> song_list = new ArrayList<>();
+        String sql = "{call proc_getAllSongInfo_Of_An_Artist(?)}";
+        try {
+            Connection conn = DBUtils.getConnection();
+            CallableStatement cs = conn.prepareCall(sql);
+            cs.setString(1, artistid);
+            ResultSet rs = cs.executeQuery();
+            while (rs.next()) {                
+                 song_list.add(new SongDTO(rs.getString("songid"), rs.getString("name"),
+                        rs.getString("lyric"), rs.getString("image"), rs.getString("url"),
+                        rs.getString("albumid")));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return song_list;
+    }
     public static void main(String[] args) {
         SongDAO cdb = new SongDAO();
         

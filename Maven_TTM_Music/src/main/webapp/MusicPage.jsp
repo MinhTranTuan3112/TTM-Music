@@ -85,7 +85,7 @@
                     <c:if test="${requestScope.home_category_list != null}">
                         <c:forEach items="${requestScope.home_category_list}" var="category">
                             <div class="explore-item">
-                                <button class="explore-button" 
+                                <button class="explore-button" data-url ="home?action=searchbycategory&categoryid=${category.categoryid}"
                                         onclick="location.href = 'home?action=searchbycategory&categoryid=${category.categoryid}';">${category.name}</button>
                             </div>
                         </c:forEach>
@@ -171,7 +171,7 @@
                     <c:if test="${requestScope.home_artist_list != null}">
                         <c:forEach items="${requestScope.home_artist_list}" var="artist">
                             <div class="artist">
-                                <div class="artist-img"><img
+                                <div class="artist-img" onclick="location.href = 'artist?artistid=${artist.artistid}';"><img
                                         src="${artist.image}" alt=""></div>
                                 <div class="artist-name">${artist.name}</div>
                             </div>
@@ -190,168 +190,62 @@
                     </c:if>
                 </div>
             </section>
-            <section class="suggest-section hidden-load">
-                <div class="suggest-item">
-                    <div class="suggest-item-header">
-                        <div class="suggest-item-img"><img src="https://media.nrj.fr/436x327/2012/06/la-pop-music_7505.jpg"
-                                                           alt=""></div>
-                        <div class="suggest-item-name">
-                            <h1>Pop Playlist</h1>
-                        </div>
-                    </div>
-                    <div class="suggest-item-content">
-                        <div class="suggest-item-song">
-                            <div class="suggest-item-song-img"><img
-                                    src="https://i1.sndcdn.com/artworks-000415538445-okyde2-t500x500.jpg" alt=""></div>
-                            <div class="suggest-item-song-description">
-                                <div class="suggest-item-song-name">Darkside</div>
-                                <div class="artist-name">Alan Walker (feat. Au/Ra and Tomine Harket)</div>
+            <div class="playlist-section-title hidden-load" style="text-align: center;">
+                <h1>${requestScope.search_message == null ? 'Playlists you might like' : 'Playlist results'} </h1>
+            </div>
+            <section class="playlist-section hidden-load">
+                <c:if test="${requestScope.home_playlist_list != null}">
+                    <c:forEach items="${requestScope.home_playlist_list}" var="playlist">
+                        <div class="playlist-item" onclick="location.href = 'playlist?playlistid=${playlist.playlistid}';">
+                            <div class="playlist-item-header">
+                                <div class="playlist-item-name">
+                                    <h1>${playlist.name}</h1>
+                                </div>
+                            </div>
+                            <div class="playlist-item-content">
+                                <c:forEach items="${playlist.getSong_list()}" var="song" begin="0" end="2">
+                                    <div class="playlist-item-song">
+                                        <div class="playlist-item-song-img"><img
+                                                src="${song.image}" alt=""></div>
+                                        <div class="playlist-item-song-description">
+                                            <div class="playlist-item-song-name">${song.name}</div>
+                                            <div class="artist-name">
+                                                <c:forEach items="${song.getArtistNameList()}" var="song_artist">
+                                                    ${song_artist}
+                                                </c:forEach>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:forEach>
                             </div>
                         </div>
-                        <div class="suggest-item-song">
-                            <div class="suggest-item-song-img"><img
-                                    src="https://avatar-ex-swe.nixcdn.com/song/2020/10/28/4/1/a/0/1603898014236_640.jpg" alt="">
+                    </c:forEach>
+                    <c:if test="${requestScope.home_playlist.size() < 4}">
+                        <c:forEach begin="1" end="${4 - requestScope.home_playlist_list.size()}" varStatus="loop">
+                            <div class="playlist-item">
+                                <div class="playlist-item-header">
+                                    <div class="playlist-item-img"></div>
+                                    <div class="playlist-item-name"></div>
+                                </div>
+                                <div class="playlist-item-content"></div>
                             </div>
-                            <div class="suggest-item-song-description">
-                                <div class="suggest-item-song-name">MORE</div>
-                                <div class="artist-name">K/DA ft.Madison Beer, (G)I-DLE, Lexie Liu, Jaira Burns, Seraphine</div>
-                            </div>
-                        </div>
-                        <div class="suggest-item-song">
-                            <div class="suggest-item-song-img"><img
-                                    src="https://avatar-ex-swe.nixcdn.com/song/2022/12/13/a/f/7/3/1670903992722_640.jpg" alt="">
-                            </div>
-                            <div class="suggest-item-song-description">
-                                <div class="suggest-item-song-name">Golden hour</div>
-                                <div class="artist-name">JVKE</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="suggest-item">
-                    <div class="suggest-item-header">
-                        <div class="suggest-item-img"><img src="https://media.nrj.fr/436x327/2012/06/la-pop-music_7505.jpg"
-                                                           alt=""></div>
-                        <div class="suggest-item-name">
-                            <h1>Pop Playlist</h1>
-                        </div>
-                    </div>
-                    <div class="suggest-item-content">
-                        <div class="suggest-item-song">
-                            <div class="suggest-item-song-img"><img
-                                    src="https://i1.sndcdn.com/artworks-000415538445-okyde2-t500x500.jpg" alt=""></div>
-                            <div class="suggest-item-song-description">
-                                <div class="suggest-item-song-name">Darkside</div>
-                                <div class="artist-name">Alan Walker (feat. Au/Ra and Tomine Harket)</div>
-                            </div>
-                        </div>
-                        <div class="suggest-item-song">
-                            <div class="suggest-item-song-img"><img
-                                    src="https://avatar-ex-swe.nixcdn.com/song/2020/10/28/4/1/a/0/1603898014236_640.jpg" alt="">
-                            </div>
-                            <div class="suggest-item-song-description">
-                                <div class="suggest-item-song-name">MORE</div>
-                                <div class="artist-name">K/DA ft.Madison Beer, (G)I-DLE, Lexie Liu, Jaira Burns, Seraphine</div>
-                            </div>
-                        </div>
-                        <div class="suggest-item-song">
-                            <div class="suggest-item-song-img"><img
-                                    src="https://avatar-ex-swe.nixcdn.com/song/2022/12/13/a/f/7/3/1670903992722_640.jpg" alt="">
-                            </div>
-                            <div class="suggest-item-song-description">
-                                <div class="suggest-item-song-name">Golden hour</div>
-                                <div class="artist-name">JVKE</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="suggest-item">
-                    <div class="suggest-item-header">
-                        <div class="suggest-item-img"><img src="https://media.nrj.fr/436x327/2012/06/la-pop-music_7505.jpg"
-                                                           alt=""></div>
-                        <div class="suggest-item-name">
-                            <h1>Pop Playlist</h1>
-                        </div>
-                    </div>
-                    <div class="suggest-item-content">
-                        <div class="suggest-item-song">
-                            <div class="suggest-item-song-img"><img
-                                    src="https://i1.sndcdn.com/artworks-000415538445-okyde2-t500x500.jpg" alt=""></div>
-                            <div class="suggest-item-song-description">
-                                <div class="suggest-item-song-name">Darkside</div>
-                                <div class="artist-name">Alan Walker (feat. Au/Ra and Tomine Harket)</div>
-                            </div>
-                        </div>
-                        <div class="suggest-item-song">
-                            <div class="suggest-item-song-img"><img
-                                    src="https://avatar-ex-swe.nixcdn.com/song/2020/10/28/4/1/a/0/1603898014236_640.jpg" alt="">
-                            </div>
-                            <div class="suggest-item-song-description">
-                                <div class="suggest-item-song-name">MORE</div>
-                                <div class="artist-name">K/DA ft.Madison Beer, (G)I-DLE, Lexie Liu, Jaira Burns, Seraphine</div>
-                            </div>
-                        </div>
-                        <div class="suggest-item-song">
-                            <div class="suggest-item-song-img"><img
-                                    src="https://avatar-ex-swe.nixcdn.com/song/2022/12/13/a/f/7/3/1670903992722_640.jpg" alt="">
-                            </div>
-                            <div class="suggest-item-song-description">
-                                <div class="suggest-item-song-name">Golden hour</div>
-                                <div class="artist-name">JVKE</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="suggest-item">
-                    <div class="suggest-item-header">
-                        <div class="suggest-item-img"><img src="https://media.nrj.fr/436x327/2012/06/la-pop-music_7505.jpg"
-                                                           alt=""></div>
-                        <div class="suggest-item-name">
-                            <h1>Pop Playlist</h1>
-                        </div>
-                    </div>
-                    <div class="suggest-item-content">
-                        <div class="suggest-item-song">
-                            <div class="suggest-item-song-img"><img
-                                    src="https://i1.sndcdn.com/artworks-000415538445-okyde2-t500x500.jpg" alt=""></div>
-                            <div class="suggest-item-song-description">
-                                <div class="suggest-item-song-name">Darkside</div>
-                                <div class="artist-name">Alan Walker (feat. Au/Ra and Tomine Harket)</div>
-                            </div>
-                        </div>
-                        <div class="suggest-item-song">
-                            <div class="suggest-item-song-img"><img
-                                    src="https://avatar-ex-swe.nixcdn.com/song/2020/10/28/4/1/a/0/1603898014236_640.jpg" alt="">
-                            </div>
-                            <div class="suggest-item-song-description">
-                                <div class="suggest-item-song-name">MORE</div>
-                                <div class="artist-name">K/DA ft.Madison Beer, (G)I-DLE, Lexie Liu, Jaira Burns, Seraphine</div>
-                            </div>
-                        </div>
-                        <div class="suggest-item-song">
-                            <div class="suggest-item-song-img"><img
-                                    src="https://avatar-ex-swe.nixcdn.com/song/2022/12/13/a/f/7/3/1670903992722_640.jpg" alt="">
-                            </div>
-                            <div class="suggest-item-song-description">
-                                <div class="suggest-item-song-name">Golden hour</div>
-                                <div class="artist-name">JVKE</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                        </c:forEach>
+                    </c:if>
+                </c:if>
             </section>
         </main>
-        <div class="search-content"></div>
-        <jsp:include page="playcontent.jsp" flush="true"></jsp:include>
+
+        <jsp:include page="playcontent.jsp" flush="true"/>
         <!--custom js files-->
         <script src="js/HomePageFunction.js"></script>
+
+
         <!--bootstrap js libraries-->
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
     </body>
 
 </html>

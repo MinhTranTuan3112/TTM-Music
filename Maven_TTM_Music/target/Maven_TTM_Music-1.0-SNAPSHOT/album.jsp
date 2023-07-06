@@ -62,46 +62,51 @@
 </head>
 
 <body>
-    <div class="wrapper hidden-load">
-        <div class="album-title hidden-load">
-            <div class="album-cover hidden-load"><img src="${requestScope.album.albumimage}" alt=""></div>
-            <div class="album-description">
-                <div class="album-name hidden-load">
-                    <h1>${requestScope.album.name} - <span class="artist-name">${requestScope.album.getArtistName()}</span></h1>
-                </div>
-                <div class="album-songs-number hidden-load"><h2>${requestScope.song_list.size()} songs</h2></div>
-                <div class="album-buttons hidden-load">
-                    <div class="album-play-button" onclick="startPlayingAlbum()"><div class="glyphicon glyphicon-play-circle"></div></div>
-                    <div class="add-button"><div class="glyphicon glyphicon-plus-sign"></div></div>
-                    <div class="favorite-button"><div class="glyphicon glyphicon-thumbs-up"></div></div>
+    <header>
+        <jsp:include page="navbar.jsp" flush="true"/>
+    </header>
+    <main>
+        <div class="wrapper hidden-load">
+            <div class="album-title hidden-load">
+                <div class="album-cover hidden-load"><img src="${requestScope.album.albumimage}" alt=""></div>
+                <div class="album-description">
+                    <div class="album-name hidden-load">
+                        <h1>${requestScope.album.name} - <span class="artist-name">${requestScope.album.getArtistName()}</span></h1>
+                    </div>
+                    <div class="album-songs-number hidden-load"><h2>${requestScope.song_list.size()} songs</h2></div>
+                    <div class="album-buttons hidden-load">
+                        <div class="album-play-button" onclick="startPlayingAlbum()"><div class="glyphicon glyphicon-play-circle"></div></div>
+                        <div class="add-button"><div class="glyphicon glyphicon-plus-sign"></div></div>
+                        <div class="favorite-button"><div class="glyphicon glyphicon-thumbs-up"></div></div>
+                    </div>
                 </div>
             </div>
+            <div class="album-content hidden-load">
+                <c:if test="${requestScope.song_list != null}">
+                    <c:set var="songIndex" value="${0}"/>
+                    <c:forEach items="${requestScope.song_list}" var="song">
+                        <div class="album-item hidden-load">
+                            <div class="album-item-img" data-lyric ="${song.getLyric()}" 
+                                 onclick="playSong('${song.url}', '${fn:replace(song.name, "'", "\\'")}', '${song.image}', '${song.getArtistInfo()}', this.getAttribute('data-lyric'));changeSongIndex(${songIndex})">
+                                <img src="${song.image}" alt="">
+                            </div>
+                            <div class="album-item-name">${song.name} - <span class="artist-name"> &nbsp;
+                                    <c:set var="song_artist_list" value="${song.getArtistNameList()}"/>
+                                    <c:forEach items="${song_artist_list}" var="song_artist">
+                                        ${song_artist}
+                                    </c:forEach>
+                                </span></div>
+                        </div>  
+                        <c:set var="songIndex" value="${songIndex + 1}"/>
+                    </c:forEach>
+                </c:if>
+                <c:if test="${requestScope.song_list == null}">
+                    <h1 style="text-align: center;">[No songs]</h1>
+                </c:if>
+            </div>
         </div>
-        <div class="album-content hidden-load">
-            <c:if test="${requestScope.song_list != null}">
-                <c:set var="songIndex" value="${0}"/>
-                <c:forEach items="${requestScope.song_list}" var="song">
-                    <div class="album-item hidden-load">
-                        <div class="album-item-img" data-lyric ="${song.getLyric()}" 
-                             onclick="playSong('${song.url}', '${fn:replace(song.name, "'", "\\'")}', '${song.image}', '${song.getArtistInfo()}', this.getAttribute('data-lyric'));changeSongIndex(${songIndex})">
-                            <img src="${song.image}" alt="">
-                        </div>
-                        <div class="album-item-name">${song.name} - <span class="artist-name"> &nbsp;
-                                <c:set var="song_artist_list" value="${song.getArtistNameList()}"/>
-                                <c:forEach items="${song_artist_list}" var="song_artist">
-                                    ${song_artist}
-                                </c:forEach>
-                            </span></div>
-                    </div>  
-                    <c:set var="songIndex" value="${songIndex + 1}"/>
-                </c:forEach>
-            </c:if>
-            <c:if test="${requestScope.song_list == null}">
-                <h1 style="text-align: center;">[No songs]</h1>
-            </c:if>
-        </div>
-    </div>
-    <div class="empty"></div>
+        <div class="empty"></div>
+    </main>
     <script src="js/AlbumPageFunctions.js"></script>
     <jsp:include page="playcontent.jsp" flush="true"/>
     <!-- jQuery library -->

@@ -1,3 +1,4 @@
+controller\ArtistController.class
 controller\HomeController.class
 playlist\PlaylistDAO.class
 controller\LibraryController.class
@@ -17,6 +18,7 @@ controller\SongController.class
 Users\UserDAO.class
 LikePackage\LikeInformationDTO.class
 have_song_categories\have_song_categoriesDAO.class
+controller\PlaylistController.class
 compose\composeDAO.class
 controller\AlbumController.class
 include\includeDTO.class

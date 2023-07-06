@@ -1,0 +1,138 @@
+
+* {
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+body {
+    background-color: black;
+    color: white;
+}
+.artist-name h1 {
+    font-weight: bold;
+}
+.artist-title {
+    display: flex;
+    flex-direction: row;
+}
+.artist-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.artist-cover img{
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    border-radius: 100%;
+}
+.artist-cover {
+    height: 250px;
+    aspect-ratio: 1/1;
+    padding: 10px;
+}
+.artist-buttons :is(.glyphicon) {
+    background-color: grey;
+    padding: 20px;
+    font-size: 30px;
+    border-radius: 100%;
+}
+.artist-buttons {
+    display: flex;
+    column-gap: 10px;
+}
+.play-button {
+    display: flex;
+}
+.artist-buttons :is(.glyphicon):hover {
+    background-color: white;
+    color: grey;
+}
+
+/*song section*/
+.song-section-title h1{
+    text-align: center;
+    font-weight: bold;
+}
+.song-list,.album-list-content {
+    padding-inline: 10vw;
+    display: grid;
+    grid-row-gap: 2.5vh;
+    grid-column-gap: 5vw; 
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+.song-cover img {
+    width: 100%;
+    height: 100%;
+}
+.song-cover img {
+    border-radius: 5px;
+}
+
+/*for hover play buttons(when hover on songs)*/
+.song-cover {
+    display: inline-block;
+    position: relative;
+}
+
+.hover-play-button {
+    background-color: transparent;
+    border: 2px solid white;
+    height: 50px;
+    aspect-ratio: 1/1;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    font-size: 30px;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    z-index: 1;
+    cursor: pointer;
+    &:hover {
+        background-color: #4F709C;
+        color: white;
+    }
+}
+.song-name,.album-name {
+    font-size: medium;
+    text-align: center;
+    margin-top: 10px;
+}
+.empty {
+    padding-top: 100px;
+}
+span.artist-name {
+    font-weight: bold;
+}
+.album-cover img {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+}
+.album-section-title h1 {
+    text-align: center;
+}
+.album-cover{
+    transition: transform 0.25s ease-in-out;
+}
+.album-cover:hover {
+    transform: scale(1.03);
+}
+/* load animations */
+.hidden-load {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-60%);
+    transition: all 1s;
+}
+
+.show-load {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+@media(prefers-reduced-motion) {
+    .hidden-load {
+        transition: none;
+    }
+}

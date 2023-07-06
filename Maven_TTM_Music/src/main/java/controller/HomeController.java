@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
-
+import playlist.*;
 @WebServlet(name = "HomeController", urlPatterns = {"/home"})
 public class HomeController extends HttpServlet {
 
@@ -47,19 +47,26 @@ public class HomeController extends HttpServlet {
             ArrayList<AlbumDTO> home_album_list;
             ArrayList<ArtistDTO> home_artist_list;
             ArrayList<CategoryDTO> home_category_list;
+            ArrayList<PlaylistDTO> home_playlist_list;
             SongDAO songDAO = new SongDAO();
             AlbumDAO albumDAO = new AlbumDAO();
             ArtistDAO artistDAO = new ArtistDAO();
             CategoriesDAO categoriesDAO = new CategoriesDAO();
+            PlaylistDAO playlistDAO = new PlaylistDAO();
             if (action == null || action.trim().isEmpty()) {
                 home_category_list = categoriesDAO.getTop4Categories();
                 home_song_list = songDAO.getTop8Songs();
                 home_album_list = albumDAO.getTop3Albums();
                 home_artist_list = artistDAO.getTop4Artist();
+                home_playlist_list = playlistDAO.getTop3Playlists();
+                for (PlaylistDTO playlistDTO : home_playlist_list) {
+                    playlistDTO.setSong_list(playlistDAO.getAllSongsOfAPlaylist(playlistDTO.getPlaylistid()));
+                }
                 request.setAttribute("home_album_list", home_album_list);
                 request.setAttribute("home_song_list", home_song_list);
                 request.setAttribute("home_artist_list", home_artist_list);
                 request.setAttribute("home_category_list", home_category_list);
+                request.setAttribute("home_playlist_list", home_playlist_list);
                 request.getRequestDispatcher("MusicPage.jsp").forward(request, response);
             } else if (action.equals("searchbycategory")) {
                 String categoryid = request.getParameter("categoryid");
@@ -67,10 +74,15 @@ public class HomeController extends HttpServlet {
                 home_song_list = have_song_categoriesDAO.getSongsFromCategory(categoryid);
                 home_album_list = albumDAO.getTop3Albums();
                 home_artist_list = artistDAO.getTop4Artist();
+                home_playlist_list = playlistDAO.getTop3Playlists();
+                for (PlaylistDTO playlistDTO : home_playlist_list) {
+                    playlistDTO.setSong_list(playlistDAO.getAllSongsOfAPlaylist(playlistDTO.getPlaylistid()));
+                }
                 request.setAttribute("home_album_list", home_album_list);
                 request.setAttribute("home_song_list", home_song_list);
                 request.setAttribute("home_artist_list", home_artist_list);
                 request.setAttribute("home_category_list", home_category_list);
+                request.setAttribute("home_playlist_list", home_playlist_list);
                 request.getRequestDispatcher("MusicPage.jsp").forward(request, response);
             } else if (action.equals("search")) {
                 String search_keyword = request.getParameter("keyword");
@@ -84,11 +96,16 @@ public class HomeController extends HttpServlet {
                 home_song_list = UserDAO.searchAll(SongDTO.class, search_keyword);
                 home_album_list = UserDAO.searchAll(AlbumDTO.class, search_keyword);
                 home_artist_list = UserDAO.searchAll(ArtistDTO.class, search_keyword);
+                home_playlist_list = UserDAO.searchAll(PlaylistDTO.class, search_keyword);
+                for (PlaylistDTO playlistDTO : home_playlist_list) {
+                    playlistDTO.setSong_list(playlistDAO.getAllSongsOfAPlaylist(playlistDTO.getPlaylistid()));
+                }
                 request.setAttribute("search_message", search_message);
                 request.setAttribute("home_album_list", home_album_list);
                 request.setAttribute("home_song_list", home_song_list);
                 request.setAttribute("home_artist_list", home_artist_list);
                 request.setAttribute("home_category_list", home_category_list);
+                request.setAttribute("home_playlist_list", home_playlist_list);
                 request.getRequestDispatcher("MusicPage.jsp").forward(request, response);
             }
             out.println("</body>");

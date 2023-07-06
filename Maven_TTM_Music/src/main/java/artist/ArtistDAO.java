@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import utils.DBUtils;
 import static utils.DBUtils.getConnection;
 
 public class ArtistDAO {
@@ -39,6 +40,22 @@ public class ArtistDAO {
             System.out.println("Query all artists error: " + e.getMessage());
         }
         return list;
+    }
+
+    public ArtistDTO load(String artistid) {
+        String sql = "select * from artist where artistid=?";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, artistid);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return new ArtistDTO(rs.getString("artistid"), rs.getString("name"), rs.getString("image"));
+            }
+        } catch (SQLException e) {
+            System.out.println("Query artist error: " + e.getMessage());
+        }
+        return null;
     }
 
     public void addNewArtist(ArtistDTO artist) {

@@ -31,6 +31,15 @@
                 let song = songs[currentSongIndex];
                 playSong(song.songUrl, song.songName, song.songImage, song.songArtists, song.songLyrics);
             }
+            function shuffleSongs() {
+                if (songs === null) {
+                    return;
+                }
+                for (let i = songs.length - 1; i > 0; i--) {
+                    let j = Math.floor(Math.random() * (i + 1));
+                    [songs[i], songs[j]] = [songs[j], songs[i]];
+                }
+            }
         </script>
     </head>
     <body>
@@ -72,7 +81,7 @@
                             <div class="add-playlist-button">
                                 <div class="glyphicon glyphicon-plus-sign"></div>
                             </div>
-                            <div class="shuffle-button">
+                            <div class="shuffle-button" onclick="shuffleSongs()">
                                 <div class="glyphicon glyphicon-random"></div>
                             </div>
                         </div>
@@ -114,9 +123,9 @@
                     <div class="next-button" onclick="playNextSong()">
                         <div class="glyphicon glyphicon-step-forward"></div>
                     </div>
-<!--                    <div class="mode-button" onclick="changeModeButtonColor(this);repeatSong(this)">
-                        <div class="glyphicon glyphicon-retweet" id="mode-button-content"></div>
-                    </div>-->
+                    <!--                    <div class="mode-button" onclick="changeModeButtonColor(this);repeatSong(this)">
+                                            <div class="glyphicon glyphicon-retweet" id="mode-button-content"></div>
+                                        </div>-->
                 </div>
                 <div class="second-song-progress-bar">
                     <div id="second-current-time">0:00</div>
@@ -126,7 +135,8 @@
                 <div class="volume-control">
                     <div class="glyphicon glyphicon-volume-down" id="volume-icon"></div>
                     <div id="volume-bar"><input type="range" min="0" max="100" id="volume-value"
-                                                onchange="changeVolumeIcon(this);changeSongVolume(this);"></div>
+                                                onchange="changeVolumeIcon(this);
+                                                        changeSongVolume(this);"></div>
                 </div>
             </section>
             <section class="nav-content">

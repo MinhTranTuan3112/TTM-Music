@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import utils.DBUtils;
 
 public class AlbumDAO extends utils.DBUtils {
+
     public AlbumDTO load(String albumid) {
         String sql = "select * from album where albumid=?";
         try {
@@ -23,6 +24,7 @@ public class AlbumDAO extends utils.DBUtils {
         }
         return null;
     }
+
     public ArrayList<AlbumDTO> getAllAlbum() {
         ArrayList<AlbumDTO> list = new ArrayList<>();
         String sql = "select * from album";
@@ -38,7 +40,8 @@ public class AlbumDAO extends utils.DBUtils {
         }
         return list;
     }
-     public ArrayList<AlbumDTO> getTop3Albums() {
+
+    public ArrayList<AlbumDTO> getTop3Albums() {
         ArrayList<AlbumDTO> list = new ArrayList<>();
         String sql = "select top 3 * from album order by newid()";
         try {
@@ -53,6 +56,7 @@ public class AlbumDAO extends utils.DBUtils {
         }
         return list;
     }
+
     public void addNewAlbum(AlbumDTO album) {
         String sql = "insert into album values(?,?,?,?)";
         try {
@@ -67,7 +71,7 @@ public class AlbumDAO extends utils.DBUtils {
             System.out.println("Insert new album error: " + e.getMessage());
         }
     }
-    
+
     public ArrayList<SongDTO> getAllSongsOfAnAlbum(String albumid) {
         ArrayList<SongDTO> song_list = new ArrayList<>();
         String sql = "select * from dbo.song";
@@ -81,11 +85,11 @@ public class AlbumDAO extends utils.DBUtils {
                 ps.setString(1, albumid);
             }
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
                 SongDTO songDTO = new SongDTO(rs.getString("songid"),
                         rs.getString("name"), rs.getString("lyric"),
-                        rs.getString("image"), rs.getString("url"), 
-                rs.getString("albumid"));
+                        rs.getString("image"), rs.getString("url"),
+                        rs.getString("albumid"));
                 song_list.add(songDTO);
             }
         } catch (SQLException e) {
@@ -93,7 +97,24 @@ public class AlbumDAO extends utils.DBUtils {
         }
         return song_list;
     }
-    
+
+    public static ArrayList<AlbumDTO> getAllAlbumsOfArtist(String artistid) {
+        ArrayList<AlbumDTO> album_list = new ArrayList<>();
+        String sql = "{call proc_getAllAlbumOfArtist(?)}";
+        try {
+            Connection conn = DBUtils.getConnection();
+            CallableStatement cs = conn.prepareCall(sql);
+            cs.setString(1, artistid);
+            ResultSet rs = cs.executeQuery();
+            while (rs.next()) {                
+                album_list.add(new AlbumDTO(rs.getString("albumid"), rs.getString("artistid"), rs.getString("name"), rs.getString("albumimage")));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return album_list;
+    }
+
     public static void main(String[] args) {
         AlbumDAO cdb = new AlbumDAO();
         AlbumDTO albumDTO = cdb.load("NTM");

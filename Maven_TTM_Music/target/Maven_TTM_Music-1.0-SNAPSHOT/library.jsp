@@ -15,7 +15,7 @@
         
         <!--icon css file-->
         <link rel="icon" href="images/icons/library-music.png"> 
-        <title>Library Page</title>
+        <title>My Library</title>
     </head>
 
     <body>
@@ -30,17 +30,17 @@
                     <h1>What are you looking for?</h1>
                 </article>
                 <article class="filter-section-content hidden-load">
-                    <div class="filter-item">
-                        <button class="filter-button"><a href="#song-section">Songs</a></button>
+                    <div class="filter-item" >
+                        <button class="filter-button" onclick="location.href='library#song-section';">Songs</button>
                     </div>
                     <div class="filter-item">
-                        <button class="filter-button"><a href="#playlist-section">Playlist</a></button>
+                        <button class="filter-button" onclick="location.href='library#playlist-section'">Playlist</button>
                     </div>
                     <div class="filter-item">
-                        <button class="filter-button"><a href="#album-section">Album</a></button>
+                        <button class="filter-button" onclick="location.href='library#album-section'">Album</button>
                     </div>
                     <div class="filter-item">
-                        <button class="filter-button"><a href="#artist-section">Artists</a></button>
+                        <button class="filter-button" onclick="location.href='library#artist-section'">Artists</button>
                     </div>
                 </article>
                 <article class="search-form-wrapper hidden-load">
