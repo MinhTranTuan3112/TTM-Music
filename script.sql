@@ -220,3 +220,26 @@ begin
 insert into dbo.like_user_artist(username,artistid)
 values(@username,@item_id);
 end
+
+create or alter procedure proc_deleteFavItem  @keyword nvarchar(50), @username nvarchar(50), @item_id nvarchar(max)
+as
+ if @keyword = 'song'
+begin
+delete from dbo.like_user_song
+where username = @username and songid = @item_id
+end
+if @keyword = 'album'
+begin
+delete from dbo.like_user_album
+where username = @username and albumid = @item_id
+end
+if @keyword = 'artist'
+begin
+delete from dbo.like_user_artist
+where username = @username and artistid = @item_id
+end
+if @keyword = 'playlist'
+begin
+delete from dbo.like_user_playlist
+where username = @username and playlistid = @item_id
+end
