@@ -38,22 +38,31 @@ create table song(
 	url nvarchar(100),
 	albumid nvarchar(10) foreign key references album(albumid) 
 );
-
-create table LikeInformation (
-	primary key (username,songid,albumid,playlistid,artistid),
-	username nvarchar(50) foreign key references users(username),
-	songid nvarchar(100) foreign key references song(songid),
-	albumid nvarchar(10) foreign key references album(albumid),
-	playlistid nvarchar(10) foreign key references playlist(playlistid),
-	artistid nvarchar(10) foreign key references artist(artistid)
+create table like_user_song(
+   primary key(username,songid),
+   username nvarchar(50) foreign key references dbo.users(username),
+   songid nvarchar(100) foreign key references dbo.song(songid)
 );
-
-
- create table have_song_categiries(
+create table like_user_album(
+   primary key(username,albumid),
+    username nvarchar(50) foreign key references dbo.users(username),
+   albumid nvarchar(10) foreign key references dbo.album(albumid)
+);
+create table like_user_playlist(
+  primary key (username,playlistid),
+  username nvarchar(50) foreign key references dbo.users(username),
+  playlistid nvarchar(10) foreign key references dbo.playlist(playlistid)
+);
+create table like_user_artist(
+  primary key(username,artistid),
+   username nvarchar(50) foreign key references dbo.users(username),
+  artistid nvarchar(10) foreign key references dbo.artist(artistid)
+);
+create table have_song_categiries(
 	primary key (songid,categoryid),
 	songid nvarchar(100) foreign key references song(songid),
 	categoryid nvarchar(10) foreign key references categories(categoryid)
- );
+);
 
 create table compose(
 	primary key (songid,artistid),
@@ -158,7 +167,7 @@ select s.*
 from dbo.song s
 where s.songid in (
   select l.songid
-from dbo.LikeInformation l
+from dbo.like_user_song l
 where l.username = @username
 )
 end
@@ -168,7 +177,7 @@ select a.*
 from dbo.album a
 where a.albumid in(
   select l.albumid
-  from dbo.LikeInformation l
+  from dbo.like_user_album l
   where l.username = @username
 )
 end
@@ -178,7 +187,7 @@ begin
   from dbo.artist ar
   where ar.artistid in (
     select l.artistid
-	from dbo.LikeInformation l
+	from dbo.like_user_artist l
 	where username = @username
   )
 end
@@ -189,7 +198,25 @@ begin
   from dbo.playlist p
   where p.playlistid in (
     select l.playlistid
-	from dbo.LikeInformation l
+	from dbo.like_user_playlist l
 	where l.username = @username
   )
+end
+	
+create or alter procedure proc_addFavItem @keyword nvarchar(50), @username nvarchar(50), @item_id nvarchar(max)
+as
+ if @keyword = 'song'
+begin
+insert into dbo.like_user_song(username,songid)
+values(@username,@item_id);
+end
+if @keyword = 'album'
+begin
+insert into dbo.like_user_album(username,albumid)
+values(@username,@item_id);
+end
+if @keyword = 'artist'
+begin
+insert into dbo.like_user_artist(username,artistid)
+values(@username,@item_id);
 end
