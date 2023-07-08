@@ -67,6 +67,7 @@ operations. Admins can also add audio file, cover image of the song
 ![ERD](ERD.png)
 - Relational Schema:
 ![relational_schema](relational_schema.png)
+# System design(Working on it)
 
 # Conclusion and Discussion:
 
