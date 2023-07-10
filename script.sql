@@ -10,7 +10,7 @@ create table users (
 create table album(
 	albumid nvarchar(10) primary key,
 	name nvarchar(100),
-	albumimage nvarchar(max),
+	albumimage nvarchar(100),
 	artistid nvarchar(10) foreign key references artist(artistid) 
 );
 
@@ -22,7 +22,7 @@ create table categories(
 create table artist(
 	artistid nvarchar(10) primary key,
 	name nvarchar(100),
-	image nvarchar(max)
+	image nvarchar(100)
 );
 
 create table playlist(
@@ -34,26 +34,35 @@ create table song(
 	songid nvarchar(100) primary key,
 	name nvarchar(100),
 	lyric nvarchar(max),
-	image nvarchar(max),
+	image nvarchar(100),
 	url nvarchar(100),
 	albumid nvarchar(10) foreign key references album(albumid) 
 );
-
-create table LikeInformation (
-	primary key (username,songid,albumid,playlistid,artistid),
-	username nvarchar(50) foreign key references users(username),
-	songid nvarchar(100) foreign key references song(songid),
-	albumid nvarchar(10) foreign key references album(albumid),
-	playlistid nvarchar(10) foreign key references playlist(playlistid),
-	artistid nvarchar(10) foreign key references artist(artistid)
+create table like_user_song(
+   primary key(username,songid),
+   username nvarchar(50) foreign key references dbo.users(username),
+   songid nvarchar(100) foreign key references dbo.song(songid)
 );
-
-
- create table have_song_categiries(
+create table like_user_album(
+   primary key(username,albumid),
+    username nvarchar(50) foreign key references dbo.users(username),
+   albumid nvarchar(10) foreign key references dbo.album(albumid)
+);
+create table like_user_playlist(
+  primary key (username,playlistid),
+  username nvarchar(50) foreign key references dbo.users(username),
+  playlistid nvarchar(10) foreign key references dbo.playlist(playlistid)
+);
+create table like_user_artist(
+  primary key(username,artistid),
+   username nvarchar(50) foreign key references dbo.users(username),
+  artistid nvarchar(10) foreign key references dbo.artist(artistid)
+);
+create table have_song_categiries(
 	primary key (songid,categoryid),
 	songid nvarchar(100) foreign key references song(songid),
 	categoryid nvarchar(10) foreign key references categories(categoryid)
- );
+);
 
 create table compose(
 	primary key (songid,artistid),
@@ -158,7 +167,7 @@ select s.*
 from dbo.song s
 where s.songid in (
   select l.songid
-from dbo.LikeInformation l
+from dbo.like_user_song l
 where l.username = @username
 )
 end
@@ -168,7 +177,7 @@ select a.*
 from dbo.album a
 where a.albumid in(
   select l.albumid
-  from dbo.LikeInformation l
+  from dbo.like_user_album l
   where l.username = @username
 )
 end
@@ -178,7 +187,7 @@ begin
   from dbo.artist ar
   where ar.artistid in (
     select l.artistid
-	from dbo.LikeInformation l
+	from dbo.like_user_artist l
 	where username = @username
   )
 end
@@ -189,76 +198,48 @@ begin
   from dbo.playlist p
   where p.playlistid in (
     select l.playlistid
-	from dbo.LikeInformation l
+	from dbo.like_user_playlist l
 	where l.username = @username
   )
 end
-
-/*
-This method helps insert into table have_song_categories 
-@param @songname: pass the EXACT song name from song table
-@param @categoryname: pass the EXACT song category name from categories table
-*/
-create or alter procedure proc_add_new_song_with_categories
-@songname nvarchar(100), @categoryname nvarchar(100)
+	
+create or alter procedure proc_addFavItem @keyword nvarchar(50), @username nvarchar(50), @item_id nvarchar(max)
 as
-insert into dbo.have_song_categories(songid,categoryid)
-values((select s.songid from dbo.song s where s.name = @songname),(select c.categoryid from dbo.categories c where c.name = @categoryname));
-
-create or alter procedure proc_add_song_with_artist
-@songname nvarchar(100), @artistname nvarchar(100)
-as
-insert into dbo.compose(songid,artistid)
-values((select s.songid from dbo.song s where s.name = @songname),(select a.artistid from dbo.artist a where a.name = @artistname));
-
-CREATE OR ALTER   procedure [dbo].[proc_search_song] @keyword nvarchar(max)
-as
-select s.*
-from dbo.song s
-where s.name like '%' + @keyword 
-or s.name like '%' + @keyword + '%' 
-or s.name like @keyword + '%';
-
-CREATE OR ALTER   procedure [dbo].[proc_search_playlist] @keyword nvarchar(max)
-as
-select p.*
-from dbo.playlist p
-where p.name like '%' + @keyword 
-or p.name like '%' + @keyword + '%' 
-or p.name like @keyword + '%';
-
-CREATE OR ALTER   procedure [dbo].[proc_search_artist] @keyword nvarchar(max)
-as
-select a.*
-from dbo.artist a
-where a.name like '%' + @keyword 
-or a.name like '%' + @keyword + '%' 
-or a.name like @keyword + '%';
-
-
-CREATE OR ALTER   procedure [dbo].[proc_search_album] @keyword nvarchar(max)
-as
-select a.*
-from dbo.album a
-where a.name like '%' + @keyword 
-or a.name like '%' + @keyword + '%' 
-or a.name like @keyword + '%';
-
-create or alter procedure proc_searchAll @keyword nvarchar(max), @type nvarchar(50)
-as
-if @type = 'song'
+ if @keyword = 'song'
 begin
-exec dbo.proc_search_song @keyword = @keyword
+insert into dbo.like_user_song(username,songid)
+values(@username,@item_id);
 end
-if @type = 'album'
+if @keyword = 'album'
 begin
-exec dbo.proc_search_album @keyword = @keyword
+insert into dbo.like_user_album(username,albumid)
+values(@username,@item_id);
 end
-if @type = 'artist'
+if @keyword = 'artist'
 begin
-exec dbo.proc_search_artist @keyword = @keyword
+insert into dbo.like_user_artist(username,artistid)
+values(@username,@item_id);
 end
-if @type = 'playlist'
+
+create or alter procedure proc_deleteFavItem  @keyword nvarchar(50), @username nvarchar(50), @item_id nvarchar(max)
+as
+ if @keyword = 'song'
 begin
-exec dbo.proc_search_playlist @keyword = @keyword
+delete from dbo.like_user_song
+where username = @username and songid = @item_id
+end
+if @keyword = 'album'
+begin
+delete from dbo.like_user_album
+where username = @username and albumid = @item_id
+end
+if @keyword = 'artist'
+begin
+delete from dbo.like_user_artist
+where username = @username and artistid = @item_id
+end
+if @keyword = 'playlist'
+begin
+delete from dbo.like_user_playlist
+where username = @username and playlistid = @item_id
 end
