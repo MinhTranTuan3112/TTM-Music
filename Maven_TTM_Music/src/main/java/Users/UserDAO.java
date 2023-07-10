@@ -189,6 +189,7 @@ public class UserDAO {
         }
         return fav_list;
     }
+
     public static <T> ArrayList<T> searchAll(Class<T> type, String search_keyword) {
         ArrayList<T> search_list = new ArrayList<>();
         String type_keyword = "";
@@ -208,7 +209,7 @@ public class UserDAO {
             cs.setString(1, search_keyword);
             cs.setString(2, type_keyword);
             ResultSet rs = cs.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
                 if (type == SongDTO.class) {
                     search_list.add((T) new SongDTO(rs.getString("songid"),
                             rs.getString("name"), rs.getString("lyric"),
@@ -230,12 +231,36 @@ public class UserDAO {
         }
         return search_list;
     }
-    public static void main(String[] args) {
-        UserDAO cdb = new UserDAO();
-        String username = "minhttse172842";
-        ArrayList<SongDTO> song_list = UserDAO.getAllFavorites(SongDTO.class, username);
-        for (SongDTO song : song_list) {
-            System.out.println(song.toString());
+
+    public static void addNewFavoriteItem(String type_keyword, String username, String item_id) {
+        String sql = "{call proc_addFavItem(?,?,?)}";
+        try {
+            Connection conn = DBUtils.getConnection();
+            CallableStatement cs = conn.prepareCall(sql);
+            cs.setString(1, type_keyword.toLowerCase());
+            cs.setString(2, username);
+            cs.setString(3, item_id);
+            cs.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Add new favorite item error: " + e.getMessage());
         }
+    }
+    public static void deleteFavoriteItem(String type_keyword, String username, String item_id) {
+        String sql = "{call proc_deleteFavItem(?,?,?)}";
+        try {
+            Connection conn = DBUtils.getConnection();
+            CallableStatement cs = conn.prepareCall(sql);
+            cs.setString(1, type_keyword.toLowerCase());
+            cs.setString(2, username);
+            cs.setString(3, item_id);
+            cs.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Delete favorite item error: " + e.getMessage());
+        }
+    }
+    public static void main(String[] args) {
+        UserDAO userDAO = new UserDAO();
+        String username = "minhttse172842";
+        
     }
 }

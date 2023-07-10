@@ -13,6 +13,7 @@ import Users.*;
 import album.AlbumDTO;
 import artist.ArtistDTO;
 import java.util.ArrayList;
+import playlist.PlaylistDTO;
 @WebServlet(name="LibraryController", urlPatterns={"/library"})
 public class LibraryController extends HttpServlet {
    
@@ -43,9 +44,11 @@ public class LibraryController extends HttpServlet {
                    ArrayList<SongDTO> user_song_list = UserDAO.getAllFavorites(SongDTO.class, username);
                    ArrayList<AlbumDTO> user_album_list = UserDAO.getAllFavorites(AlbumDTO.class, username);
                    ArrayList<ArtistDTO> user_artist_list = UserDAO.getAllFavorites(ArtistDTO.class, username);
+                   ArrayList<PlaylistDTO> user_playlist_list = UserDAO.getAllFavorites(PlaylistDTO.class, username);
                    request.setAttribute("user_song_list", user_song_list);
                    request.setAttribute("user_album_list", user_album_list);
                    request.setAttribute("user_artist_list", user_artist_list);
+                   request.setAttribute("user_playlist_list", user_playlist_list);
                 }
                 request.getRequestDispatcher("library.jsp").forward(request, response);
             }

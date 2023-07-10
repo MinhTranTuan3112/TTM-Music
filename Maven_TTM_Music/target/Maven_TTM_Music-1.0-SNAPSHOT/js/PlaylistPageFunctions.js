@@ -20,6 +20,8 @@ const observer = new IntersectionObserver((entries) => {
 const hiddenElements = document.querySelectorAll('.hidden-load');
 hiddenElements.forEach((el) => observer.observe(el));
 
+
+
 var form = document.getElementById('playlist-form');
 var editable = document.getElementById('playlist-name');
 var hiddenInput = document.getElementById('playlistname');

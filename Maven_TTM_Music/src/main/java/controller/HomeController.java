@@ -58,7 +58,7 @@ public class HomeController extends HttpServlet {
                 home_song_list = songDAO.getTop8Songs();
                 home_album_list = albumDAO.getTop3Albums();
                 home_artist_list = artistDAO.getTop4Artist();
-                home_playlist_list = playlistDAO.getTop3Playlists();
+                home_playlist_list = playlistDAO.getTop4Playlists();
                 for (PlaylistDTO playlistDTO : home_playlist_list) {
                     playlistDTO.setSong_list(playlistDAO.getAllSongsOfAPlaylist(playlistDTO.getPlaylistid()));
                 }
@@ -74,7 +74,7 @@ public class HomeController extends HttpServlet {
                 home_song_list = have_song_categoriesDAO.getSongsFromCategory(categoryid);
                 home_album_list = albumDAO.getTop3Albums();
                 home_artist_list = artistDAO.getTop4Artist();
-                home_playlist_list = playlistDAO.getTop3Playlists();
+                home_playlist_list = playlistDAO.getTop4Playlists();
                 for (PlaylistDTO playlistDTO : home_playlist_list) {
                     playlistDTO.setSong_list(playlistDAO.getAllSongsOfAPlaylist(playlistDTO.getPlaylistid()));
                 }

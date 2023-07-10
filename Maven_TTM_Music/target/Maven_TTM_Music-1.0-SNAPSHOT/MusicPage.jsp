@@ -22,6 +22,7 @@
     </head>
 
     <body>
+        <jsp:include page="favDialog.jsp" flush="true"/>
         <header>
             <section class="navbar-section hidden-load">
                 <nav class="navbar navbar-inverse">
@@ -194,52 +195,55 @@
                 <h1>${requestScope.search_message == null ? 'Playlists you might like' : 'Playlist results'} </h1>
             </div>
             <section class="playlist-section hidden-load">
-                <c:if test="${requestScope.home_playlist_list != null}">
-                    <c:forEach items="${requestScope.home_playlist_list}" var="playlist">
-                        <div class="playlist-item" onclick="location.href = 'playlist?playlistid=${playlist.playlistid}';">
-                            <div class="playlist-item-header">
-                                <div class="playlist-item-name">
-                                    <h1>${playlist.name}</h1>
+                <c:choose>
+                    <c:when test="${requestScope.home_playlist_list != null && !requestScope.home_playlist_list.isEmpty()}">
+                        <c:forEach items="${requestScope.home_playlist_list}" var="playlist">
+                            <div class="playlist-item" onclick="location.href = 'playlist?playlistid=${playlist.playlistid}';">
+                                <div class="playlist-item-header">
+                                    <div class="playlist-item-name">
+                                        <h1>${playlist.name}</h1>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="playlist-item-content">
-                                <c:forEach items="${playlist.getSong_list()}" var="song" begin="0" end="2">
-                                    <div class="playlist-item-song">
-                                        <div class="playlist-item-song-img"><img
-                                                src="${song.image}" alt=""></div>
-                                        <div class="playlist-item-song-description">
-                                            <div class="playlist-item-song-name">${song.name}</div>
-                                            <div class="artist-name">
-                                                <c:forEach items="${song.getArtistNameList()}" var="song_artist">
-                                                    ${song_artist}
-                                                </c:forEach>
+                                <div class="playlist-item-content">
+                                    <c:forEach items="${playlist.getSong_list()}" var="song" begin="0" end="2">
+                                        <div class="playlist-item-song">
+                                            <div class="playlist-item-song-img"><img
+                                                    src="${song.image}" alt=""></div>
+                                            <div class="playlist-item-song-description">
+                                                <div class="playlist-item-song-name">${song.name}</div>
+                                                <div class="artist-name">
+                                                    <c:forEach items="${song.getArtistNameList()}" var="song_artist">
+                                                        ${song_artist}
+                                                    </c:forEach>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </c:forEach>
-                            </div>
-                        </div>
-                    </c:forEach>
-                    <c:if test="${requestScope.home_playlist.size() < 4}">
-                        <c:forEach begin="1" end="${4 - requestScope.home_playlist_list.size()}" varStatus="loop">
-                            <div class="playlist-item">
-                                <div class="playlist-item-header">
-                                    <div class="playlist-item-img"></div>
-                                    <div class="playlist-item-name"></div>
+                                    </c:forEach>
                                 </div>
-                                <div class="playlist-item-content"></div>
                             </div>
                         </c:forEach>
-                    </c:if>
-                </c:if>
+                        <c:if test="${requestScope.home_playlist.size() < 4}">
+                            <c:forEach begin="1" end="${4 - requestScope.home_playlist_list.size()}" varStatus="loop">
+                                <div class="playlist-item">
+                                    <div class="playlist-item-header">
+                                        <div class="playlist-item-img"></div>
+                                        <div class="playlist-item-name"></div>
+                                    </div>
+                                    <div class="playlist-item-content"></div>
+                                </div>
+                            </c:forEach>
+                        </c:if>
+                    </c:when>
+                    <c:otherwise>
+                        <h1 style="text-align: center;">[No Playlists Data]</h1>
+                    </c:otherwise>
+                </c:choose>
             </section>
         </main>
 
         <jsp:include page="playcontent.jsp" flush="true"/>
         <!--custom js files-->
         <script src="js/HomePageFunction.js"></script>
-
-
         <!--bootstrap js libraries-->
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

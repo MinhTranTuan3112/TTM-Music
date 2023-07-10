@@ -98,6 +98,8 @@ public class SongUtils {
     public static void main(String[] args) {
         SongDAO cdb = new SongDAO();
         ArrayList<SongDTO> song_list = new ArrayList<>();
+        song_list.add(new SongDTO("https://drive.google.com/file/d/1txnETfk8v-l5SvRfuJFEMfKGn1IQ3nz5/view?usp=sharing", 
+                "Dancing With Your Ghost", "DancingWithYourGhost.txt","https://avatar-ex-swe.nixcdn.com/song/2019/06/28/7/b/d/d/1561705949026_640.jpg", "SELFP"));
         for (SongDTO songDTO : song_list) {
             cdb.addNewSong(songDTO);
         }

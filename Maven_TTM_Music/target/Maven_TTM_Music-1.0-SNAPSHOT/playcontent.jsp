@@ -59,6 +59,7 @@
                     </div>
                     <div class="song-content">
                         <div class="song-name">
+                            <div hidden id="songID"></div>
                             <div class="glyphicon glyphicon-cd" id="cd-icon"></div> <span class="playing-song-name-content">Golden Hour</span> - 
                             <span class="playing-artist-name" style="font-weight: bold;">JVKE</span>
                             <c:if test="${requestScope.song_list != null}">
@@ -78,7 +79,7 @@
                             <div class="mode-button" onclick="changeModeButtonColor(this);repeatSong(this)">
                                 <div class="glyphicon glyphicon-retweet" id="mode-button-content"></div>
                             </div>
-                            <div class="add-playlist-button">
+                            <div class="add-button">
                                 <div class="glyphicon glyphicon-plus-sign"></div>
                             </div>
                             <div class="shuffle-button" onclick="shuffleSongs()">

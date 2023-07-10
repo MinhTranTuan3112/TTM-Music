@@ -12,7 +12,7 @@
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/styleLibrary.css">
-        
+
         <!--icon css file-->
         <link rel="icon" href="images/icons/library-music.png"> 
         <title>My Library</title>
@@ -31,16 +31,16 @@
                 </article>
                 <article class="filter-section-content hidden-load">
                     <div class="filter-item" >
-                        <button class="filter-button" onclick="location.href='library#song-section';">Songs</button>
+                        <button class="filter-button" onclick="location.href = 'library#song-section';">Songs</button>
                     </div>
                     <div class="filter-item">
-                        <button class="filter-button" onclick="location.href='library#playlist-section'">Playlist</button>
+                        <button class="filter-button" onclick="location.href = 'library#playlist-section'">Playlist</button>
                     </div>
                     <div class="filter-item">
-                        <button class="filter-button" onclick="location.href='library#album-section'">Album</button>
+                        <button class="filter-button" onclick="location.href = 'library#album-section'">Album</button>
                     </div>
                     <div class="filter-item">
-                        <button class="filter-button" onclick="location.href='library#artist-section'">Artists</button>
+                        <button class="filter-button" onclick="location.href = 'library#artist-section'">Artists</button>
                     </div>
                 </article>
                 <article class="search-form-wrapper hidden-load">
@@ -55,11 +55,12 @@
                     <h1>Your favorite songs</h1>
                 </section>
                 <section class="song-list">
-                <%--<c:if test="${requestScope.user_song_list != null}">
+                    <c:if test="${requestScope.user_song_list != null}">
                         <c:forEach items="${requestScope.user_song_list}" var="song">
                             <article class="song-item">
                                 <div class="song-cover">
-                                    <div class="hover-play-button glyphicon glyphicon-play" data-lyric ="${song.lyric}" onclick="playSong('${song.url}', '${song.name}', '${song.image}', '${song.getArtistInfo()}', this.getAttribute('data-lyric'))"></div>
+                                    <div class="hover-play-button glyphicon glyphicon-play" data-lyric ="${song.getLyric()}" 
+                                         onclick="playSong('${song.url}', '${fn:replace(song.name, "'", "\\'")}', '${song.image}', '${song.getArtistInfo()}', this.getAttribute('data-lyric'))"></div>
                                     <img class="song-cover-img" src="${song.image}"
                                          alt="">
                                 </div>
@@ -72,73 +73,22 @@
                                 </div>
                             </article>
                         </c:forEach>
+                        <c:if test="${requestScope.user_song_list.size() < 4}">
+                            <c:forEach begin="1" end="${4 - requestScope.user_song_list.size()}" varStatus="loop">
+                                <article class="song-item">
+                                    <div class="song-cover">
+                                        <img class="song-cover-img" alt="">
+                                    </div>
+                                    <div class="song-name">
+                                        <span class="artist-name"></span>
+                                    </div>
+                                </article>
+                            </c:forEach>
+                        </c:if>
                     </c:if>
                     <c:if test="${requestScope.user_song_list == null}">
-                        <h2>[No Song Data]</h2>
-                    </c:if>--%>
-                    <article class="song-item">
-                        <div class="song-cover">
-                            <div class="hover-play-button glyphicon glyphicon-play"></div>
-                            <img class="song-cover-img"
-                                 src="https://i.scdn.co/image/ab67616d0000b27370413bcda71e96f3b13cc689" alt="">
-                        </div>
-                        <div class="song-name">Có em đời bỗng vui - <span class="artist-name">Chillies</span></div>
-                    </article>
-                    <article class="song-item">
-                        <div class="song-cover">
-                            <div class="hover-play-button glyphicon glyphicon-play"></div>
-                            <img class="song-cover-img"
-                                 src="https://avatar-ex-swe.nixcdn.com/song/2022/12/13/a/f/7/3/1670903992722_640.jpg" alt="">
-                        </div>
-                        <div class="song-name">Golden hour - <span class="artist-name">JVKE</span></div>
-                    </article>
-                    <article class="song-item">
-                        <div class="song-cover">
-                            <div class="hover-play-button glyphicon glyphicon-play"></div>
-                            <img class="song-cover-img"
-                                 src="https://avatar-ex-swe.nixcdn.com/song/2017/11/29/0/6/1/1/1511950269534_640.jpg" alt="">
-                        </div>
-                        <div class="song-name">Sau tất cả - <span class="artist-name">Erik</span></div>
-                    </article>
-                    <article class="song-item">
-                        <div class="song-cover">
-                            <div class="hover-play-button glyphicon glyphicon-play"></div> <img class="song-cover-img"
-                                                                                                src="https://avatar-ex-swe.nixcdn.com/song/2023/04/17/1/9/a/e/1681723596712_640.jpg" alt="">
-                        </div>
-                        <div class="song-name">夜に駆ける(Yoru ni kakeru) - <span class="artist-name">Yoasobi</span></div>
-                    </article>
-                    <article class="song-item">
-                        <div class="song-cover">
-                            <div class="hover-play-button glyphicon glyphicon-play"></div> <img class="song-cover-img"
-                                                                                                src="https://i.scdn.co/image/ab67616d0000b27375c9daf36578bdf30645492f" alt="">
-                        </div>
-                        <div class="song-name">See you again - <span class="artist-name">Wiz Khalifa ft. Charlie Puth</span>
-                        </div>
-                    </article>
-                    <div class="song-item">
-                        <div class="song-cover">
-                            <div class="hover-play-button glyphicon glyphicon-play"></div> <img class="song-cover-img"
-                                                                                                src="https://i1.sndcdn.com/artworks-Irvkk7URz49E1HBJ-zW3AxA-t500x500.jpg" alt="">
-                        </div>
-                        <div class="song-name">Relaxing Piano - <span class="artist-name">Soothing Relaxation</span></div>
-                    </div>
-                    <article class="song-item">
-                        <div class="song-cover">
-                            <div class="hover-play-button glyphicon glyphicon-play"></div> <img class="song-cover-img"
-                                                                                                src="https://i1.sndcdn.com/artworks-000415538445-okyde2-t500x500.jpg" alt="">
-                        </div>
-                        <div class="song-name">Darkside - <span class="artist-name">Alan Walker (feat. Au/Ra and Tomine
-                                Harket)</span></div>
-                    </article>
-                    <article class="song-item">
-                        <div class="song-cover">
-                            <div class="hover-play-button glyphicon glyphicon-play"></div> <img class="song-cover-img"
-                                                                                                src="https://avatar-ex-swe.nixcdn.com/song/2020/10/28/4/1/a/0/1603898014236_640.jpg" alt="">
-                        </div>
-                        <div class="song-name">MORE - <span class="artist-name">K/DA ft.Madison Beer, (G)I-DLE, Lexie Liu,
-                                Jaira
-                                Burns, Seraphine</span></div>
-                    </article>
+                        <h2 style="text-align: center;">[No favorite songs]</h2>
+                    </c:if>
                 </section>
             </section>
             <section class="playlist-section hidden-load" id="playlist-section">
@@ -146,170 +96,49 @@
                     <h1>Your playlists</h1>
                 </section>
                 <section class="playlist-section-content hidden-load">
-                    <article class="playlist-item">
-                        <div class="playlist-item-header">
-                            <div class="playlist-item-img"><img
-                                    src="https://media.nrj.fr/436x327/2012/06/la-pop-music_7505.jpg" alt=""></div>
-                            <div class="playlist-item-name">
-                                <h1>Pop Playlist</h1>
-                            </div>
-                        </div>
-                        <div class="playlist-item-content">
-                            <div class="playlist-item-song">
-                                <div class="playlist-item-song-img"><img
-                                        src="https://i1.sndcdn.com/artworks-000415538445-okyde2-t500x500.jpg" alt=""></div>
-                                <div class="playlist-item-song-description">
-                                    <div class="playlist-item-song-name">Darkside</div>
-                                    <div class="artist-name">Alan Walker (feat. Au/Ra and Tomine Harket)</div>
-                                </div>
-                            </div>
-                            <div class="playlist-item-song">
-                                <div class="playlist-item-song-img"><img
-                                        src="https://avatar-ex-swe.nixcdn.com/song/2020/10/28/4/1/a/0/1603898014236_640.jpg"
-                                        alt="">
-                                </div>
-                                <div class="playlist-item-song-description">
-                                    <div class="playlist-item-song-name">MORE</div>
-                                    <div class="artist-name">K/DA ft.Madison Beer, (G)I-DLE, Lexie Liu, Jaira Burns,
-                                        Seraphine
+                    <c:choose>
+                        <c:when test="${requestScope.user_playlist_list != null && !requestScope.user_playlist_list.isEmpty()}">
+                            <c:forEach items="${requestScope.user_playlist_list}" var="playlist">
+                                <div class="playlist-item" onclick="location.href = 'playlist?playlistid=${playlist.playlistid}';">
+                                    <div class="playlist-item-header">
+                                        <div class="playlist-item-name">
+                                            <h1>${playlist.name}</h1>
+                                        </div>
+                                    </div>
+                                    <div class="playlist-item-content">
+                                        <c:forEach items="${playlist.getSong_list()}" var="song" begin="0" end="2">
+                                            <div class="playlist-item-song">
+                                                <div class="playlist-item-song-img"><img
+                                                        src="${song.image}" alt=""></div>
+                                                <div class="playlist-item-song-description">
+                                                    <div class="playlist-item-song-name">${song.name}</div>
+                                                    <div class="artist-name">
+                                                        <c:forEach items="${song.getArtistNameList()}" var="song_artist">
+                                                            ${song_artist}
+                                                        </c:forEach>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </c:forEach>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="playlist-item-song">
-                                <div class="playlist-item-song-img"><img
-                                        src="https://avatar-ex-swe.nixcdn.com/song/2022/12/13/a/f/7/3/1670903992722_640.jpg"
-                                        alt="">
-                                </div>
-                                <div class="playlist-item-song-description">
-                                    <div class="playlist-item-song-name">Golden hour</div>
-                                    <div class="artist-name">JVKE</div>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="playlist-item">
-                        <div class="playlist-item-header">
-                            <div class="playlist-item-img"><img
-                                    src="https://media.nrj.fr/436x327/2012/06/la-pop-music_7505.jpg" alt=""></div>
-                            <div class="playlist-item-name">
-                                <h1>Pop Playlist</h1>
-                            </div>
-                        </div>
-                        <div class="playlist-item-content">
-                            <div class="playlist-item-song">
-                                <div class="playlist-item-song-img"><img
-                                        src="https://i1.sndcdn.com/artworks-000415538445-okyde2-t500x500.jpg" alt=""></div>
-                                <div class="playlist-item-song-description">
-                                    <div class="playlist-item-song-name">Darkside</div>
-                                    <div class="artist-name">Alan Walker (feat. Au/Ra and Tomine Harket)</div>
-                                </div>
-                            </div>
-                            <div class="playlist-item-song">
-                                <div class="playlist-item-song-img"><img
-                                        src="https://avatar-ex-swe.nixcdn.com/song/2020/10/28/4/1/a/0/1603898014236_640.jpg"
-                                        alt="">
-                                </div>
-                                <div class="playlist-item-song-description">
-                                    <div class="playlist-item-song-name">MORE</div>
-                                    <div class="artist-name">K/DA ft.Madison Beer, (G)I-DLE, Lexie Liu, Jaira Burns,
-                                        Seraphine
+                            </c:forEach>
+                            <c:if test="${requestScope.user_playlist.size() < 4}">
+                                <c:forEach begin="1" end="${4 - requestScope.user_playlist_list.size()}" varStatus="loop">
+                                    <div class="playlist-item">
+                                        <div class="playlist-item-header">
+                                            <div class="playlist-item-img"></div>
+                                            <div class="playlist-item-name"></div>
+                                        </div>
+                                        <div class="playlist-item-content"></div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="playlist-item-song">
-                                <div class="playlist-item-song-img"><img
-                                        src="https://avatar-ex-swe.nixcdn.com/song/2022/12/13/a/f/7/3/1670903992722_640.jpg"
-                                        alt="">
-                                </div>
-                                <div class="playlist-item-song-description">
-                                    <div class="playlist-item-song-name">Golden hour</div>
-                                    <div class="artist-name">JVKE</div>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="playlist-item">
-                        <div class="playlist-item-header">
-                            <div class="playlist-item-img"><img
-                                    src="https://media.nrj.fr/436x327/2012/06/la-pop-music_7505.jpg" alt=""></div>
-                            <div class="playlist-item-name">
-                                <h1>Pop Playlist</h1>
-                            </div>
-                        </div>
-                        <div class="playlist-item-content">
-                            <div class="playlist-item-song">
-                                <div class="playlist-item-song-img"><img
-                                        src="https://i1.sndcdn.com/artworks-000415538445-okyde2-t500x500.jpg" alt=""></div>
-                                <div class="playlist-item-song-description">
-                                    <div class="playlist-item-song-name">Darkside</div>
-                                    <div class="artist-name">Alan Walker (feat. Au/Ra and Tomine Harket)</div>
-                                </div>
-                            </div>
-                            <div class="playlist-item-song">
-                                <div class="playlist-item-song-img"><img
-                                        src="https://avatar-ex-swe.nixcdn.com/song/2020/10/28/4/1/a/0/1603898014236_640.jpg"
-                                        alt="">
-                                </div>
-                                <div class="playlist-item-song-description">
-                                    <div class="playlist-item-song-name">MORE</div>
-                                    <div class="artist-name">K/DA ft.Madison Beer, (G)I-DLE, Lexie Liu, Jaira Burns,
-                                        Seraphine
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="playlist-item-song">
-                                <div class="playlist-item-song-img"><img
-                                        src="https://avatar-ex-swe.nixcdn.com/song/2022/12/13/a/f/7/3/1670903992722_640.jpg"
-                                        alt="">
-                                </div>
-                                <div class="playlist-item-song-description">
-                                    <div class="playlist-item-song-name">Golden hour</div>
-                                    <div class="artist-name">JVKE</div>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                    <article class="playlist-item">
-                        <div class="playlist-item-header">
-                            <div class="playlist-item-img"><img
-                                    src="https://media.nrj.fr/436x327/2012/06/la-pop-music_7505.jpg" alt=""></div>
-                            <div class="playlist-item-name">
-                                <h1>Pop Playlist</h1>
-                            </div>
-                        </div>
-                        <div class="playlist-item-content">
-                            <div class="playlist-item-song">
-                                <div class="playlist-item-song-img"><img
-                                        src="https://i1.sndcdn.com/artworks-000415538445-okyde2-t500x500.jpg" alt=""></div>
-                                <div class="playlist-item-song-description">
-                                    <div class="playlist-item-song-name">Darkside</div>
-                                    <div class="artist-name">Alan Walker (feat. Au/Ra and Tomine Harket)</div>
-                                </div>
-                            </div>
-                            <div class="playlist-item-song">
-                                <div class="playlist-item-song-img"><img
-                                        src="https://avatar-ex-swe.nixcdn.com/song/2020/10/28/4/1/a/0/1603898014236_640.jpg"
-                                        alt="">
-                                </div>
-                                <div class="playlist-item-song-description">
-                                    <div class="playlist-item-song-name">MORE</div>
-                                    <div class="artist-name">K/DA ft.Madison Beer, (G)I-DLE, Lexie Liu, Jaira Burns,
-                                        Seraphine
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="playlist-item-song">
-                                <div class="playlist-item-song-img"><img
-                                        src="https://avatar-ex-swe.nixcdn.com/song/2022/12/13/a/f/7/3/1670903992722_640.jpg"
-                                        alt="">
-                                </div>
-                                <div class="playlist-item-song-description">
-                                    <div class="playlist-item-song-name">Golden hour</div>
-                                    <div class="artist-name">JVKE</div>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
+                                </c:forEach>
+                            </c:if>
+                        </c:when>
+                        <c:otherwise>
+                            <h1 style="text-align: center;">[No Playlists]</h1>
+                        </c:otherwise>
+                    </c:choose>
                 </section>
                 <section class="add-playlist-section hidden-load">
                     <div class="add-playlist-section-title"><h1>Add new playlist</h1></div>
@@ -321,30 +150,32 @@
                     <h1>Your Albums</h1>
                 </section>
                 <section class="album-section-content hidden-load">
-                    <div class="album-item">
-                        <div class="album-cover"><img
-                                src="https://lh3.googleusercontent.com/5hH_cz-iqNFf6IgPCcx_SdYN_4siZX7GVvXXD1DW2NvRa5sEz-279xsZ341s7jWMIwpEYscMPo1zkxvY6w=w544-h544-l90-rj"
-                                alt=""></div>
-                        <div class="album-name">
-                            <p>Trên những đám mây</p>
-                        </div>
-                    </div>
-                    <div class="album-item">
-                        <div class="album-cover"><img
-                                src="https://is2-ssl.mzstatic.com/image/thumb/Music115/v4/4f/ad/3b/4fad3b49-55b8-47bd-7d12-f94fef62d16a/075679902863.jpg/600x600bf-60.jpg"
-                                alt=""></div>
-                        <div class="album-name">
-                            <p>Nine Track Mind</p>
-                        </div>
-                    </div>
-                    <div class="album-item">
-                        <div class="album-cover"><img
-                                src="https://upload.wikimedia.org/wikipedia/en/thumb/1/13/Rixton_-_Let_the_Road_%28Official_Album_Cover%29.png/220px-Rixton_-_Let_the_Road_%28Official_Album_Cover%29.png"
-                                alt=""></div>
-                        <div class="album-name">
-                            <p>Let The Road</p>
-                        </div>
-                    </div>
+                    <c:choose>
+                        <c:when test="${requestScope.user_album_list != null && !requestScope.user_album_list.isEmpty()}">
+                            <c:forEach items="${requestScope.user_album_list}" var="album">
+                                <div class="album-item">
+                                    <div class="album-cover" onclick="location.href = 'album?albumid=${album.albumid}';"><img
+                                            src="${album.albumimage}"
+                                            alt=""></div>
+                                    <div class="album-name">
+                                        <p>${album.name}</p>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                            <c:if test="${requestScope.user_album_list.size() < 3}">
+                                <c:forEach begin="1" end="${3 - requestScope.user_album_list.size()}" varStatus="loop">
+                                    <div class="album-item">
+                                        <div class="album-cover"><img alt=""></div>
+                                        <div class="album-name">
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </c:if>
+                        </c:when>
+                        <c:otherwise>
+                            <h1 style="text-align: center;">[No Albums]</h1>
+                        </c:otherwise>
+                    </c:choose>
                 </section>
             </section>
             <section class="artist-section hidden-load" id="artist-section">
@@ -352,29 +183,28 @@
                     <h1>Your Favorite Artists</h1>
                 </section>
                 <section class="artist-section-content">
-                    <div class="artist">
-                        <div class="artist-img"><img
-                                src="https://trixie.com.vn/media/images/article/98645721/chillies-1586223837.jpg" alt="">
-                        </div>
-                        <div class="artist-name">Chillies</div>
-                    </div>
-                    <div class="artist">
-                        <div class="artist-img"><img
-                                src="https://yt3.googleusercontent.com/QiI-c4cFyRPD0qVwTQooC3dlgJqHA_t6CpEAv818om-mqL9bqNDL4L_qXQVXx_eY76D_7cLD=s900-c-k-c0x00ffffff-no-rj"
-                                alt=""></div>
-                        <div class="artist-name">The Weekend</div>
-                    </div>
-                    <div class="artist">
-                        <div class="artist-img"><img src="https://i.scdn.co/image/ab6761610000e5ebfbe071f5bc42f38d3485a29a"
-                                                     alt=""></div>
-                        <div class="artist-name">Yoasobi</div>
-                    </div>
-                    <div class="artist">
-                        <div class="artist-img"><img
-                                src="https://yt3.googleusercontent.com/ytc/AGIKgqOb6ImahVLErAGdEPjrafMdk-ac6xowlZwvKIFH=s900-c-k-c0x00ffffff-no-rj"
-                                alt=""></div>
-                        <div class="artist-name">Justatee</div>
-                    </div>
+                    <c:choose>
+                        <c:when test="${requestScope.user_artist_list != null && !requestScope.user_artist_list.isEmpty()}">
+                            <c:forEach items="${requestScope.user_artist_list}" var="artist">
+                                <div class="artist">
+                                    <div class="artist-img" onclick="location.href = 'artist?artistid=${artist.artistid}';"><img
+                                            src="${artist.image}" alt=""></div>
+                                    <div class="artist-name">${artist.name}</div>
+                                </div>
+                            </c:forEach>
+                            <c:if test="${requestScope.user_artist_list.size() < 4}">
+                                <c:forEach begin="1" end="${4 - requestScope.user_artist_list.size()}" varStatus="loop">
+                                    <div class="artist">
+                                        <div class="artist-img"></div>
+                                        <div class="artist-name"></div>
+                                    </div>
+                                </c:forEach>
+                            </c:if>
+                        </c:when>
+                        <c:otherwise>
+                            <h1 style="text-align: center;">[No Artists]</h1>
+                        </c:otherwise>
+                    </c:choose>
                 </section>
             </section>
             <c:if test="${sessionScope.usersession.role == 'admin'}">

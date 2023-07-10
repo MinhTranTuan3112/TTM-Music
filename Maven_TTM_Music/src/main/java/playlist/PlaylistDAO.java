@@ -11,9 +11,9 @@ import java.util.List;
 import utils.DBUtils;
 
 public class PlaylistDAO {
-    public ArrayList<PlaylistDTO> getTop3Playlists() {
+    public ArrayList<PlaylistDTO> getTop4Playlists() {
         ArrayList<PlaylistDTO> list = new ArrayList<>();
-        String sql = "select top 3 * from dbo.playlist";
+        String sql = "select top 4 * from dbo.playlist";
         try {
             Connection conn = utils.DBUtils.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -22,7 +22,7 @@ public class PlaylistDAO {
                 list.add(new PlaylistDTO(rs.getString("playlistid"), rs.getString("name")));
             }
         } catch (SQLException e) {
-            System.out.println("Query top 3 playlists error: " + e.getMessage());
+            System.out.println("Query top 4 playlists error: " + e.getMessage());
         }
         return list;
     }

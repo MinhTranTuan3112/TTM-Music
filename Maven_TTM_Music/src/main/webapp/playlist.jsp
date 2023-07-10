@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="css/stylePlaylistPage.css">
     <!--icon file-->
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1382/1382065.png">
-    <title>${requestScope.playlist.name}</title>
+    <title>${requestScope.personalPlaylist ? 'New Playlist' : requestScope.playlist.name}</title>
     <script type="text/javascript">
         class Song {
             constructor(songUrl, songName, songImage, songArtists, songLyrics) {
@@ -36,8 +36,9 @@
             playSong(song.songUrl, song.songName, song.songImage, song.songArtists, song.songLyrics);
             mysong.addEventListener('ended', () => playPlaylist(songs, index + 1));
         }
+        <c:if test="${requestScope.song_list != null}">
         var songs = [
-        <c:forEach items="${requestScope.song_list}" var="song">
+            <c:forEach items="${requestScope.song_list}" var="song">
             {
                 songUrl: '${song.url}',
                 songName: '${fn:replace(song.name, "'", "\\'")}',
@@ -45,8 +46,9 @@
                 songArtists: '${song.getArtistInfo()}',
                 songLyrics: `${song.getLyric()}`
             },
-        </c:forEach>
+            </c:forEach>
         ];
+        </c:if>
         var currentSongIndex = 0;
         function startPlayingPlaylist() {
             document.querySelector('.current-playlist-name').textContent = `${requestScope.playlist.name}`;
@@ -67,11 +69,20 @@
             <div class="playlist-title hidden-load">
                 <div class="playlist-description">
                     <div class="playlist-name hidden-load">
-                        <h1 ${requestScope.personalPlaylist ? contenteditable : ''}  id="playlist-name">${requestScope.playlist.name}</h1>
-                        <c:if test="${requestScope.personalPlaylist}">
-                            <input type="hidden" name="playlistname" id="playlistname">
-                        </c:if>
-                        <div class="playlist-songs-number hidden-load"><h2>${requestScope.song_list.size()} songs</h2></div>
+                        <h1 ${requestScope.personalPlaylist ? contenteditable : ''}  id="playlist-name">
+                            <c:out value="${requestScope.personalPlaylist ? 'My Playlist' : requestScope.playlist.name}"/> 
+                            <c:if test="${requestScope.personalPlaylist}">
+                                <button type="submit" class="save-button">Save</button>
+                            </c:if>
+                        </h1>
+                        <c:choose>
+                            <c:when test="${requestScope.personalPlaylist}">
+                                <input type="hidden" name="playlistname" id="playlistname">
+                            </c:when>
+                            <c:otherwise>
+                                <div class="playlist-songs-number hidden-load"><h2>${requestScope.song_list.size()} songs</h2></div>
+                            </c:otherwise>
+                        </c:choose>
                     </div>
                 </div>
                 <div class="playlist-buttons hidden-load">
@@ -87,9 +98,16 @@
                             <div class="playlist-item">
                                 <div class="playlist-item-img"><img
                                         src="https://png.pngtree.com/png-clipart/20190921/original/pngtree-music-icon-png-image_4694506.jpg"
-                                        alt=""></div>
+                                        alt="" class="playlist-item-img-content"></div>
                                 <div class="playlist-item-name" contenteditable="true">
-                                    <input type="text" name="songName" placeholder="Enter song name">
+                                    <input type="text" name="songName" list="song_list" class="songName" placeholder="Enter song name">
+                                    <datalist id="song_list">
+                                        <c:if test="${requestScope.lib_song_list != null}">
+                                            <c:forEach items="${requestScope.lib_song_list}" var="songData">
+                                                <option value="${songData.name}"></option>
+                                            </c:forEach>
+                                        </c:if>
+                                    </datalist>
                                     <span class="artist-name">&nbsp;</span>
                                 </div>
                                 <div class="playlist-item-buttons">
@@ -103,37 +121,41 @@
                 </div>
             </div>
             <div class="playlist-content hidden-load">
-                <c:if test="${requestScope.song_list != null}">
-                    <c:set var="songIndex" value="${0}"/>
-                    <c:forEach items="${requestScope.song_list}" var="song">
-                        <div class="playlist-item hidden-load">
-                            <div class="playlist-item-img">
-                                <div class="hover-play-button glyphicon glyphicon-play" data-lyric ="${song.getLyric()}" 
-                                     onclick="playSong('${song.url}', '${fn:replace(song.name, "'", "\\'")}', '${song.image}', '${song.getArtistInfo()}', this.getAttribute('data-lyric'));changeSongIndex(${songIndex})"></div>
-                                <img src="${song.image}" alt="" class="playlist-item-img-content">
-                            </div>
-                            <div class="playlist-item-name">${song.name} - &nbsp;<span class="artist-name">
-                                    <c:set var="song_artist_list" value="${song.getArtistNameList()}"/>
-                                    <c:forEach items="${song_artist_list}" var="song_artist">
-                                        ${song_artist}
-                                    </c:forEach>
-                                </span>
-                            </div>
-                            <c:if test="${requestScope.personalPlaylist}">
-                                <div class="playlist-item-buttons">
-                                    <div class="remove-button">
-                                        <div class="glyphicon glyphicon-remove-sign"></div>
-                                    </div>
+                <c:choose>
+                    <c:when test="${requestScope.song_list != null && !requestScope.song_list.isEmpty()}">
+                        <c:set var="songIndex" value="${0}"/>
+                        <c:forEach items="${requestScope.song_list}" var="song">
+                            <div class="playlist-item hidden-load">
+                                <div class="playlist-item-img">
+                                    <div class="hover-play-button glyphicon glyphicon-play" data-lyric ="${song.getLyric()}" 
+                                         onclick="playSong('${song.url}', '${fn:replace(song.name, "'", "\\'")}', '${song.image}', '${song.getArtistInfo()}', this.getAttribute('data-lyric'));
+                                                 changeSongIndex(${songIndex})"></div>
+                                    <img src="${song.image}" alt="" class="playlist-item-img-content">
                                 </div>
-                            </c:if>
-                        </div>
-                        <c:set var="songIndex" value="${songIndex + 1}"/>
-                    </c:forEach>
-                </c:if>
-                <c:if test="${requestScope.song_list == null || requestScope.song_list.isEmpty()}">
-                    <h1 style="text-align: center;">[No Songs Data]</h1>
-                </c:if>
+                                <div class="playlist-item-name">${song.name} - &nbsp;<span class="artist-name">
+                                        <c:set var="song_artist_list" value="${song.getArtistNameList()}"/>
+                                        <c:forEach items="${song_artist_list}" var="song_artist">
+                                            ${song_artist}
+                                        </c:forEach>
+                                    </span>
+                                </div>
+                                <c:if test="${requestScope.personalPlaylist}">
+                                    <div class="playlist-item-buttons">
+                                        <div class="remove-button">
+                                            <div class="glyphicon glyphicon-remove-sign"></div>
+                                        </div>
+                                    </div>
+                                </c:if>
+                            </div>
+                            <c:set var="songIndex" value="${songIndex + 1}"/>
+                        </c:forEach>
+                    </c:when>
+                    <c:otherwise>
+                        <h1 style="text-align: center;">[No Songs Data]</h1>
+                    </c:otherwise>
+                </c:choose>
             </div>
+
             <div class="empty"></div>
         </form>
     </main>
