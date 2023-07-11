@@ -46,6 +46,7 @@ operations. Admins can also add audio file, cover image of the song
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/16d76f32-33ac-4603-af23-0082f20af9a6)
 
 - This page allows users to login using username and password by entering their own created username and password (after sign up)
+- If user choose **Remember Me**, next time user log out the username and password will be auto filled in the form (users can make change if they wanted to)
 
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/5cc43833-88ab-475a-9fa6-a747139276eb)
 
