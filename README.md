@@ -63,10 +63,15 @@ operations. Admins can also add audio file, cover image of the song
 - This page displays playlist contents, with options to play, edit or add new songs to the library 
 
 ## Database design:
-- ERD: 
+
+- ERD:
+
 ![ERD](ERD.png)
+
 - Relational Schema:
+  
 ![relational_schema](relational_schema.png)
+
 # System design(Working on it)
 
 # Conclusion and Discussion:
