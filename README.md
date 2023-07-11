@@ -62,7 +62,7 @@ that they want to add to the playlist and be able to add them.
 
 ![Screenshot 2023-06-15 155621](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/0a9958e9-f5a8-44d1-a3f6-40585d03cf5d)
 
-- This is the website home page. The home pages have 5 sections:
+- This is the website home page. The home page has 5 sections:
 
 **1. Category section:**
 
