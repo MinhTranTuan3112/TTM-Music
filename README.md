@@ -65,18 +65,34 @@ that they want to add to the playlist and be able to add them.
 - This is the website home page. The home pages have 5 sections:
 
 **1. Category section:**
+
 - This section will have 4 categories for the users to choose by clicking on the button with the name of the category. After user click on each category buttons. A list of songs that have that category will be loaded for the users to choose.
 
 **2. Song section:**
+
 - This section normally has 8 suggested songs for users to choose
 - Users can play the song directly on the home page by first hover on the cover image of the songs, then a play button will appear on each of the song cover. After clicking on that play button, the song will automatically played, and the song control bar at the bottom will pop op showing the song information and the
 control buttons for songs (users can pause/continue playing the song).
 
 **3. Album section:**
+
 - This section normally has 3 suggested albums for users to choose.
 - Users can first click on the cover image of the album to go to the details page of the album. Then simply a click on the play button will make the album start
 playing. After a song end, next song will start playing automatically unless users turn on repeat mode button
 - On the control bar, users can go to next song by clicking on the next button or go to previous song of the album by pressing the previous button.
+
+**4. Artist section:**
+
+- This section normally has 4 suggested artists for users to choose.
+- Users can view the information of the artist by clicking on the artist image. The artist information will be displayed contains: songs, albums and playlists.
+
+**5. Playlist section:**
+
+- This section normally has 4 suggested playlists for users to choose.
+- Users can first click on anywhere on the playlist to go to the details page of the album. Then simply a click on the play button will make the playlist start
+playing. After a song end, next song will start playing automatically unless users turn on repeat mode button
+- On the control bar, users can go to next song by clicking on the next button or go to previous song of the album by pressing the previous button.
+- Users can shuffle the playing playlist by clicking on the shuffle button on the control bar. In case users want the playlist to have original song orders, they can refresh the page.
 
 ![Screenshot 2023-06-15 155621](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/cdd9c28d-824c-48d2-8e30-3221a3fb67e5)
 
