@@ -134,14 +134,15 @@ function moveControlBarUpAndDown() {
         trigger_button.style.display = 'unset';
     }, 5000);
 }
-function playSong(songUrl, songName, songImage, songArtists, songLyrics) {
+function playSong(songID, songUrl, songName, songImage, songArtists, songLyrics) {
     console.log('songurl: ' + songUrl);
     console.log('song name: ' + songName);
     console.log('song image: ' + songImage);
+    let CurrentSongID = document.querySelector('#songID');
     let song_name_divs = document.querySelectorAll('.playing-song-name-content');
     let artist_name_divs = document.querySelectorAll('.playing-artist-name');
     let song_image_divs = document.querySelectorAll('.current-song-img');
-
+    CurrentSongID.textContent = songID;
     for (let i = 0; i < song_name_divs.length; ++i) {
         song_name_divs[i].textContent = songName;
     }
@@ -165,4 +166,12 @@ function playSong(songUrl, songName, songImage, songArtists, songLyrics) {
     });
     let target = document.querySelector('.trigger-button');
     target.dispatchEvent(event);
+}
+const changedAddButtonColor = 'rgb(120, 193, 243)';
+function changeAddFavoriteButtonColor(add_button) {
+    if (add_button.style.color !== changedAddButtonColor) {
+        add_button.style.color = changedAddButtonColor;
+    } else {
+        add_button.style.color = 'white';
+    }
 }

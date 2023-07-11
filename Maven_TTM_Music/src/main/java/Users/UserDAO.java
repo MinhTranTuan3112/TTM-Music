@@ -261,6 +261,5 @@ public class UserDAO {
     public static void main(String[] args) {
         UserDAO userDAO = new UserDAO();
         String username = "minhttse172842";
-        
     }
 }

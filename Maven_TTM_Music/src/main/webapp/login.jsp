@@ -36,8 +36,8 @@
 
     <body>
         <main>
-            <c:if test="${requestScope.error != null}">
-                <h1 style="color: red;text-align: center;">${requestScope.error}</h1>
+            <c:if test="${requestScope.message != null}">
+                <h1 style="color: red;text-align: center;">${requestScope.message}</h1>
             </c:if>
             <div class="login-form hidden-load">
                 <section class="login-form-title hidden-load">

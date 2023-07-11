@@ -1,3 +1,5 @@
+<%@page import="Users.UserDTO"%>
+<%@page import="Users.UserDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -17,9 +19,8 @@
                     currentSongIndex = 0;
                 }
                 let song = songs[currentSongIndex];
-                playSong(song.songUrl, song.songName, song.songImage, song.songArtists, song.songLyrics);
+                playSong(song.songID, song.songUrl, song.songName, song.songImage, song.songArtists, song.songLyrics);
             }
-
             function playPreviousSong() {
                 if (songs === null) {
                     return;
@@ -29,7 +30,7 @@
                     currentSongIndex = songs.length - 1;
                 }
                 let song = songs[currentSongIndex];
-                playSong(song.songUrl, song.songName, song.songImage, song.songArtists, song.songLyrics);
+                playSong(song.songID, song.songUrl, song.songName, song.songImage, song.songArtists, song.songLyrics);
             }
             function shuffleSongs() {
                 if (songs === null) {
@@ -40,10 +41,50 @@
                     [songs[i], songs[j]] = [songs[j], songs[i]];
                 }
             }
+            function AddFavorite(add_button) {
+                changeAddFavoriteButtonColor(add_button);
+                if (document.querySelector('#dialog') !== null) {
+                    let myDialog = document.querySelector('#dialog');
+                    let dialog_action = myDialog.querySelector('.dialog_action');
+                    let songID = document.querySelector('#songID');
+                    $.ajax({
+                        type: "POST",
+                        url: "playcontent.jsp",
+                        data: {songID: songID.textContent},
+                        success: function (response) {
+                            // Handle the response from the JSP file if needed
+                        }
+                    });
+                    console.log("Song id is: " + songID.textContent);
+                    if (add_button.style.color === changedAddButtonColor) {
+                        //save code
+            <%
+                if (session.getAttribute("usersession") != null) {
+                    UserDTO currentUser = (UserDTO) (session.getAttribute("usersession"));
+                    String username = currentUser.getUsername();
+                    String songID = request.getParameter("songID");
+                    UserDAO.addNewFavoriteItem("song", username, songID);
+                }
+            %>
+                        dialog_action.textContent = 'Saved';
+                    } else {
+                        //remove code
+            <%
+                if (session.getAttribute("usersession") != null) {
+                    UserDTO currentUser = (UserDTO) (session.getAttribute("usersession"));
+                    String username = currentUser.getUsername();
+                    String songID = request.getParameter("songID");
+                    UserDAO.deleteFavoriteItem("song", username, songID);
+                }
+            %>
+                        dialog_action.textContent = 'Removed';
+                    }
+                    myDialog.showModal();
+                }
+            }
         </script>
     </head>
     <body>
-        <!--control bar-->
         <section class="control-bar">
             <button class="full-screen-button glyphicon glyphicon-resize-full" onclick="switchUI()"></button>
             <div class="control-bar-title">
@@ -76,10 +117,11 @@
                             <div class="next-button" onclick="playNextSong()">
                                 <div class="glyphicon glyphicon-step-forward"></div>
                             </div>
-                            <div class="mode-button" onclick="changeModeButtonColor(this);repeatSong(this)">
+                            <div class="mode-button" onclick="changeModeButtonColor(this);
+                                    repeatSong(this)">
                                 <div class="glyphicon glyphicon-retweet" id="mode-button-content"></div>
                             </div>
-                            <div class="add-button">
+                            <div class="add-button" onclick="AddFavorite(this);">
                                 <div class="glyphicon glyphicon-plus-sign"></div>
                             </div>
                             <div class="shuffle-button" onclick="shuffleSongs()">
@@ -142,7 +184,8 @@
             </section>
             <section class="nav-content">
                 <div class="nav-content-bar">
-                    <button class="nav-item lyric-button" onclick="TriggerLyricTransition();HideAndShowLyrics(this)">Hide Lyric</button>
+                    <button class="nav-item lyric-button" onclick="TriggerLyricTransition();
+                            HideAndShowLyrics(this)">Hide Lyric</button>
                     <button class="nav-item minimize-button" onclick="MinimizePlayUIWindow()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                              class="bi bi-fullscreen-exit" viewBox="0 0 16 16">
@@ -251,7 +294,11 @@
         </audio>
         <script src="js/ControlBarFunction.js"></script>
         <script src="js/PlayUIFunction.js"></script>
-        <script src="js/playContentFunctions.js">
-        </script>
+        <script src="js/playContentFunctions.js"></script>
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     </body>
 </html>

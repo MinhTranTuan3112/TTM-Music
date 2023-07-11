@@ -35,11 +35,11 @@
                                 <div class="search-bar"><input type="text" class="form-control"
                                                                placeholder="Search your music here" name="keyword" list="search-list" 
                                                                value="${requestScope.search_keyword}">
-                                    <datalist id="search-list">
+<!--                                    <datalist id="search-list">
                                         <option value="Golden Hour"></option>
                                         <option value="Gaming Music"></option>
                                         <option value=""></option>
-                                    </datalist>
+                                    </datalist>-->
                                 </div>
                                 <div class="search-button">
                                     <button class="btn btn-default" type="submit">

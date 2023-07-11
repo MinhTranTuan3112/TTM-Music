@@ -4,6 +4,7 @@ D:\Dev\Java\Maven_TTM_Music\src\main\java\include\includeDAO.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\controller\LibraryController.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\artist\ArtistDAO.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\controller\AlbumController.java
+D:\Dev\Java\Maven_TTM_Music\src\main\java\filters\LoginFilter.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\Song\SongDTO.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\album\AlbumDAO.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\controller\LoginController.java
@@ -15,6 +16,7 @@ D:\Dev\Java\Maven_TTM_Music\src\main\java\controller\PlaylistController.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\categories\CategoriesDAO.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\have_song_categories\have_song_categoriesDTO.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\compose\composeDTO.java
+D:\Dev\Java\Maven_TTM_Music\src\main\java\filters\HomeFilter.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\Song\SongDAO.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\Users\UserDAO.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\LikePackage\LikeInformationDTO.java

@@ -19,8 +19,8 @@ public class LoginController extends HttpServlet {
      *
      * @param request servlet request
      * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws ServletException if a servlet-specific message occurs
+     * @throws IOException if an I/O message occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -60,8 +60,8 @@ public class LoginController extends HttpServlet {
                     session.setAttribute("rememberedAccount", rememberedAccount);
                     response.sendRedirect("./home");
                 } else {
-                    //log in failed: sends user back to login page with error
-                    request.setAttribute("error", "Wrong username or password");
+                    //log in failed: sends user back to login page with message
+                    request.setAttribute("message", "Wrong username or password");
                     request.getRequestDispatcher("login.jsp").forward(request, response);
                 }
             } else if (action.equals("signup")) {
@@ -76,7 +76,7 @@ public class LoginController extends HttpServlet {
                     request.getRequestDispatcher("login.jsp").forward(request, response);
                 } else {
                     //else if the username is already existed, send users back to signup page 
-                    request.setAttribute("error", "This username is already existed!!");
+                    request.setAttribute("message", "This username is already existed!!");
                     request.getRequestDispatcher("signup.jsp").forward(request, response);
                 }
             }
@@ -92,8 +92,8 @@ public class LoginController extends HttpServlet {
      *
      * @param request servlet request
      * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws ServletException if a servlet-specific message occurs
+     * @throws IOException if an I/O message occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -106,8 +106,8 @@ public class LoginController extends HttpServlet {
      *
      * @param request servlet request
      * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws ServletException if a servlet-specific message occurs
+     * @throws IOException if an I/O message occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

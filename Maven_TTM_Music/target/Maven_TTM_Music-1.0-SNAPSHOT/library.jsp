@@ -2,8 +2,7 @@
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +11,6 @@
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/styleLibrary.css">
-
         <!--icon css file-->
         <link rel="icon" href="images/icons/library-music.png"> 
         <title>My Library</title>
@@ -21,30 +19,32 @@
     <body>
         <header>
             <section class="home-section hidden-load">
-                <button class="home-button hidden-load"><a href="./home">Home</a></button>
+                <button class="home-button hidden-load" onclick="location.href='./home'">Home</button>
             </section>
         </header>
         <main>
+            <jsp:include page="favDialog.jsp" flush="true"/>
             <section class="filter-section hidden-load">
                 <article class="filter-section-title hidden-load">
                     <h1>What are you looking for?</h1>
                 </article>
                 <article class="filter-section-content hidden-load">
-                    <div class="filter-item" >
+                    <div class="filter-item">
                         <button class="filter-button" onclick="location.href = 'library#song-section';">Songs</button>
                     </div>
                     <div class="filter-item">
-                        <button class="filter-button" onclick="location.href = 'library#playlist-section'">Playlist</button>
+                        <button class="filter-button" onclick="location.href = 'library#playlist-section';">Playlist</button>
                     </div>
                     <div class="filter-item">
-                        <button class="filter-button" onclick="location.href = 'library#album-section'">Album</button>
+                        <button class="filter-button" onclick="location.href = 'library#album-section';">Album</button>
                     </div>
                     <div class="filter-item">
-                        <button class="filter-button" onclick="location.href = 'library#artist-section'">Artists</button>
+                        <button class="filter-button" onclick="location.href = 'library#artist-section';">Artists</button>
                     </div>
                 </article>
                 <article class="search-form-wrapper hidden-load">
-                    <form action="" class="search-form">
+                    <form action="./library" class="search-form">
+                        <input type="hidden" name="action" value="search">
                         <input type="text" name="search_keyword" class="form-control" placeholder="Search here">
                         <button type="submit" class="search-button">Search</button>
                     </form>

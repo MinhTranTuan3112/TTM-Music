@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
@@ -12,9 +13,8 @@
             Add
         </button>-->
     <dialog id="dialog">
-        <h2>Saved</h2>
-        <p>(Song name)<a href="#"></a> as a new favorite song
-        </p>
+        <h2 class="dialog_action">Saved</h2>
+        <p>(Song name)<a href="#"></a></p>
         <button onclick="window.dialog.close();" aria-label="close" class="x">❌</button>
     </dialog>
     <script src="js/favDialogFunctions.js"></script>
