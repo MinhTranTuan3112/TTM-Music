@@ -41,10 +41,10 @@ operations. Admins can also add audio file, cover image of the song
 ## GUI:
 ### Login page
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/16d76f32-33ac-4603-af23-0082f20af9a6)
-- Functions: allow user to login using username and password
+- This page allows users to login using username and password by entering their own created username and password (after sign up)
 ### Sign up page
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/8118c619-43e2-40cb-a6f0-a7f013d1178d)
-- Functions: user can register an account to login into the page with username, password and email for password changing 
+- This page help users register an account to login into the page with username, password and email for password changing 
 ### Home page:
 ![Screenshot 2023-06-15 155621](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/a0e2e0d7-ea96-4e4d-81dd-f97dd5170f37)
 ![Screenshot 2023-06-15 155621](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/0a9958e9-f5a8-44d1-a3f6-40585d03cf5d)
