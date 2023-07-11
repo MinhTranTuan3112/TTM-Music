@@ -121,7 +121,21 @@ playing. After a song end, next song will start playing automatically unless use
 # System design(Working on it)
 
 ## Source Code Structure:
+
+- WebApp structure:
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/a14e2c42-121f-403d-8a7c-28bd4ed82b41)
+
+
+- Java Source code structure:
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/460d3d7c-945b-4dc9-85f2-efe16080b8af)
+
+
 ## Controllers actions:
+
+
+
 ## UML Diagram:
 
 # Conclusion and Discussion:
