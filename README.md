@@ -27,11 +27,9 @@ of the songs, albums to play by clicking on the cover image of the songs or albu
 have more choices to listen to music. Particularly, these playlists will be displayed as card item, users can click on them to choose to play a song or a whole playlist.
 - Create and add songs to playlist: user can create another playlist by going to the library page and click on the plus button, then users can search the songs
 that they want to add to the playlist and be able to add them. 
-- Edit your playlists: users can add new songs to playlist, remove songs from playlists, rename the playlist
 - Shuffle playlists: this features give users a fresh experience when they listen to the playlists.
 - Search songs based on genres or artists: this freature allows user to find their songs easily
-- Manage playlists, albums and songs: the admins can perform add, update, delete 
-operations. Admins can also add audio file, cover image of the song
+- Edit your playlists: users can add new songs to playlist, remove songs from playlists, rename the playlist (unfinished)
 
 # Wireframe or screenshots of the system:
 
