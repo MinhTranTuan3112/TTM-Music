@@ -120,6 +120,10 @@ playing. After a song end, next song will start playing automatically unless use
 
 # System design(Working on it)
 
+## Source Code Structure:
+## Controllers actions:
+## UML Diagram:
+
 # Conclusion and Discussion:
 
 In conclusion, on the plus side, our website helps users relax, relieve stress after working hours by listening to music in different categories, artists. Our main target has somehow been done. On the other hand, the website still has a lot of problems that we wish we could have time to implement. Firstly, the adding playlist features are incomplete. Secondly, the songs control bar doesn’t keep its state when users perform operations like searching, viewing albums, playlists info,... And finally, our website still hasn't got the traditional music, classical music and many more wonderful genres.
