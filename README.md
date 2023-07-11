@@ -84,7 +84,7 @@ playing. After a song end, next song will start playing automatically unless use
 **4. Artist section:**
 
 - This section normally has 4 suggested artists for users to choose.
-- Users can view the information of the artist by clicking on the artist image. The artist information will be displayed contains: songs, albums and playlists.
+- Users can view the information of the artist by clicking on the artist image. The artist information will be displayed contains: songs, albums.
 
 **5. Playlist section:**
 
