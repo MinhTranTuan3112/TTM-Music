@@ -62,6 +62,8 @@ operations. Admins can also add audio file, cover image of the song
 
 ![Screenshot 2023-06-15 155621](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/a0e2e0d7-ea96-4e4d-81dd-f97dd5170f37)
 
+![Screenshot 2023-06-15 155621](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/0a9958e9-f5a8-44d1-a3f6-40585d03cf5d)
+
 - This is the website home page. The home pages have 5 sections:
 
 **1. Category section:**
@@ -77,10 +79,6 @@ control buttons for songs (users can pause/continue playing the song).
 - Users can first click on the cover image of the album to go to the details page of the album. Then simply a click on the play button will make the album start
 playing. After a song end, next song will start playing automatically unless users turn on repeat mode button
 - On the control bar, users can go to next song by clicking on the next button or go to previous song of the album by pressing the previous button.
-
-
-
-![Screenshot 2023-06-15 155621](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/0a9958e9-f5a8-44d1-a3f6-40585d03cf5d)
 
 ![Screenshot 2023-06-15 155621](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/cdd9c28d-824c-48d2-8e30-3221a3fb67e5)
 
