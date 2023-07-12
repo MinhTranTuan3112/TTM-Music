@@ -52,18 +52,14 @@ that they want to add to the playlist and be able to add them.
 
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/9031ffa9-19f6-4e7a-9701-dd62f9f2df5e)
 
-
 ### Sign up page
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/8118c619-43e2-40cb-a6f0-a7f013d1178d)
 - This page help users register their own accounts to login into the page by entering username, password and email (for password changing)
+- After users register their accounts, they will be redirected to the login page.
 
 ### Home page:
 
-![Screenshot 2023-06-15 155621](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/a0e2e0d7-ea96-4e4d-81dd-f97dd5170f37)
-
-![Screenshot 2023-06-15 155621](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/0a9958e9-f5a8-44d1-a3f6-40585d03cf5d)
-
-- This is the website home page. The home page has 5 sections:
+- The home page has 5 sections:
 
 **1. Category section:**
 
@@ -153,10 +149,6 @@ control buttons for songs (users can pause/continue playing the song).
 
 - On the control bar, users can go to next song by clicking on the next button or go to previous song of the album by pressing the previous button.
 - Users can shuffle the playing playlist by clicking on the shuffle button on the control bar. In case users want the playlist to have original song orders, they can refresh the page.
-
-![Screenshot 2023-06-15 155621](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/cdd9c28d-824c-48d2-8e30-3221a3fb67e5)
-
-![Screenshot 2023-06-15 155621](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/c7eb84f9-3185-485f-a687-e3f097393dd5)
 
 ### Library page:
 ![Library page](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/d2c02c0d-ea41-4cfb-a681-81176787bfd6)
