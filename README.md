@@ -55,7 +55,8 @@ that they want to add to the playlist and be able to add them.
 
 ### Sign up page
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/8118c619-43e2-40cb-a6f0-a7f013d1178d)
-- This page help users register an account to login into the page with username, password and email for password changing 
+- This page help users register their own accounts to login into the page by entering username, password and email (for password changing)
+
 ### Home page:
 
 ![Screenshot 2023-06-15 155621](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/a0e2e0d7-ea96-4e4d-81dd-f97dd5170f37)
@@ -66,7 +67,13 @@ that they want to add to the playlist and be able to add them.
 
 **1. Category section:**
 
-- This section will have 4 categories for the users to choose by clicking on the button with the name of the category. After user click on each category buttons. A list of songs that have that category will be loaded for the users to choose.
+- This section will have 4 categories for the users to choose by clicking on the button with the name of the category.
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/f572a771-8a17-46b5-920e-ddf58c9773a0)
+
+- After user click on each category buttons. A list of songs that have that category will be loaded for the users to choose. For example, if users choose Pop category, all of the songs have the caetgory *Pop* will be displayed:
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/ef66fe34-7355-40f4-84cb-2e79c548e164)
 
 **2. Song section:**
 
