@@ -116,13 +116,32 @@ control buttons for songs (users can pause/continue playing the song).
 **4. Artist section:**
 
 - This section normally has 4 suggested artists for users to choose.
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/b6ace5c3-574a-4800-8ed1-3a4236aa21d5)
+
 - Users can view the information of the artist by clicking on the artist image. The artist information will be displayed contains: songs, albums.
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/e06b8bf2-3ec8-4ad7-952f-bb4f545e9737)
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/06c71170-d429-4337-9f15-9a3331e67eab)
+
+- Users can play a song directly or select any albums to view.  
 
 **5. Playlist section:**
 
 - This section normally has 4 suggested playlists for users to choose.
-- Users can first click on anywhere on the playlist to go to the details page of the album. Then simply a click on the play button will make the playlist start
-playing. After a song end, next song will start playing automatically unless users turn on repeat mode button
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/279eb572-780d-4e70-b32f-da1f67594c75)
+
+- Users can first click on anywhere on the playlist to go to the details page of the album.
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/136eda2c-a67a-4db3-8d63-113a33cc49a0)
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/5ebb49b3-1579-4f36-bf98-4e767fb30ef1)
+
+- Then simply a click on the play button will make the playlist start playing. After a song end, next song will start playing automatically unless users turn on repeat mode button
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/1acbdd52-40d7-4672-bb43-19c3759aaea7)
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/031afd29-ed55-4c6c-88eb-7e845342ead3)
+
 - On the control bar, users can go to next song by clicking on the next button or go to previous song of the album by pressing the previous button.
 - Users can shuffle the playing playlist by clicking on the shuffle button on the control bar. In case users want the playlist to have original song orders, they can refresh the page.
 
