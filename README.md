@@ -84,8 +84,6 @@ that they want to add to the playlist and be able to add them.
 - Users can play the song directly on the home page by first hover on the cover image of the songs, then a play button will appear on each of the song cover. After clicking on that play button, the song will automatically played, and the song control bar at the bottom will pop op showing the song information and the
 control buttons for songs (users can pause/continue playing the song).
 
-
-
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/0e33b811-3443-4391-b592-c320eda112fb)
 
 - The control bar will hide itself after a few seconds. Users can mouse over the now playing bar at the bottom for it to pop up again.
@@ -95,9 +93,25 @@ control buttons for songs (users can pause/continue playing the song).
 **3. Album section:**
 
 - This section normally has 3 suggested albums for users to choose.
-- Users can first click on the cover image of the album to go to the details page of the album. Then simply a click on the play button will make the album start
-playing. After a song end, next song will start playing automatically unless users turn on repeat mode button
-- On the control bar, users can go to next song by clicking on the next button or go to previous song of the album by pressing the previous button.
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/adf5dd6c-bf29-4ae1-8d0a-cefff1452727)
+
+- Users can first click on the cover image of the album to go to the details page of the album. The page will display album name, its artist and all of the songs in the album.
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/89c9b1f4-2215-409b-a65b-1974c1b183ba)
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/d8b4c0c6-92b3-4386-9ea5-a93228b5ff51)
+
+- Then simply a click on the play button will make the album start playing.
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/13a56037-c91b-4262-b375-7340d49d82e9)
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/640aa674-a557-4539-bcdf-95008bc66ec6)
+
+- After a song end, next song will start playing automatically unless users turn on repeat mode button. In this album after the song *Water Fountain* ends, the next song *1994* will be start playing automatically. Or users can click on the next button to go to the next song if they wanted to.
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/f9e0a274-4ee1-4b8c-ba28-8c8179a4a2be)
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/70f8d92a-40da-426a-86f6-4b742b9c48d6)
+
+- On the control bar, users can go to next song by clicking on the next button or go to previous song of the album by pressing the previous button and pause/continue play the songs in the album.
 
 **4. Artist section:**
 
