@@ -90,6 +90,15 @@ control buttons for songs (users can pause/continue playing the song).
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/248325cf-0c96-42f8-9ba0-6de84ba02a50)
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/9b44f3a8-fbc5-448c-a4f8-df4ee9d4de7c)
 
+- When playing a songs, users can click the exand button on the top left corner of the control bar to open a bigger playing window
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/69322f15-2bb6-4cbb-a254-4bcebf69240b)
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/aad2e29a-fe51-435c-851b-52029ca1b049)
+
+- Users can view the lyrics on the right side of the window. Users can go back to the minimize the play window by clicking on the minimize button on the top right corner of the window.
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/9e104924-0066-442f-8441-14718fc54dc9)
+
 **3. Album section:**
 
 - This section normally has 3 suggested albums for users to choose.
