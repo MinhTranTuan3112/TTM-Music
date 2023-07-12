@@ -33,8 +33,6 @@ that they want to add to the playlist and be able to add them.
 
 # Wireframe or screenshots of the system:
 
-![](wireframe.png)
-
 ## The sitemap: 
 ![](/TTM_Music_Sitemap.png)
 
