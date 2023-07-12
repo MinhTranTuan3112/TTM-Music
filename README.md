@@ -78,8 +78,19 @@ that they want to add to the playlist and be able to add them.
 **2. Song section:**
 
 - This section normally has 8 suggested songs for users to choose
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/341b5e07-1b2e-440c-bf45-8756973b8ba6)
+
 - Users can play the song directly on the home page by first hover on the cover image of the songs, then a play button will appear on each of the song cover. After clicking on that play button, the song will automatically played, and the song control bar at the bottom will pop op showing the song information and the
 control buttons for songs (users can pause/continue playing the song).
+
+
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/0e33b811-3443-4391-b592-c320eda112fb)
+
+- The control bar will hide itself after a few seconds. Users can mouse over the now playing bar at the bottom for it to pop up again.
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/248325cf-0c96-42f8-9ba0-6de84ba02a50)
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/9b44f3a8-fbc5-448c-a4f8-df4ee9d4de7c)
 
 **3. Album section:**
 
