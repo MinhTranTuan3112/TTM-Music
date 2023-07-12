@@ -156,18 +156,6 @@ control buttons for songs (users can pause/continue playing the song).
 
 - This page will display users' saved playlists, songs and album
 
-### Album page:
-
-![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/230ca5a5-d105-4e05-a8cd-690b9bdccd85)
-
-- This page displays album contents, with options to play, edit or add the whole album to the library 
-
-### Playlist page:
-
-![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/483a2f68-abba-4e1b-ba90-f3d52ef0191d)
-
-- This page displays playlist contents, with options to play, edit or add new songs to the library 
-
 ## Database design:
 
 - ERD:
