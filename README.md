@@ -155,7 +155,29 @@ control buttons for songs (users can pause/continue playing the song).
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/aea5c581-e6ce-43f6-9ff4-8129bcc0e967)
 ![Library page](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/d2c02c0d-ea41-4cfb-a681-81176787bfd6)
 
-- This page will display users' saved playlists, songs and album
+- This page is similar to the home page, it also contains 5 sections:
+
+**1. Main section:**
+
+
+
+**2. Song section:**
+
+
+
+**3. Album section:**
+
+
+
+**4. Artist section:**
+
+
+
+**5. Playlist section:**
+
+
+
+- Users can search their favorite songs, albums, artists and playlists using the search bar on the first section of the library page
 
 ## Database design:
 
@@ -175,11 +197,9 @@ control buttons for songs (users can pause/continue playing the song).
 
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/a14e2c42-121f-403d-8a7c-28bd4ed82b41)
 
-
 - Java Source code structure:
 
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/460d3d7c-945b-4dc9-85f2-efe16080b8af)
-
 
 ## Controllers sitemap:
 
