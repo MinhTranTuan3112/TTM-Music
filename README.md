@@ -150,20 +150,23 @@ control buttons for songs (users can pause/continue playing the song).
 - Users can shuffle the playing playlist by clicking on the shuffle button on the control bar. In case users want the playlist to have original song orders, they can refresh the page.
 
 ### Library page:
-- To go to the library page, users can click on the library button on the navigation bar:
+
+- To go to the library page, users can click on the library button on the navigation bar. Users can only go to this page if they are logged in, else users will be redirected to the login page.
 
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/aea5c581-e6ce-43f6-9ff4-8129bcc0e967)
-![Library page](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/d2c02c0d-ea41-4cfb-a681-81176787bfd6)
 
 - This page is similar to the home page, it also contains 5 sections:
 
 **1. Main section:**
 
+- This section help users find their favorite songs, albums, artists and playlists easier. It contains 4 buttons: song, album, artist and playlist, after users click on each button, the page displays the corresponding users' favorite items
+- It also contains a search bar for users to search favorite items
 
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/45df24c6-6693-4247-8fd3-327d2c6ac2f7)
 
 **2. Song section:**
 
-
+- 
 
 **3. Album section:**
 
