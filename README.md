@@ -151,7 +151,7 @@ control buttons for songs (users can pause/continue playing the song).
 
 ### Library page:
 
-- To go to the library page, users can click on the library button on the navigation bar. Users can only go to this page if they are logged in, else users will be redirected to the login page.
+- To go to the library page, users can click on the library button on the navigation bar. Users can only go to this page if they are logged in, else they will be redirected to the login page.
 
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/aea5c581-e6ce-43f6-9ff4-8129bcc0e967)
 
@@ -166,7 +166,7 @@ control buttons for songs (users can pause/continue playing the song).
 
 **2. Song section:**
 
-- 
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/9a9d01bd-6bff-428c-9e41-26b741535b20)
 
 **3. Album section:**
 
