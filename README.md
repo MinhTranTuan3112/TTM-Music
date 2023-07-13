@@ -9,6 +9,7 @@ TTM Music Page by group 9 - SE1726
 # About this project
   
 # How to clone this project:
+
 ```
 git clone https://github.com/dunghuynh-teaching/prj301-se1726-09.git
 ```
@@ -182,7 +183,7 @@ control buttons for songs (users can pause/continue playing the song).
 
 ## Controllers sitemap:
 
-## UML Diagram:
+## UML Class Diagram:
 
 # Conclusion and Discussion:
 
