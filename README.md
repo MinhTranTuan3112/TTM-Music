@@ -166,7 +166,7 @@ control buttons for songs (users can pause/continue playing the song).
 
 **2. Song section:**
 
-- This section will display all users' favorite songs. Users can play the song directly by clicking ont the song image.
+- This section will display all users' favorite songs. Users can play the song directly by clicking on the song images.
 
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/9a9d01bd-6bff-428c-9e41-26b741535b20)
 
