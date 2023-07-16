@@ -173,16 +173,20 @@ control buttons for songs (users can pause/continue playing the song).
 **3. Album section:**
 
 - This section will display all users' favorite albums. Users can view the detail information of the album by clicking on the album image.
+
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/cd13d880-7078-4460-b693-986679899179)
 
 **4. Artist section:**
 
 - This section will display all users' favorite artists. Users can view the information of the artist by clickin on the artist image.
+
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/b31c8417-3348-4ce5-b29e-fc6d0832aa85)
 
 **5. Playlist section:**
 
+- This section will display all users' favorite playlists. Users can view the information of the artist by clickin on the playlist images
 
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/dc0e5231-632c-4afd-a52d-6f829910e465)
 
 - Users can search their favorite songs, albums, artists and playlists using the search bar on the first section of the library page
 
