@@ -189,6 +189,12 @@ control buttons for songs (users can pause/continue playing the song).
 
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/dc0e5231-632c-4afd-a52d-6f829910e465)
 
+### Search features:
+
+- Users can search by entering the keyword on the search bar on the navigation bar on the top of the home page.
+- The results will contain songs, albums, artists and playlists that have the name contains the keyword.
+
+
 ## Database design:
 
 - ERD:
