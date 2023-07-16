@@ -152,6 +152,7 @@ control buttons for songs (users can pause/continue playing the song).
 ### Library page:
 
 - To go to the library page, users can click on the library button on the navigation bar. Users can only go to this page if they are logged in, else they will be redirected to the login page.
+- Users can search their favorite songs, albums, artists and playlists using the search bar on the first section of the library page
 
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/aea5c581-e6ce-43f6-9ff4-8129bcc0e967)
 
@@ -187,8 +188,6 @@ control buttons for songs (users can pause/continue playing the song).
 - This section will display all users' favorite playlists. Users can view the information of the artist by clickin on the playlist images
 
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/dc0e5231-632c-4afd-a52d-6f829910e465)
-
-- Users can search their favorite songs, albums, artists and playlists using the search bar on the first section of the library page
 
 ## Database design:
 
