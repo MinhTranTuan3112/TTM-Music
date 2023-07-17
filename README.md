@@ -219,7 +219,11 @@ control buttons for songs (users can pause/continue playing the song).
 
 ## Controllers sitemap:
 
+![image](controller_diagram.jpeg)
+
 ## UML Class Diagram:
+
+
 
 # Conclusion and Discussion:
 
