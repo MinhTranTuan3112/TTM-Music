@@ -1,0 +1,144 @@
+
+* {
+    font-family: 'Be Vietnam Pro', sans-serif;
+}
+body {
+    background-color: black;
+    color: white;
+}
+input[type='text'] {
+    color: black;
+}
+.playlist-name {
+    margin-inline: 20px;
+}
+span.artist-name {
+    font-weight: bold;
+}
+.playlist-title {
+    display: flex;
+    flex-direction: row;
+}
+.playlist-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.playlist-cover img {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+.playlist-cover {
+    height: 300px;
+    aspect-ratio: 1/1;
+    padding: 10px;
+}
+.playlist-buttons :is(.glyphicon) {
+    background-color: grey;
+    padding: 10px;
+    font-size: 30px;
+    border-radius: 100%;
+}
+.playlist-buttons {
+    display: flex;
+    column-gap: 10px;
+}
+.favorite-button,.add-button, .playlist-play-button,.playlist-shuffle-button {
+    display: flex;
+    align-items: center;
+}
+.play-button {
+    display: flex;
+}
+.playlist-buttons :is(.glyphicon):hover {
+    background-color: white;
+    color: grey;
+}
+.playlist-item {
+    margin-left: 20px;
+}
+.playlist-item-buttons {
+    display: flex;
+    align-items: center;
+    display: none;
+}
+/*for hover play buttons(when hover on songs)*/
+.playlist-item-img {
+    display: inline-block;
+    position: relative;
+}
+.hover-play-button {
+    background-color: transparent;
+    border: 2px solid white;
+    height: 50px;
+    aspect-ratio: 1/1;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    font-size: 30px;
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    z-index: 1;
+    cursor: pointer;
+    &:hover {
+        background-color: steelblue;
+        color: white;
+    }
+}
+.remove-button :is(.glyphicon) {
+    background-color: grey;
+    padding: 10px;
+    font-size: 30px;
+    border-radius: 100%;
+}
+.remove-button :is(.glyphicon):hover {
+    background-color: white;
+    color: grey;
+}
+.playlist-content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+.playlist-item {
+    display: flex;
+    column-gap: 20px;
+}
+.playlist-item-img img{
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+.playlist-item-img {
+    height: 125px;
+    aspect-ratio: 1/1;
+}
+.playlist-item-name {
+    display: flex;
+    align-items: center;
+    font-size: large;
+}
+
+.empty {
+    padding-top: 60px;
+}
+/*load animations*/
+.hidden-load {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-60%);
+    transition: all 1s;
+}
+.show-load {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+@media(prefers-reduced-motion) {
+    .hidden-load {
+        transition: none;
+    }
+}
