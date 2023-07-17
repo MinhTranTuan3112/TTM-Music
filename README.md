@@ -151,7 +151,7 @@ control buttons for songs (users can pause/continue playing the song).
 
 - This section normally has 4 suggested playlists for users to choose.
 
-![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/279eb572-780d-4e70-b32f-da1f67594c75)
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/25a57279-10f1-4146-8a1f-ad9af34c1cf6)
 
 - Users can first click on anywhere on the playlist to go to the details page of the album.
 
