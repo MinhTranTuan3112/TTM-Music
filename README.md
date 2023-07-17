@@ -77,7 +77,7 @@ that they want to add to the playlist and be able to add them.
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/341b5e07-1b2e-440c-bf45-8756973b8ba6)
 
 - Users can play the song directly on the home page by first hover on the cover image of the songs, then a play button will appear on each of the song cover. After clicking on that play button, the song will automatically played, and the song control bar at the bottom will pop op showing the song information and the
-control buttons for songs (users can pause/continue playing the song).
+control buttons for songs (users can pause/continue playing the song). 
 
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/0e33b811-3443-4391-b592-c320eda112fb)
 
@@ -93,6 +93,12 @@ control buttons for songs (users can pause/continue playing the song).
 - Users can view the lyrics on the right side of the window. Users can go back to the minimize the play window by clicking on the minimize button on the top right corner of the window.
 
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/9e104924-0066-442f-8441-14718fc54dc9)
+
+- If users like the song, they can add it to libary by clicking on the add button on the control bar. Users can only use this feature when they are logged in, if they are not logged in, the page will redirect users to the login page.
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/4c7b41fa-c784-46f8-ac00-f2c4b742165f)
+
+- They can remove the song from the library by clicking on it again
 
 **3. Album section:**
 
@@ -116,6 +122,12 @@ control buttons for songs (users can pause/continue playing the song).
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/70f8d92a-40da-426a-86f6-4b742b9c48d6)
 
 - On the control bar, users can go to next song by clicking on the next button or go to previous song of the album by pressing the previous button and pause/continue play the songs in the album.
+
+- If users like the album, they can add it to libary by clicking on the like button on the top of the album page. Users can only use this feature when they are logged in, if they are not logged in, the page will redirect users to the login page.
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/2e2d3a4e-e2c2-4b7f-911e-1094523a8f30)
+
+- They can remove the album from the library by clicking on it again
 
 **4. Artist section:**
 
@@ -148,6 +160,12 @@ control buttons for songs (users can pause/continue playing the song).
 
 - On the control bar, users can go to next song by clicking on the next button or go to previous song of the album by pressing the previous button.
 - Users can shuffle the playing playlist by clicking on the shuffle button on the control bar. In case users want the playlist to have original song orders, they can refresh the page.
+
+- If users like the playlist, they can add it to libary by clicking on the like button on the top of the playlist page. Users can only use this feature when they are logged in, if they are not logged in, the page will redirect users to the login page.
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/2e2d3a4e-e2c2-4b7f-911e-1094523a8f30)
+
+- They can remove the playlist from the library by clicking on it again
 
 ### Library page:
 
@@ -191,9 +209,12 @@ control buttons for songs (users can pause/continue playing the song).
 
 ### Search features:
 
+- Users can use this feature without login
 - Users can search by entering the keyword on the search bar on the navigation bar on the top of the home page.
-- The results will contain songs, albums, artists and playlists that have the name contains the keyword.
 
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/b0cfb809-c106-47aa-b9e6-8f00c5f64f68)
+
+- The results will contain songs, albums, artists and playlists that have the name contains the keyword
 
 ## Database design:
 
