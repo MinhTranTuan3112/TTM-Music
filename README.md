@@ -66,7 +66,7 @@ that they want to add to the playlist and be able to add them.
 
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/f572a771-8a17-46b5-920e-ddf58c9773a0)
 
-- After user click on each category buttons. A list of songs that have that category will be loaded for the users to choose. For example, if users choose Pop category, all of the songs have the category *Pop* will be displayed:
+- After user click on each category buttons. A list of songs that have that category will be loaded for the users to choose. For example, if users choose Pop category, all of the songs that belong in the category *Pop* will be displayed:
 
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/ef66fe34-7355-40f4-84cb-2e79c548e164)
 
@@ -81,11 +81,11 @@ control buttons for songs (users can pause/continue playing the song).
 
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/0e33b811-3443-4391-b592-c320eda112fb)
 
-- The control bar will hide itself after a few seconds. Users can mouse over the now playing bar at the bottom for it to pop up again.
+- The control bar will automatically hide itself atfer a few seconds of being inactivity. Users can mouse over the now playing bar at the bottom for it to show up again.
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/248325cf-0c96-42f8-9ba0-6de84ba02a50)
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/9b44f3a8-fbc5-448c-a4f8-df4ee9d4de7c)
 
-- When playing a songs, users can click the exand button on the top left corner of the control bar to open a bigger playing window
+- When playing a songs, users can click the expand button on the top left corner of the control bar to open a bigger playing window
 
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/69322f15-2bb6-4cbb-a254-4bcebf69240b)
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/aad2e29a-fe51-435c-851b-52029ca1b049)
@@ -227,8 +227,8 @@ control buttons for songs (users can pause/continue playing the song).
 
 # Conclusion and Discussion:
 
-In conclusion, on the plus side, our website helps users relax, relieve stress after working hours by listening to music in different categories, artists. Our main target has somehow been done. On the other hand, the website still has a lot of problems that we wish we could have time to implement. Firstly, the adding playlist features are incomplete. Secondly, the songs control bar doesn’t keep its state when users perform operations like searching, viewing albums, playlists info,... And finally, our website still hasn't got the traditional music, classical music and many more wonderful genres.
+In conclusion, on the positive side, our website helps users to finally be able to relax after a long time of working by listening to their favorite music without being disturbed by any ads, or artists. Our main target has somehow been done. On the other hand, our website still has a lot of problems that are still in need of fixing to be perfect. To be more informative about these problems we encounter, adding playlist features is incomplete. Moreover, at first, the songs control bar has not been able to keep playing a song when users perform any operations such as searching, viewing albums, playlists info, etc. But after some time of doing research, we are now able to make it run as we desire. And finally, we are still in the process of improving our streaming quality.
 
-About what we’ve learnt during the development of the development, we think that we have learnt a lot. First about the UI, we learnt how to make the UI responsive, then adding loading animations for the page to look more interesting. Then we learnt how web applications work by implementing each action of each controller. We also learnt how to use github (pushing code,...), writing documentation in markdown format to work as a team.
+What we’ve learned during development of our project, we think that we have learned a lot. First, about the UI, we learned how to make the UI responsive, then design our loading animations for the page to become more attentive. Next, we learned how web applications work by implementing each action of each controller. We also learned how to use GitHub (like storing our code for other members of the team, letting us work together on the project from anywhere), and write documentation in markdown format to document what we have done from the beginning of our project and our information.
 
-If we could have more time, the first thing that we want to add is the podcasts features since podcasts help provide knowledge, useful information for everyday life. Secondly, we want to try storing the audio files on the web server. Thirdly, we want to complete the playlists features. And finally, more and more songs.
+If we could have more time, the first thing on our lists would be a podcast feature providing us with information for everyday life. Secondly, we want to try storing the audio files on the web server. Right now,  our files are still stored in Google Drive. Thirdly, we want to complete the playlist features. And finally, our final goal is that everyone will listen to every song they want, from the 90s to now.
