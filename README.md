@@ -140,7 +140,12 @@ control buttons for songs (users can pause/continue playing the song).
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/e06b8bf2-3ec8-4ad7-952f-bb4f545e9737)
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/06c71170-d429-4337-9f15-9a3331e67eab)
 
-- Users can play a song directly or select any albums to view.  
+- Users can play a song directly or select any albums to view.
+- If users like the artist, they can add the current artist to libary by clicking on the like button on the top of the artist page. Users can only use this feature when they are logged in, if they are not logged in, the page will redirect users to the login page.
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/2e2d3a4e-e2c2-4b7f-911e-1094523a8f30)
+
+- They can remove the saved artist from the library by clicking on it again
 
 **5. Playlist section:**
 
