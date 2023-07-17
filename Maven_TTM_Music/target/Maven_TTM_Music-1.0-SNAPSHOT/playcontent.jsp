@@ -45,7 +45,7 @@
                 changeAddFavoriteButtonColor(add_button);
                 if (document.querySelector('#dialog') !== null) {
                     let myDialog = document.querySelector('#dialog');
-                    let song_name = myDialog.querySelector('.song_name');
+                    let song_name = myDialog.querySelector('.item_name');
                     song_name.textContent = document.querySelector('.playing-song-name-content').textContent;
                     let dialog_action = myDialog.querySelector('.dialog_action');
                     let songID = document.querySelector('#songID');
@@ -54,7 +54,7 @@
                     if (add_button.style.color === changedAddButtonColor) {
                         //save code
                         $.ajax({
-                            url: "./like?action=like_song&songid=" + songID.textContent,
+                            url: "./like?itemtype=song&action=like&itemid=" + songID.textContent,
                             method: "POST",
                             data: {songid: songID.textContent},
                             success: function (result) {
@@ -65,7 +65,7 @@
                     } else {
                         //remove code
                         $.ajax({
-                            url: "./like?action=remove_song&songid=" + songID.textContent,
+                            url: "./like?itemtype=song&action=delete&itemid=" + songID.textContent,
                             method: "POST",
                             data: {songid: songID.textContent},
                             success: function (result) {

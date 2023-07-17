@@ -14,7 +14,7 @@
         </button>-->
     <dialog id="dialog">
         <h2 class="dialog_action">Saved</h2>
-        <p class="song_name"><a href="#"></a></p>
+        <p class="item_name"><a href="#"></a></p>
         <button onclick="window.dialog.close();" aria-label="close" class="x">❌</button>
     </dialog>
     <script src="js/favDialogFunctions.js"></script>

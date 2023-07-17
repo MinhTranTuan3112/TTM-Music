@@ -35,11 +35,15 @@ let playlistItems = document.querySelectorAll('.playlist-item');
 playlistItems.forEach(function (playlistItem) {
     playlistItem.addEventListener('mouseover', function () {
         let playlistButtons = this.querySelector('.playlist-item-buttons');
-        playlistButtons.style.display = 'flex';
+        if (playlistButtons !== null) {
+            playlistButtons.style.display = 'flex';
+        }
     });
     playlistItem.addEventListener('mouseout', function () {
         let playlistButtons = this.querySelector('.playlist-item-buttons');
-        playlistButtons.style.display = 'none';
+        if (playlistButtons !== null) {
+            playlistButtons.style.display = 'none';
+        }
     });
 });
 //remove a song 
@@ -48,7 +52,9 @@ removeButtons.forEach(function (removeButton) {
     removeButton.addEventListener('click', function () {
         if (confirm('Remove this song from the playlist')) {
             let playlistItem = removeButton.closest('.playlist-item');
-            playlistItem.remove();
+            if (playlistItem !== null) {
+                playlistItem.remove();
+            }
         }
     });
 });
@@ -62,11 +68,15 @@ function addSong() {
     playlistItems.forEach(function (playlistItem) {
         playlistItem.addEventListener('mouseover', function () {
             let playlistButtons = this.querySelector('.playlist-item-buttons');
-            playlistButtons.style.display = 'flex';
+            if (playlistButtons !== null) {
+                playlistButtons.style.display = 'flex';
+            }
         });
         playlistItem.addEventListener('mouseout', function () {
             let playlistButtons = this.querySelector('.playlist-item-buttons');
-            playlistButtons.style.display = 'none';
+            if (playlistButtons !== null) {
+                playlistButtons.style.display = 'none';
+            }
         });
     });
     let removeButtons = document.querySelectorAll('.remove-button');
@@ -74,7 +84,9 @@ function addSong() {
         removeButton.addEventListener('click', function () {
             if (confirm('Remove this song from the playlist')) {
                 let playlistItem = removeButton.closest('.playlist-item');
-                playlistItem.remove();
+                if (playlistItem !== null) {
+                    playlistItem.remove();
+                }
             }
         });
     });

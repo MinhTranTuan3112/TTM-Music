@@ -18,53 +18,7 @@
         <!--icon file-->
         <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1382/1382065.png">
         <title>${requestScope.personalPlaylist ? 'New Playlist' : requestScope.playlist.name}</title>
-        <script type="text/javascript">
-            class Song {
-                constructor(songID, songUrl, songName, songImage, songArtists, songLyrics) {
-                    this.songID = songID;
-                    this.songUrl = songUrl;
-                    this.songName = songName;
-                    this.songImage = songImage;
-                    this.songArtists = songArtists;
-                    this.songLyrics = songLyrics;
-                }
-            }
-            function playPlaylist(songs, index = 0) {
-                console.log('Playlist started');
-                if (index >= songs.length) {
-                    return;
-                }
-                let song = songs[index];
-                playSong(song.songID, song.songUrl, song.songName, song.songImage, song.songArtists, song.songLyrics);
-                mysong.addEventListener('ended', () => playPlaylist(songs, index + 1));
-            }
-            <c:if test="${requestScope.song_list != null}">
-            var songs = [
-                <c:forEach items="${requestScope.song_list}" var="song">
-                {
-                    songID: '${song.songid}',
-                    songUrl: '${song.url}',
-                    songName: '${fn:replace(song.name, "'", "\\'")}',
-                    songImage: '${song.image}',
-                    songArtists: '${song.getArtistInfo()}',
-                    songLyrics: `${song.getLyric()}`
-                },
-                </c:forEach>
-            ];
-            </c:if>
-            var currentSongIndex = 0;
-            function startPlayingPlaylist() {
-                document.querySelector('.current-playlist-name').textContent = `${requestScope.playlist.name}`;
-                playPlaylist(songs);
-            }
-            function changeSongIndex(newIndex) {
-                currentSongIndex = newIndex;
-            }
-            function ShuffleThenPlay() {
-                shuffleSongs();
-                startPlayingPlaylist();
-            }
-        </script>
+        
     </head>
 
     <body>
@@ -76,6 +30,7 @@
             <form class="wrapper hidden-load" id="playlist-form" action="">
                 <div class="playlist-title hidden-load">
                     <div class="playlist-description">
+                        <div hidden id="playlistid">${requestScope.playlist.playlistid}</div>
                         <div class="playlist-name hidden-load">
                             <h1 ${requestScope.personalPlaylist ? contenteditable : ''}  id="playlist-name">
                                 <c:out value="${requestScope.personalPlaylist ? 'My Playlist' : requestScope.playlist.name}"/> 
@@ -95,7 +50,7 @@
                     </div>
                     <div class="playlist-buttons hidden-load">
                         <div class="playlist-play-button" onclick="startPlayingPlaylist()"><div class="glyphicon glyphicon-play-circle"></div></div>
-                        <div class="favorite-button">
+                        <div class="favorite-button" onclick="addNewFavoritePlaylist(this);">
                             <div class="glyphicon glyphicon-thumbs-up"></div>
                         </div>
                         <div class="playlist-shuffle-button" onclick="ShuffleThenPlay()">
@@ -155,7 +110,6 @@
                                             <div class="remove-button">
                                                 <div class="glyphicon glyphicon-remove-sign"></div>
                                             </div>
-
                                         </div>
                                     </c:if>
                                 </div>
@@ -172,6 +126,102 @@
             </form>
         </main>
         <script src="js/PlaylistPageFunctions.js"></script>
+        <script type="text/javascript">
+            class Song {
+                constructor(songID, songUrl, songName, songImage, songArtists, songLyrics) {
+                    this.songID = songID;
+                    this.songUrl = songUrl;
+                    this.songName = songName;
+                    this.songImage = songImage;
+                    this.songArtists = songArtists;
+                    this.songLyrics = songLyrics;
+                }
+            }
+            function playPlaylist(songs, index = 0) {
+                console.log('Playlist started');
+                if (index >= songs.length) {
+                    return;
+                }
+                let song = songs[index];
+                playSong(song.songID, song.songUrl, song.songName, song.songImage, song.songArtists, song.songLyrics);
+                mysong.addEventListener('ended', () => playPlaylist(songs, index + 1));
+            }
+            <c:if test="${requestScope.song_list != null}">
+            var songs = [
+                <c:forEach items="${requestScope.song_list}" var="song">
+                {
+                    songID: '${song.songid}',
+                    songUrl: '${song.url}',
+                    songName: '${fn:replace(song.name, "'", "\\'")}',
+                    songImage: '${song.image}',
+                    songArtists: '${song.getArtistInfo()}',
+                    songLyrics: `${song.getLyric()}`
+                },
+                </c:forEach>
+            ];
+            </c:if>
+            var currentSongIndex = 0;
+            function startPlayingPlaylist() {
+                document.querySelector('.current-playlist-name').textContent = `${requestScope.playlist.name}`;
+                playPlaylist(songs);
+            }
+            function changeSongIndex(newIndex) {
+                currentSongIndex = newIndex;
+            }
+            function ShuffleThenPlay() {
+                shuffleSongs();
+                startPlayingPlaylist();
+            }
+            const likeButtonColor = 'rgb(167, 237, 231)';
+            let likeButton = document.querySelector('.favorite-button');
+            <c:if test="${requestScope.isLiked == true}">
+            if (likeButton !== null) {
+                console.log('Changed color');
+                changeLikeButtonColor(likeButton);
+            } else {
+                console.log('Change color failed!! ');
+            }
+            </c:if>
+            function changeLikeButtonColor(like_button) {
+                if (like_button.style.color !== likeButtonColor) {
+                    like_button.style.color = likeButtonColor;
+                } else {
+                    like_button.style.color = 'white';
+                }
+            }
+            function addNewFavoritePlaylist(like_button) {
+                changeLikeButtonColor(like_button);
+                let myDialog = document.querySelector('#dialog');
+                let dialog_action = myDialog.querySelector('.dialog_action');
+                let playlist_name = document.querySelector('.item_name');
+                playlist_name.textContent = `${requestScope.playlist.name}`;
+                let playlistID = document.querySelector('#playlistid');
+                if (like_button.style.color === likeButtonColor) {
+                    //save code
+                    $.ajax({
+                        url: "./like?itemtype=playlist&action=like&itemid=" + playlistID.textContent,
+                        method: "POST",
+                        data: {playlistid: playlistID.textContent},
+                        success: function (result) {
+                            console.log("Passed playlist id: " + result);
+                        }
+                    });
+                    dialog_action.textContent = 'Saved';
+                } else {
+                    //remove code
+                    $.ajax({
+                        url: "./like?itemtype=playlist&action=delete&itemid=" + playlistID.textContent,
+                        method: "POST",
+                        data: {playlist: playlistID.textContent},
+                        success: function (result) {
+                            console.log("Passed playlist id: " + result);
+                        }
+                    });
+                    dialog_action.textContent = 'Removed';
+                }
+                myDialog.showModal();
+            }
+        </script>
         <jsp:include page="playcontent.jsp" flush="true"/>
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

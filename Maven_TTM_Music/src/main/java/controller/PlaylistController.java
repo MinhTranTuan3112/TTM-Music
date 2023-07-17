@@ -2,6 +2,8 @@ package controller;
 
 import Song.SongDAO;
 import Song.SongDTO;
+import Users.UserDAO;
+import Users.UserDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -40,10 +42,20 @@ public class PlaylistController extends HttpServlet {
             String action = request.getParameter("action");
             if (action == null || action.trim().isEmpty()) {
                 String playlistid = request.getParameter("playlistid");
+                boolean isLiked = false;
+                HttpSession session = request.getSession(false);
+                if (session != null) {
+                    if (session.getAttribute("usersession") != null) {
+                        UserDTO userDTO = (UserDTO)(session.getAttribute("usersession"));
+                        String username = userDTO.getUsername();
+                        isLiked = (UserDAO.checkFavItemExist(username, "playlist",playlistid));
+                    }
+                }
                 PlaylistDAO playlistDAO = new PlaylistDAO();
                 PlaylistDTO playlistDTO = playlistDAO.load(playlistid);
                 ArrayList<SongDTO> song_list = playlistDAO.getAllSongsOfAPlaylist(playlistid);
                 boolean personalPlaylist = false;
+                request.setAttribute("isLiked", isLiked);
                 request.setAttribute("personalPlaylist", personalPlaylist);
                 request.setAttribute("playlist", playlistDTO);
                 request.setAttribute("song_list", song_list);

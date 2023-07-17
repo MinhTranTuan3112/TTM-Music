@@ -33,28 +33,25 @@ public class LikeController extends HttpServlet {
             out.println("<title>Servlet LikeController</title>");
             out.println("</head>");
             out.println("<body>");
+            String itemType = request.getParameter("itemtype");
             String action = request.getParameter("action");
-            if (action.equals("like_song")) {
-                HttpSession session = request.getSession(false);
-                if (session != null) {
-                    if (session.getAttribute("usersession") != null) {
-                        String songid = request.getParameter("songid");
-                        UserDTO currentUser = (UserDTO) (session.getAttribute("usersession"));
-                        String username = currentUser.getUsername();
-                        UserDAO.addNewFavoriteItem("song", username, songid);
-                    }
+            String itemid = request.getParameter("itemid");
+            HttpSession session = request.getSession(false);
+            String username = null;
+            if (session != null) {
+                if (session.getAttribute("usersession") != null) {
+                    UserDTO currentUser = (UserDTO) (session.getAttribute("usersession"));
+                    username = currentUser.getUsername();
                 }
-            } else if (action.equals("remove_song")) {
-                HttpSession session = request.getSession(false);
-                if (session != null) {
-                    if (session.getAttribute("usersession") != null) {
-                        String songid = request.getParameter("songid");
-                        UserDTO currentUser = (UserDTO) (session.getAttribute("usersession"));
-                        String username = currentUser.getUsername();
-                        UserDAO.deleteFavoriteItem("song", username, songid);
-                    }
-                }
-            } 
+            }
+            if (username == null) {
+                return;
+            }
+            if (action.equalsIgnoreCase("like")) {
+                UserDAO.addNewFavoriteItem(itemType, username, itemid);
+            } else if (action.equalsIgnoreCase("delete")) {
+                UserDAO.deleteFavoriteItem(itemType, username, itemid);
+            }
             out.println("</body>");
             out.println("</html>");
         }
