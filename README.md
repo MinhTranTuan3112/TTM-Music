@@ -47,14 +47,14 @@ that they want to add to the playlist and be able to add them.
 
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/5cc43833-88ab-475a-9fa6-a747139276eb)
 
-- If users enter wrong username or password, a message will be display above the form.
+- If users enter wrong username or password, a message will be displayed above the form.
 
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/9031ffa9-19f6-4e7a-9701-dd62f9f2df5e)
 
 ### Sign up page
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/8118c619-43e2-40cb-a6f0-a7f013d1178d)
 - This page help users register their own accounts to login into the page by entering username, password and email (for password changing)
-- After users register their accounts, they will be redirected to the login page.
+- After users register their accounts, they will be redirected to the login page to login with the username and password they have created.
 
 ### Home page:
 
