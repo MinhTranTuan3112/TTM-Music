@@ -205,7 +205,7 @@ control buttons for songs (users can pause/continue playing the song).
   
 ![relational_schema](relational_schema.png)
 
-# System design(Working on it)
+# System design
 
 ## Source Code Structure:
 
