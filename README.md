@@ -191,9 +191,12 @@ control buttons for songs (users can pause/continue playing the song).
 
 ### Search features:
 
+- Users can use this feature without login
 - Users can search by entering the keyword on the search bar on the navigation bar on the top of the home page.
-- The results will contain songs, albums, artists and playlists that have the name contains the keyword.
 
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/b0cfb809-c106-47aa-b9e6-8f00c5f64f68)
+
+- The results will contain songs, albums, artists and playlists that have the name contains the keyword
 
 ## Database design:
 
