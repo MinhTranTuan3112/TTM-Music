@@ -20,18 +20,6 @@
         <!--page icon css file-->
         <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2285/2285073.png">
         <title>TTM Music</title>
-        <script type="text/javascript">
-            function changeFavButtonColor(songid) {
-            <c:choose>
-                <c:when test="${sessionScope.usersession != null}">
-                    
-                </c:when>
-                <c:otherwise>
-
-                </c:otherwise>
-            </c:choose>
-            }
-        </script>
     </head>
 
     <body>

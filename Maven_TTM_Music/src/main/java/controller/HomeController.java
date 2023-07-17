@@ -89,11 +89,13 @@ public class HomeController extends HttpServlet {
                 home_playlist_list = playlistDAO.getTop4Playlists();
                 HttpSession session = request.getSession(false);
                 if (session != null) {
-                    ArrayList<SongDTO> user_song_list;
-                    UserDTO userDTO = (UserDTO) (session.getAttribute("usersession"));
-                    String username = userDTO.getUsername();
-                    user_song_list = UserDAO.getAllFavorites(SongDTO.class, username);
-                    request.setAttribute("user_song_list", user_song_list);
+                    if (session.getAttribute("usersession") != null) {
+                        ArrayList<SongDTO> user_song_list;
+                        UserDTO userDTO = (UserDTO) (session.getAttribute("usersession"));
+                        String username = userDTO.getUsername();
+                        user_song_list = UserDAO.getAllFavorites(SongDTO.class, username);
+                        request.setAttribute("user_song_list", user_song_list);
+                    }
                 }
                 for (PlaylistDTO playlistDTO : home_playlist_list) {
                     playlistDTO.setSong_list(playlistDAO.getAllSongsOfAPlaylist(playlistDTO.getPlaylistid()));
@@ -121,11 +123,13 @@ public class HomeController extends HttpServlet {
                 home_playlist_list = UserDAO.searchAll(PlaylistDTO.class, search_keyword);
                 HttpSession session = request.getSession(false);
                 if (session != null) {
-                    ArrayList<SongDTO> user_song_list;
-                    UserDTO userDTO = (UserDTO) (session.getAttribute("usersession"));
-                    String username = userDTO.getUsername();
-                    user_song_list = UserDAO.getAllFavorites(SongDTO.class, username);
-                    request.setAttribute("user_song_list", user_song_list);
+                    if (session.getAttribute("usersession") != null) {
+                        ArrayList<SongDTO> user_song_list;
+                        UserDTO userDTO = (UserDTO) (session.getAttribute("usersession"));
+                        String username = userDTO.getUsername();
+                        user_song_list = UserDAO.getAllFavorites(SongDTO.class, username);
+                        request.setAttribute("user_song_list", user_song_list);
+                    }
                 }
                 for (PlaylistDTO playlistDTO : home_playlist_list) {
                     playlistDTO.setSong_list(playlistDAO.getAllSongsOfAPlaylist(playlistDTO.getPlaylistid()));
