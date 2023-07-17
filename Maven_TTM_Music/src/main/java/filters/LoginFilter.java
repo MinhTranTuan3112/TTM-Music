@@ -41,7 +41,7 @@ public class LoginFilter implements Filter {
         /*
 	for (Enumeration en = request.getParameterNames(); en.hasMoreElements(); ) {
 	    String name = (String)en.nextElement();
-	    String values[] = request.getParameterValues(name);
+	    String values[] = request.getParameterVal   ues(name);
 	    int n = values.length;
 	    StringBuffer buf = new StringBuffer();
 	    buf.append(name);

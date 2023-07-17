@@ -25,6 +25,7 @@
             <jsp:include page="navbar.jsp" flush="true"/>
             <jsp:include page="favDialog.jsp" flush="true"/>
             <div class="artist-title hidden-load">
+                <div hidden id="artistid">${requestScope.artist.artistid}</div>
                 <div class="artist-cover hidden-load"><img
                         src="${requestScope.artist.image}" alt=""></div>
                 <div class="artist-description hidden-load">
@@ -32,7 +33,7 @@
                         <h1 class="artist-name-content">${requestScope.artist.name}</h1>
                     </div>
                     <div class="artist-buttons hidden-load">
-                        <div class="favorite-button">
+                        <div class="favorite-button" onclick="addNewFavoriteArtist(this)">
                             <div class="glyphicon glyphicon-thumbs-up"></div>
                         </div>
                     </div>
@@ -113,6 +114,57 @@
         </main>
         <div class="empty"></div>
         <script src="js/ArtistPageFunctions.js"></script>
+        <script type="text/javascript">
+            const likeButtonColor = 'rgb(167, 237, 231)';
+            let likeButton = document.querySelector('.favorite-button');
+            <c:if test="${requestScope.isLiked == true}">
+            if (likeButton !== null) {
+                console.log('Changed color');
+                changeLikeButtonColor(likeButton);
+            } else {
+                console.log('Change color failed!! ');
+            }
+            </c:if>
+            function changeLikeButtonColor(like_button) {
+                if (like_button.style.color !== likeButtonColor) {
+                    like_button.style.color = likeButtonColor;
+                } else {
+                    like_button.style.color = 'white';
+                }
+            }
+            function addNewFavoriteArtist(like_button) {
+                changeLikeButtonColor(like_button);
+                let myDialog = document.querySelector('#dialog');
+                let dialog_action = myDialog.querySelector('.dialog_action');
+                let artist_name = document.querySelector('.item_name');
+                artist_name.textContent = `${requestScope.artist.name}`;
+                let artistID = document.querySelector('#artistid');
+                if (like_button.style.color === likeButtonColor) {
+                    //save code
+                    $.ajax({
+                        url: "./like?itemtype=artist&action=like&itemid=" + artistID.textContent,
+                        method: "POST",
+                        data: {artistid: artistID.textContent},
+                        success: function (result) {
+                            console.log("Passed artist id: " + result);
+                        }
+                    });
+                    dialog_action.textContent = 'Saved';
+                } else {
+                    //remove code
+                    $.ajax({
+                        url: "./like?itemtype=artist&action=delete&itemid=" + artistID.textContent,
+                        method: "POST",
+                        data: {artistid: artistID.textContent},
+                        success: function (result) {
+                            console.log("Passed artist id: " + result);
+                        }
+                    });
+                    dialog_action.textContent = 'Removed';
+                }
+                myDialog.showModal();
+            }
+        </script>
         <jsp:include page="playcontent.jsp" flush="true"/>
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>

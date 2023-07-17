@@ -33,9 +33,6 @@ public class LikeController extends HttpServlet {
             out.println("<title>Servlet LikeController</title>");
             out.println("</head>");
             out.println("<body>");
-            String itemType = request.getParameter("itemtype");
-            String action = request.getParameter("action");
-            String itemid = request.getParameter("itemid");
             HttpSession session = request.getSession(false);
             String username = null;
             if (session != null) {
@@ -45,8 +42,13 @@ public class LikeController extends HttpServlet {
                 }
             }
             if (username == null) {
+                request.setAttribute("message", "Please login first!");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
                 return;
             }
+            String itemType = request.getParameter("itemtype");
+            String action = request.getParameter("action");
+            String itemid = request.getParameter("itemid");
             if (action.equalsIgnoreCase("like")) {
                 UserDAO.addNewFavoriteItem(itemType, username, itemid);
             } else if (action.equalsIgnoreCase("delete")) {
