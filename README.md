@@ -18,18 +18,18 @@ git clone https://github.com/dunghuynh-teaching/prj301-se1726-09.git
 
 - Name of the system: **TTM Music**
 - Purpose of the system: is to help people relax with music and relieve the stress after working or studying for a long time.
-- Who will use the system? Everyone can use this website to listen to music
+- Who will use the system? Everyone will be able to use this website to listen to music
 
 ## System features:
 
-- Listen to different genres of the songs and albums including pop, ballad, edm, indie and game soundtracks: users choose various songs with many genres
+- Listen to different genres of the songs and albums including pop, edm, indie, game soundtracks and etc: users choose various songs with many genres
 of the songs, albums to play by clicking on the cover image of the songs or albums
-- Listen to specially designed playlists including gaming music playlists for gamers, study music playlists, throwback playlists: this feature allows users to
+- Listen to already designed playlists including gaming music playlists for gamers, study music playlists, throwback playlists: this feature allows users to
 have more choices to listen to music. Particularly, these playlists will be displayed as card item, users can click on them to choose to play a song or a whole playlist.
 - Create and add songs to playlist: user can create another playlist by going to the library page and click on the plus button, then users can search the songs
 that they want to add to the playlist and be able to add them. 
-- Shuffle playlists: this features give users a fresh experience when they listen to the playlists.
-- Search songs based on genres or artists: this freature allows user to find their songs easily
+- Shuffle playlists: as the name of this feature suggest this feature will give users a fresh experience when they listen to the playlists.
+- Search songs based on genres or artists: this feature allows user to find their songs easily.
 - Edit your playlists: users can add new songs to playlist, remove songs from playlists, rename the playlist (unfinished)
 
 # Wireframe or screenshots of the system:
