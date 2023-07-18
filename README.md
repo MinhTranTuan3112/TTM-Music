@@ -22,7 +22,7 @@ git clone https://github.com/dunghuynh-teaching/prj301-se1726-09.git
 
 ## System features:
 
-- Listen to different genres of the songs and albums including pop, edm, indie, game soundtracks and etc: users choose various songs with many genres
+- Listen to different genres of the songs and albums including pop, edm, indie and etc: users choose various songs with many genres
 of the songs, albums to play by clicking on the cover image of the songs or albums
 - Listen to already designed playlists including gaming music playlists for gamers, study music playlists, throwback playlists: this feature allows users to
 have more choices to listen to music. Particularly, these playlists will be displayed as card item, users can click on them to choose to play a song or a whole playlist.
