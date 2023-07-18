@@ -116,7 +116,7 @@
                                     repeatSong(this)">
                                 <div class="glyphicon glyphicon-retweet" id="mode-button-content"></div>
                             </div>
-                            <div class="add-button" onclick="AddFavorite(this);">
+                            <div class="add-button" onclick="AddFavorite(this)">
                                 <div class="glyphicon glyphicon-plus-sign"></div>
                             </div>
                             <div class="shuffle-button" onclick="shuffleSongs()">

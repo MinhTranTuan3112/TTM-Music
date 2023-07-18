@@ -1,3 +1,4 @@
+<%@page import="Users.UserDAO"%>
 <%@page import="Users.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
@@ -20,6 +21,7 @@
         <!--page icon css file-->
         <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2285/2285073.png">
         <title>TTM Music</title>
+        
     </head>
 
     <body>
@@ -69,7 +71,7 @@
                             <article class="song-item">
                                 <div class="song-cover">
                                     <div class="hover-play-button glyphicon glyphicon-play" data-lyric ="${song.getLyric()}" 
-                                         onclick="playSong('${song.songid}', '${song.url}', '${fn:replace(song.name, "'", "\\'")}', '${song.image}', '${song.getArtistInfo()}', this.getAttribute('data-lyric'))"></div>
+                                         onclick="testPlaySong('${song.songid}', '${song.url}', '${fn:replace(song.name, "'", "\\'")}', '${song.image}', '${song.getArtistInfo()}', this.getAttribute('data-lyric'));"></div>
                                     <img class="song-cover-img" src="${song.image}"
                                          alt="">
                                 </div>
@@ -209,6 +211,41 @@
         <jsp:include page="playcontent.jsp" flush="true"/>
         <!--custom js files-->
         <script src="js/HomePageFunction.js"></script>
+        <script type="text/javascript">
+            class Song {
+                constructor(songID, songUrl, songName, songImage, songArtists, songLyrics) {
+                    this.songID = songID;
+                    this.songUrl = songUrl;
+                    this.songName = songName;
+                    this.songImage = songImage;
+                    this.songArtists = songArtists;
+                    this.songLyrics = songLyrics;
+                }
+            }
+            <c:if test="${requestScope.user_song_list != null}">
+            var UserSongList = [
+                <c:forEach items="${requestScope.user_song_list}" var="song">
+                {
+                    songID: '${song.songid}',
+                    songUrl: '${song.url}',
+                    songName: '${fn:replace(song.name, "'", "\\'")}',
+                    songImage: '${song.image}',
+                    songArtists: '${song.getArtistInfo()}',
+                    songLyrics: `${song.getLyric()}`
+                },
+                </c:forEach>
+            ];
+            </c:if>
+            function testPlaySong(songID, songUrl, songName, songImage, songArtists, songLyrics) {
+                for (var i = 0;i < UserSongList.length;++i) {
+                    if (UserSongList[i].songID === songID) {
+                        document.querySelector('.add-button').style.color = changedAddButtonColor; 
+                        break;
+                    }
+                }
+                playSong(songID, songUrl, songName, songImage, songArtists, songLyrics);
+            }
+        </script>
         <!--bootstrap js libraries-->
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
