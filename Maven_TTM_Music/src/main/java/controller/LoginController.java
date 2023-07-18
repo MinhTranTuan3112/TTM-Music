@@ -27,13 +27,6 @@ public class LoginController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LoginController</title>");
-            out.println("</head>");
-            out.println("<body>");
-            
             String action = request.getParameter("action");
             UserDAO userDAO = new UserDAO();
             if (action == null || action.trim().isEmpty() || action.equals("logout")) {
@@ -45,6 +38,8 @@ public class LoginController extends HttpServlet {
                         session.invalidate();
                     } 
                 }
+                String message = request.getParameter("message");
+                request.setAttribute("message", message);
                 request.getRequestDispatcher("login.jsp").forward(request, response);
             } else if (action.equals("login")) {
                 //If user logins, catch 2 parameters: username and password
@@ -80,9 +75,6 @@ public class LoginController extends HttpServlet {
                     request.getRequestDispatcher("signup.jsp").forward(request, response);
                 }
             }
-            
-            out.println("</body>");
-            out.println("</html>");
         }
     }
 

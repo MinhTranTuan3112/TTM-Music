@@ -38,12 +38,6 @@ public class HomeController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet HomeController</title>");
-            out.println("</head>");
-            out.println("<body>");
             String action = request.getParameter("action");
             ArrayList<SongDTO> home_song_list;
             ArrayList<AlbumDTO> home_album_list;
@@ -142,8 +136,6 @@ public class HomeController extends HttpServlet {
                 request.setAttribute("home_playlist_list", home_playlist_list);
                 request.getRequestDispatcher("MusicPage.jsp").forward(request, response);
             }
-            out.println("</body>");
-            out.println("</html>");
         }
     }
 

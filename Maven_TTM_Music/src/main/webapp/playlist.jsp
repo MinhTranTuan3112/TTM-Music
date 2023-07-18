@@ -146,8 +146,9 @@
                 playSong(song.songID, song.songUrl, song.songName, song.songImage, song.songArtists, song.songLyrics);
                 mysong.addEventListener('ended', () => playPlaylist(songs, index + 1));
             }
+            var songs = null;
             <c:if test="${requestScope.song_list != null}">
-            var songs = [
+            songs = [
                 <c:forEach items="${requestScope.song_list}" var="song">
                 {
                     songID: '${song.songid}',
@@ -190,6 +191,10 @@
                 }
             }
             function addNewFavoritePlaylist(like_button) {
+                 <c:if test="${sessionScope.usersession == null}">
+                window.location = './login?message=' + 'Please Login First';
+                return;
+            </c:if>
                 changeLikeButtonColor(like_button);
                 let myDialog = document.querySelector('#dialog');
                 let dialog_action = myDialog.querySelector('.dialog_action');

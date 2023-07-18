@@ -133,6 +133,10 @@
                 }
             }
             function addNewFavoriteArtist(like_button) {
+                 <c:if test="${sessionScope.usersession == null}">
+                window.location = './login?message=' + 'Please Login First';
+                return;
+            </c:if>
                 changeLikeButtonColor(like_button);
                 let myDialog = document.querySelector('#dialog');
                 let dialog_action = myDialog.querySelector('.dialog_action');

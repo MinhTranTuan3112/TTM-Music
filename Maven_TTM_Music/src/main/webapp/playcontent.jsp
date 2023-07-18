@@ -42,6 +42,10 @@
                 }
             }
             function AddFavorite(add_button) {
+            <c:if test="${sessionScope.usersession == null}">
+                window.location = './login?message=' + 'Please Login First';
+                return;
+            </c:if>
                 changeAddFavoriteButtonColor(add_button);
                 if (document.querySelector('#dialog') !== null) {
                     let myDialog = document.querySelector('#dialog');
@@ -60,7 +64,7 @@
                             success: function (result) {
                                 console.log("Passed id: " + result);
                             }
-                        });        
+                        });
                         dialog_action.textContent = 'Saved';
                     } else {
                         //remove code
@@ -71,7 +75,7 @@
                             success: function (result) {
                                 console.log("Passed id: " + result);
                             }
-                        });  
+                        });
                         dialog_action.textContent = 'Removed';
                     }
                     myDialog.showModal();
@@ -251,7 +255,7 @@
         </div>
 
         <audio controls id="current-song" hidden>
-            <source src="http://docs.google.com/uc?export=open&id=1M7xKVGNOM8HM06wpZILjqIR41orkq5cO" type="audio/mpeg">
+            <source src="" type="audio/mpeg">
         </audio>
         <script src="js/ControlBarFunction.js"></script>
         <script src="js/PlayUIFunction.js"></script>

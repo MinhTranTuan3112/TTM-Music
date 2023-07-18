@@ -31,12 +31,6 @@ public class ArtistController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ArtistController</title>");  
-            out.println("</head>");
-            out.println("<body>");
             String action = request.getParameter("action");
             ArtistDAO artistDAO = new ArtistDAO();
             if (action == null || action.trim().isEmpty()) {
@@ -49,8 +43,6 @@ public class ArtistController extends HttpServlet {
                 request.setAttribute("album_list", album_list);
                 request.getRequestDispatcher("artist.jsp").forward(request, response);
             }
-            out.println("</body>");
-            out.println("</html>");
         }
     } 
 

@@ -27,12 +27,6 @@ public class LikeController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LikeController</title>");
-            out.println("</head>");
-            out.println("<body>");
             HttpSession session = request.getSession(false);
             String username = null;
             if (session != null) {
@@ -54,8 +48,6 @@ public class LikeController extends HttpServlet {
             } else if (action.equalsIgnoreCase("delete")) {
                 UserDAO.deleteFavoriteItem(itemType, username, itemid);
             }
-            out.println("</body>");
-            out.println("</html>");
         }
     }
 

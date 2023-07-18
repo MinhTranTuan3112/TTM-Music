@@ -17,7 +17,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@200&display=swap" rel="stylesheet">
         <!--custom css files-->
-        <link rel="stylesheet" href="css/styleAlbumPage.css">
+        <link rel="stylesheet" href="css/styleAlbumPage.css">   
         <!--icon file -->
         <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1754/1754224.png"/>
         <title>${requestScope.album.name}</title>
@@ -54,7 +54,7 @@
                             <div class="album-item hidden-load">
                                 <div class="album-item-img" data-lyric ="${song.getLyric()}" 
                                      onclick="playSong('${song.songid}', '${song.url}', '${fn:replace(song.name, "'", "\\'")}', '${song.image}', '${song.getArtistInfo()}', this.getAttribute('data-lyric'));
-                                             changeSongIndex(${songIndex})">
+                                             changeSongIndex(${songIndex});changeAlbumName();">
                                     <img src="${song.image}" alt="">
                                 </div>
                                 <div class="album-item-name">${song.name} - <span class="artist-name"> &nbsp;
@@ -86,6 +86,9 @@
                     this.songLyrics = songLyrics;
                 }
             }
+            function changeAlbumName() {
+                document.querySelector('.current-playlist-name').textContent = `${requestScope.album.name}`;
+            }
             function playAlbum(songs, index = 0) {
                 console.log('Play album started');
                 if (index >= songs.length) {
@@ -95,7 +98,9 @@
                 playSong(song.songID, song.songUrl, song.songName, song.songImage, song.songArtists, song.songLyrics);
                 mysong.addEventListener('ended', () => playAlbum(songs, index + 1));
             }
-            var songs = [
+            var songs = null;
+            <c:if test="${requestScope.song_list != null}">
+            songs = [
             <c:forEach items="${requestScope.song_list}" var="song">
                 {
                     songID: '${song.songid}',
@@ -107,9 +112,12 @@
                 },
             </c:forEach>
             ];
+                               
+                            </c:if>
             var currentSongIndex = 0;
+            
             function startPlayingAlbum() {
-                document.querySelector('.current-playlist-name').textContent = `${requestScope.album.name}`;
+                changeAlbumName();
                 playAlbum(songs);
             }
             function changeSongIndex(newIndex) {
@@ -133,6 +141,10 @@
                 }
             }
             function addNewFavoriteAlbum(like_button) {
+                 <c:if test="${sessionScope.usersession == null}">
+                window.location = './login?message=' + 'Please Login First';
+                return;
+            </c:if>
                 changeLikeButtonColor(like_button);
                 let myDialog = document.querySelector('#dialog');
                 let dialog_action = myDialog.querySelector('.dialog_action');

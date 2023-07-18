@@ -30,12 +30,6 @@ public class AlbumController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AlbumController</title>");
-            out.println("</head>");
-            out.println("<body>");
             String action = request.getParameter("action");
             if (action == null || action.trim().isEmpty()) {
                 String albumid = request.getParameter("albumid");
@@ -56,8 +50,6 @@ public class AlbumController extends HttpServlet {
                 request.setAttribute("isLiked", isLiked);
                 request.getRequestDispatcher("album.jsp").forward(request, response);
             }
-            out.println("</body>");
-            out.println("</html>");
         }
     }
 
