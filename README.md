@@ -140,13 +140,18 @@ control buttons for songs (users can pause/continue playing the song).
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/e06b8bf2-3ec8-4ad7-952f-bb4f545e9737)
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/06c71170-d429-4337-9f15-9a3331e67eab)
 
-- Users can play a song directly or select any albums to view.  
+- Users can play a song directly or select any albums to view.
+- If users like the artist, they can add the current artist to libary by clicking on the like button on the top of the artist page. Users can only use this feature when they are logged in, if they are not logged in, the page will redirect users to the login page.
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/2e2d3a4e-e2c2-4b7f-911e-1094523a8f30)
+
+- They can remove the saved artist from the library by clicking on it again
 
 **5. Playlist section:**
 
 - This section normally has 4 suggested playlists for users to choose.
 
-![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/279eb572-780d-4e70-b32f-da1f67594c75)
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/25a57279-10f1-4146-8a1f-ad9af34c1cf6)
 
 - Users can first click on anywhere on the playlist to go to the details page of the album.
 
@@ -240,7 +245,7 @@ control buttons for songs (users can pause/continue playing the song).
 
 ## Controllers sitemap:
 
-![image](controller_diagram.jpeg)
+![image](controller_sitemap.jpeg)
 
 ## UML Class Diagram:
 
@@ -252,4 +257,4 @@ In conclusion, on the positive side, our website helps users to finally be able 
 
 What we’ve learned during development of our project, we think that we have learned a lot. First, about the UI, we learned how to make the UI responsive, then design our loading animations for the page to become more attentive. Next, we learned how web applications work by implementing each action of each controller. We also learned how to use GitHub (like storing our code for other members of the team, letting us work together on the project from anywhere), and write documentation in markdown format to document what we have done from the beginning of our project and our information.
 
-If we could have more time, the first thing on our lists would be a podcast feature providing us with information for everyday life. Secondly, we want to try storing the audio files on the web server. Right now,  our files are still stored in Google Drive. Thirdly, we want to complete the playlist features. And finally, our final goal is that everyone will listen to every song they want, from the 90s to now.
+If we could have more time, the first thing on our lists would be a podcast feature providing us with information for everyday life. Secondly, we want to try storing the audio files on the web server. Right now,  our files are still stored in Google Drive. Thirdly, we want to complete the playlist features. And next, our method of logging in by Google, Twitter, or Facebook is still being written therefore right now we can only log in being the traditional method which is using a username and password. Ultimately, our final goal is that everyone will be able to listen to every song they want, from the 90s to now.
