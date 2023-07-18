@@ -245,7 +245,7 @@ control buttons for songs (users can pause/continue playing the song).
 
 ## Controllers sitemap:
 
-![image](controller_diagram.jpeg)
+![image](controller_sitemap.jpeg)
 
 ## UML Class Diagram:
 
