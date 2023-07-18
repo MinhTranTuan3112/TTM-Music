@@ -1,5 +1,5 @@
 # TTM Music
-TTM Music Page by group 9 - SE1726
+TTM Music Website by Group 9 - SE1726
 
 # Team members:
 - Trần Tuấn Minh - SE172842
