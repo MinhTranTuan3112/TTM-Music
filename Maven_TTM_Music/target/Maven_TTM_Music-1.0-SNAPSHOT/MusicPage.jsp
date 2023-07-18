@@ -71,7 +71,7 @@
                             <article class="song-item">
                                 <div class="song-cover">
                                     <div class="hover-play-button glyphicon glyphicon-play" data-lyric ="${song.getLyric()}" 
-                                         onclick="testPlaySong('${song.songid}', '${song.url}', '${fn:replace(song.name, "'", "\\'")}', '${song.image}', '${song.getArtistInfo()}', this.getAttribute('data-lyric'));"></div>
+                                         onclick="playSongWithUserData('${song.songid}', '${song.url}', '${fn:replace(song.name, "'", "\\'")}', '${song.image}', '${song.getArtistInfo()}', this.getAttribute('data-lyric'));"></div>
                                     <img class="song-cover-img" src="${song.image}"
                                          alt="">
                                 </div>
@@ -222,8 +222,9 @@
                     this.songLyrics = songLyrics;
                 }
             }
+            var UserSongList = null;
             <c:if test="${requestScope.user_song_list != null}">
-            var UserSongList = [
+            UserSongList = [
                 <c:forEach items="${requestScope.user_song_list}" var="song">
                 {
                     songID: '${song.songid}',
@@ -236,11 +237,13 @@
                 </c:forEach>
             ];
             </c:if>
-            function testPlaySong(songID, songUrl, songName, songImage, songArtists, songLyrics) {
-                for (var i = 0;i < UserSongList.length;++i) {
-                    if (UserSongList[i].songID === songID) {
-                        document.querySelector('.add-button').style.color = changedAddButtonColor; 
-                        break;
+            function playSongWithUserData(songID, songUrl, songName, songImage, songArtists, songLyrics) {
+                if (UserSongList !== null) {
+                    for (var i = 0; i < UserSongList.length; ++i) {
+                        if (UserSongList[i].songID === songID) {
+                            document.querySelector('.add-button').style.color = changedAddButtonColor;
+                            break;
+                        }
                     }
                 }
                 playSong(songID, songUrl, songName, songImage, songArtists, songLyrics);
