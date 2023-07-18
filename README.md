@@ -249,7 +249,7 @@ control buttons for songs (users can pause/continue playing the song).
 
 ## UML Class Diagram:
 
-![UML](UML.jpeg)
+![UML](UML.jpg)
 
 # Conclusion and Discussion:
 
