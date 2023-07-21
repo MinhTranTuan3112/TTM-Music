@@ -98,6 +98,7 @@ public class SongUtils {
     public static void main(String[] args) {
         SongDAO cdb = new SongDAO();
         ArrayList<SongDTO> song_list = new ArrayList<>();
+        
         for (SongDTO songDTO : song_list) {
             cdb.addNewSong(songDTO);
         }

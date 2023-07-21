@@ -77,45 +77,6 @@
         </section>
         <div class="empty"></div>
         <script src="js/AlbumViewFunctions.js"></script>
-        <jsp:include page="playcontent.jsp" flush="true"/>
-        <script type="text/javascript">
-                            class Song {
-                                constructor(songID, songUrl, songName, songImage, songArtists, songLyrics) {
-                                    this.songID = songID;
-                                    this.songUrl = songUrl;
-                                    this.songName = songName;
-                                    this.songImage = songImage;
-                                    this.songArtists = songArtists;
-                                    this.songLyrics = songLyrics;
-                                }
-                            }
-                            var UserSongList = null;
-            <c:if test="${requestScope.user_song_list != null}">
-                            UserSongList = [
-                <c:forEach items="${requestScope.user_song_list}" var="song">
-                                {
-                                    songID: '${song.songid}',
-                                    songUrl: '${song.url}',
-                                    songName: '${fn:replace(song.name, "'", "\\'")}',
-                                    songImage: '${song.image}',
-                                    songArtists: '${song.getArtistInfo()}',
-                                    songLyrics: `${song.getLyric()}`
-                                },
-                </c:forEach>
-                            ];
-            </c:if>
-                            function playSongWithUserData(songID, songUrl, songName, songImage, songArtists, songLyrics) {
-                                if (UserSongList !== null) {
-                                    for (var i = 0; i < UserSongList.length; ++i) {
-                                        if (UserSongList[i].songID === songID) {
-                                            document.querySelector('.add-button').style.color = changedAddButtonColor;
-                                            break;
-                                        }
-                                    }
-                                }
-                                playSong(songID, songUrl, songName, songImage, songArtists, songLyrics);
-                            }
-        </script>
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
