@@ -26,10 +26,15 @@
                 <div class="collapse navbar-collapse" id="navbar_section">
                     <ul class="nav navbar-nav">
                         <li class="active nav-item"><a href="./home">Home</a></li>
-                        <li class="nav-item"><a href="">Explore</a></li>
+                        <li class="nav-item"><a href="./explore">Explore</a></li>
                         <li class="nav-item"><a href="./library">Library</a></li>
+                            <c:if test="${sessionScope.usersession != null}">
+                                <c:if test="${sessionScope.usersession.role == 'admin'}">
+                                <li class="nav-item"><a href="./admin"  style="color: red;">Admin Page</a></li>
+                            </c:if>
+                        </c:if>
                     </ul>
-                    <form action="./home" class="navbar-form navbar-left">
+                    <form action="./home" class="navbar-form navbar-left search-form">
                         <input type="hidden" name="action" value="search">
                         <div class="search-group">
                             <div class="search-bar"><input type="text" class="form-control"
@@ -51,14 +56,19 @@
                     <ul class="nav navbar-nav navbar-right">
                         <c:choose>
                             <c:when test="${sessionScope.usersession != null}">
-                                <li class="nav-item"><a href=""><span class="glyphicon glyphicon-user"></span>&nbsp; ${sessionScope.usersession.username}</a>
+                                <li class="nav-item"><a href=""><span class="glyphicon glyphicon-user"></span>&nbsp; 
+                                        ${sessionScope.usersession.username}
+                                        <c:if test="${sessionScope.usersession.role == 'admin'}">
+                                            <span class="admin-role" style="color: red; ">(Admin)</span>
+                                        </c:if>
+                                    </a>
                                 </li>
                                 <li class="nav-item"><a href="login?rememberedAccount=${sessionScope.rememberedAccount}"><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
                                 </c:when>
                                 <c:otherwise>
                                 <li class="nav-item"><a href="./login.jsp"><span class="glyphicon glyphicon-log-in"></span> Log In</a></li>
-                            </c:otherwise>
-                        </c:choose>
+                                </c:otherwise>
+                            </c:choose>
                     </ul>
                 </div>
             </div>

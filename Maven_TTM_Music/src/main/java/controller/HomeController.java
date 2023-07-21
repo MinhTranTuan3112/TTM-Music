@@ -50,6 +50,10 @@ public class HomeController extends HttpServlet {
             CategoriesDAO categoriesDAO = new CategoriesDAO();
             PlaylistDAO playlistDAO = new PlaylistDAO();
             if (action == null || action.trim().isEmpty()) {
+                if (request.getAttribute("message") != null) {
+                    String message = request.getAttribute("message").toString();
+                    request.setAttribute("message", message);
+                }
                 home_category_list = categoriesDAO.getTop4Categories();
                 home_song_list = songDAO.getTop8Songs();
                 home_album_list = albumDAO.getTop3Albums();

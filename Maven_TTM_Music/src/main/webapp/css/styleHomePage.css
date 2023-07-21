@@ -292,6 +292,9 @@ div[class *=-cover] img,
 .album-cover:hover, .artist-img:hover,.playlist-item:hover {
     transform: scale(1.03);
 }
+.current-playlist-name {
+    font-weight: bold;
+}
 /*load animations*/
 .hidden-load {
     opacity: 0;
@@ -304,9 +307,6 @@ div[class *=-cover] img,
     opacity: 1;
     filter: blur(0);
     transform: translateX(0);
-}
-.current-playlist-name {
-    font-weight: bold;
 }
 @media(prefers-reduced-motion) {
     .hidden-load {

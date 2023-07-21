@@ -1,4 +1,6 @@
+D:\Dev\Java\Maven_TTM_Music\src\main\java\controller\SongController.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\controller\SaveAudioController.java
+D:\Dev\Java\Maven_TTM_Music\src\main\java\controller\AdminController.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\include\includeDAO.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\controller\LibraryController.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\artist\ArtistDAO.java
@@ -11,9 +13,11 @@ D:\Dev\Java\Maven_TTM_Music\src\main\java\Users\UserDTO.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\include\includeDTO.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\have_song_categories\have_song_categoriesDAO.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\playlist\PlaylistDTO.java
+D:\Dev\Java\Maven_TTM_Music\src\main\java\controller\UserController.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\controller\PlaylistController.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\categories\CategoriesDAO.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\have_song_categories\have_song_categoriesDTO.java
+D:\Dev\Java\Maven_TTM_Music\src\main\java\controller\ExploreController.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\compose\composeDTO.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\filters\HomeFilter.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\Song\SongDAO.java
@@ -28,5 +32,6 @@ D:\Dev\Java\Maven_TTM_Music\src\main\java\LikePackage\LikeInformationDAO.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\playlist\PlaylistDAO.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\utils\DBUtils.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\utils\SongUtils.java
+D:\Dev\Java\Maven_TTM_Music\src\main\java\filters\AdminFilter.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\album\AlbumDTO.java
 D:\Dev\Java\Maven_TTM_Music\src\main\java\controller\ArtistController.java

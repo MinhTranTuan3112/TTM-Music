@@ -2,6 +2,9 @@ controller\ArtistController.class
 controller\HomeController.class
 playlist\PlaylistDAO.class
 controller\LibraryController.class
+controller\ExploreController.class
+filters\AdminFilter.class
+controller\UserController.class
 artist\ArtistDTO.class
 filters\HomeFilter.class
 utils\SongUtils.class
@@ -16,9 +19,11 @@ controller\LoginController.class
 utils\DBUtils.class
 have_song_categories\have_song_categoriesDTO.class
 categories\CategoriesDAO.class
+controller\SongController.class
 Users\UserDAO.class
 LikePackage\LikeInformationDTO.class
 have_song_categories\have_song_categoriesDAO.class
+controller\AdminController.class
 controller\PlaylistController.class
 compose\composeDAO.class
 controller\AlbumController.class

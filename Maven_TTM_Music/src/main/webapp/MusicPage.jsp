@@ -21,7 +21,7 @@
         <!--page icon css file-->
         <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2285/2285073.png">
         <title>TTM Music</title>
-        
+
     </head>
 
     <body>
@@ -30,6 +30,9 @@
             <jsp:include page="navbar.jsp" flush="true"/>
         </header>
         <main>
+            <c:if test="${requestScope.message != null}">
+                <h1 style="text-align: center;color: red;" class="hidden-load">${requestScope.message}</h1>
+            </c:if>
             <c:if test="${requestScope.search_message != null}">
                 <h1 style="text-align: center;" class="hidden-load">${requestScope.search_message}</h1>
             </c:if>
@@ -212,42 +215,42 @@
         <!--custom js files-->
         <script src="js/HomePageFunction.js"></script>
         <script type="text/javascript">
-            class Song {
-                constructor(songID, songUrl, songName, songImage, songArtists, songLyrics) {
-                    this.songID = songID;
-                    this.songUrl = songUrl;
-                    this.songName = songName;
-                    this.songImage = songImage;
-                    this.songArtists = songArtists;
-                    this.songLyrics = songLyrics;
-                }
-            }
-            var UserSongList = null;
+                                class Song {
+                                    constructor(songID, songUrl, songName, songImage, songArtists, songLyrics) {
+                                        this.songID = songID;
+                                        this.songUrl = songUrl;
+                                        this.songName = songName;
+                                        this.songImage = songImage;
+                                        this.songArtists = songArtists;
+                                        this.songLyrics = songLyrics;
+                                    }
+                                }
+                                var UserSongList = null;
             <c:if test="${requestScope.user_song_list != null}">
-            UserSongList = [
+                                UserSongList = [
                 <c:forEach items="${requestScope.user_song_list}" var="song">
-                {
-                    songID: '${song.songid}',
-                    songUrl: '${song.url}',
-                    songName: '${fn:replace(song.name, "'", "\\'")}',
-                    songImage: '${song.image}',
-                    songArtists: '${song.getArtistInfo()}',
-                    songLyrics: `${song.getLyric()}`
-                },
+                                    {
+                                        songID: '${song.songid}',
+                                        songUrl: '${song.url}',
+                                        songName: '${fn:replace(song.name, "'", "\\'")}',
+                                        songImage: '${song.image}',
+                                        songArtists: '${song.getArtistInfo()}',
+                                        songLyrics: `${song.getLyric()}`
+                                    },
                 </c:forEach>
-            ];
+                                ];
             </c:if>
-            function playSongWithUserData(songID, songUrl, songName, songImage, songArtists, songLyrics) {
-                if (UserSongList !== null) {
-                    for (var i = 0; i < UserSongList.length; ++i) {
-                        if (UserSongList[i].songID === songID) {
-                            document.querySelector('.add-button').style.color = changedAddButtonColor;
-                            break;
-                        }
-                    }
-                }
-                playSong(songID, songUrl, songName, songImage, songArtists, songLyrics);
-            }
+                                function playSongWithUserData(songID, songUrl, songName, songImage, songArtists, songLyrics) {
+                                    if (UserSongList !== null) {
+                                        for (var i = 0; i < UserSongList.length; ++i) {
+                                            if (UserSongList[i].songID === songID) {
+                                                document.querySelector('.add-button').style.color = changedAddButtonColor;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    playSong(songID, songUrl, songName, songImage, songArtists, songLyrics);
+                                }
         </script>
         <!--bootstrap js libraries-->
         <!-- jQuery library -->

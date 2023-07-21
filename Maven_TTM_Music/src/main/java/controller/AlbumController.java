@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import Users.*;
+
 @WebServlet(name = "AlbumController", urlPatterns = {"/album"})
 public class AlbumController extends HttpServlet {
 
@@ -28,28 +29,53 @@ public class AlbumController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            String action = request.getParameter("action");
-            if (action == null || action.trim().isEmpty()) {
-                String albumid = request.getParameter("albumid");
-                boolean isLiked = false;
-                HttpSession session = request.getSession(false);
-                if (session != null) {
-                    if (session.getAttribute("usersession") != null) {
-                        UserDTO userDTO = (UserDTO)(session.getAttribute("usersession"));
-                        String username = userDTO.getUsername();
-                        isLiked = (UserDAO.checkFavItemExist(username, "album", albumid));
-                    }
+        AlbumDAO albumDAO = new AlbumDAO();
+        int totalAlbums = albumDAO.getTotalAlbumCount();
+        int numOfAlbumPerPage = 3;
+        int startAlbumIndex = 0;
+        int currentAlbumPage = 1;
+        int totalAlbumPages = (int) Math.ceil((double) totalAlbums / numOfAlbumPerPage);
+        String action = request.getParameter("action");
+        if (action == null || action.trim().isEmpty()) {
+            String albumid = request.getParameter("albumid");
+            boolean isLiked = false;
+            HttpSession session = request.getSession(false);
+            if (session != null) {
+                if (session.getAttribute("usersession") != null) {
+                    UserDTO userDTO = (UserDTO) (session.getAttribute("usersession"));
+                    String username = userDTO.getUsername();
+                    isLiked = (UserDAO.checkFavItemExist(username, "album", albumid));
                 }
-                AlbumDAO albumDAO = new AlbumDAO();
-                AlbumDTO albumDTO = albumDAO.load(albumid);
-                ArrayList<SongDTO> song_list = albumDAO.getAllSongsOfAnAlbum(albumid);
-                request.setAttribute("album", albumDTO);
-                request.setAttribute("song_list", song_list);
-                request.setAttribute("isLiked", isLiked);
-                request.getRequestDispatcher("album.jsp").forward(request, response);
             }
+            AlbumDTO albumDTO = albumDAO.load(albumid);
+            ArrayList<SongDTO> song_list = albumDAO.getAllSongsOfAnAlbum(albumid);
+            request.setAttribute("album", albumDTO);
+            request.setAttribute("song_list", song_list);
+            request.setAttribute("isLiked", isLiked);
+            request.getRequestDispatcher("album.jsp").forward(request, response);
+        } else if (action.equals("get")) {
+            String albumpageParam = request.getParameter("album_page");
+            if (albumpageParam != null && !albumpageParam.isEmpty()) {
+                try {
+                    currentAlbumPage = Integer.parseInt(albumpageParam);
+                } catch (NumberFormatException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+            startAlbumIndex = (currentAlbumPage - 1) * numOfAlbumPerPage;
+
+            ArrayList<AlbumDTO> album_list = albumDAO.getAlbumsPerPage(startAlbumIndex, numOfAlbumPerPage);
+
+            request.setAttribute("currentAlbumPage", currentAlbumPage);
+            request.setAttribute("totalAlbumPages", totalAlbumPages);
+            request.setAttribute("album_list", album_list);
+            request.getRequestDispatcher("albumview.jsp").forward(request, response);
+        } else if (action.equals("loadall")) {
+            ArrayList<AlbumDTO> album_list = albumDAO.getAlbumsPerPage(startAlbumIndex, numOfAlbumPerPage);
+             request.setAttribute("currentAlbumPage", currentAlbumPage);
+            request.setAttribute("totalAlbumPages", totalAlbumPages);
+            request.setAttribute("album_list", album_list);
+            request.getRequestDispatcher("albumview.jsp").forward(request, response);
         }
     }
 

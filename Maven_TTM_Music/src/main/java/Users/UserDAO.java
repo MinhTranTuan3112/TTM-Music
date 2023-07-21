@@ -13,6 +13,118 @@ import java.util.ArrayList;
 import playlist.PlaylistDTO;
 
 public class UserDAO {
+    public void insertUser(UserDTO userDTO) {
+        String sql = "insert into dbo.users"
+                + "\nvalues(?,?,?,?)";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, userDTO.getUsername());
+            ps.setString(2, userDTO.getPassword());
+            ps.setString(3, userDTO.getEmail());
+            ps.setString(4, userDTO.getRole());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Insert user error: " + e.getMessage());
+        }
+    }
+    public void updateUser(UserDTO userDTO) {
+        String sql = "update dbo.users"
+                + "\nset password=?,email=?,role=?"
+                + "\nwhere username=?";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, userDTO.getPassword());
+            ps.setString(2, userDTO.getEmail());
+            ps.setString(3, userDTO.getRole());
+            ps.setString(4, userDTO.getUsername());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Update user error: " + e.getMessage());
+        }
+    }
+
+    public int countFavItems(String type, String username) {
+        String sql = "{call proc_countFavItems(?,?)}";
+        try {
+            Connection conn = DBUtils.getConnection();
+            CallableStatement cs = conn.prepareCall(sql);
+            cs.setString(1, type.toLowerCase());
+            cs.setString(2, username);
+            ResultSet rs = cs.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("cnt");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return 0;
+    }
+
+    public UserDTO load(String username) {
+        String sql = "select * from dbo.users"
+                + "\nwhere username=?";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, username);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                UserDTO user = new UserDTO(rs.getString("username"), rs.getString("password"),
+                        rs.getString("email"), rs.getString("role"));
+                return user;
+            }
+        } catch (SQLException e) {
+            System.out.println("Load user error: " + e.getMessage());
+        }
+        return null;
+    }
+
+    public void deleteUser(String username) {
+        String sql = "{call proc_deleteUser(?)}";
+        try {
+            Connection conn = DBUtils.getConnection();
+            CallableStatement cs = conn.prepareCall(sql);
+            cs.setString(1, username);
+            cs.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Delete user error: " + e.getMessage());
+        }
+    }
+
+    public int countItems(String type) {
+        String sql = "{call proc_countItems(?)}";
+        try {
+            Connection conn = DBUtils.getConnection();
+            CallableStatement cs = conn.prepareCall(sql);
+            cs.setString(1, type.toLowerCase());
+            ResultSet rs = cs.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("cnt");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return 0;
+    }
+
+    public ArrayList<UserDTO> getAllUsers() {
+        ArrayList<UserDTO> user_list = new ArrayList<>();
+        String sql = "select * from dbo.users";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                user_list.add(new UserDTO(rs.getString("username"), rs.getString("password"),
+                        rs.getString("email"), rs.getString("role")));
+            }
+        } catch (SQLException e) {
+            System.out.println("Query all users Error: " + e.getMessage());
+        }
+        return user_list;
+    }
 
     public UserDTO login(String username, String password) {
         String sql = "select * from dbo.users where username = ? and password = ?";

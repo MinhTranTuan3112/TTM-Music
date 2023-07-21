@@ -9,6 +9,61 @@ import utils.DBUtils;
 
 public class AlbumDAO extends utils.DBUtils {
 
+    public ArrayList<AlbumDTO> searchAlbumsWithPaing(String keyword, int skip_num, int fetch_num) {
+        ArrayList<AlbumDTO> album_list = new ArrayList<>();
+        String sql = "{call proc_searchItemsWithPagination(?,?,?,?)}";
+        try {
+            Connection conn = DBUtils.getConnection();
+            CallableStatement cs = conn.prepareCall(sql);
+            cs.setString(1, "album");
+            cs.setString(2, keyword);
+            cs.setInt(3, skip_num);
+            cs.setInt(4, fetch_num);
+            ResultSet rs = cs.executeQuery();
+            while (rs.next()) {
+                album_list.add(new AlbumDTO(rs.getString("albumid"), rs.getString("artistid"), rs.getString("name"), rs.getString("albumimage")));
+            }
+        } catch (SQLException e) {
+            System.out.println("Query all albums error: " + e.getMessage());
+        }
+        return album_list;
+    }
+
+    public ArrayList<AlbumDTO> getAlbumsPerPage(int skip_num, int fetch_num) {
+        ArrayList<AlbumDTO> album_list = new ArrayList<>();
+        String sql = "{call proc_getItemPerPage(?,?,?)}";
+        try {
+            Connection conn = DBUtils.getConnection();
+            CallableStatement cs = conn.prepareCall(sql);
+            cs.setString(1, "album");
+            cs.setInt(2, skip_num);
+            cs.setInt(3, fetch_num);
+            ResultSet rs = cs.executeQuery();
+            while (rs.next()) {
+                album_list.add(new AlbumDTO(rs.getString("albumid"), rs.getString("artistid"), rs.getString("name"), rs.getString("albumimage")));
+            }
+        } catch (SQLException e) {
+            System.out.println("Query albums error: " + e.getMessage());
+        }
+        return album_list;
+    }
+
+    public int getTotalAlbumCount() {
+        int cnt = 0;
+        String sql = "select count(albumid) as 'album_cnt' from dbo.album";
+        try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("album_cnt");
+            }
+        } catch (SQLException e) {
+            System.out.println("Count albums error: " + e.getMessage());
+        }
+        return cnt;
+    }
+
     public AlbumDTO load(String albumid) {
         String sql = "select * from album where albumid=?";
         try {
@@ -106,7 +161,7 @@ public class AlbumDAO extends utils.DBUtils {
             CallableStatement cs = conn.prepareCall(sql);
             cs.setString(1, artistid);
             ResultSet rs = cs.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
                 album_list.add(new AlbumDTO(rs.getString("albumid"), rs.getString("artistid"), rs.getString("name"), rs.getString("albumimage")));
             }
         } catch (SQLException e) {

@@ -10,7 +10,63 @@ import java.util.ArrayList;
 import utils.*;
 
 public class SongDAO {
-
+    
+    public ArrayList<SongDTO> searchSongsWithPaing(String keyword, int skip_num, int fetch_num) {
+        ArrayList<SongDTO> song_list = new ArrayList<>();
+        String sql = "{call proc_searchItemsWithPagination(?,?,?,?)}";
+        try {
+            Connection conn = DBUtils.getConnection();
+            CallableStatement cs = conn.prepareCall(sql);
+            cs.setString(1, "song");
+            cs.setString(2, keyword);
+            cs.setInt(3, skip_num);
+            cs.setInt(4, fetch_num);
+            ResultSet rs = cs.executeQuery();
+            while (rs.next()) {                
+                song_list.add(new SongDTO(rs.getString("songid"), rs.getString("name"),
+                        rs.getString("lyric"), rs.getString("image"), rs.getString("url"),
+                        rs.getString("albumid")));
+            }
+        } catch (SQLException e) {
+            System.out.println("Query all songs error: " + e.getMessage());
+        }
+        return song_list;
+    }
+    public ArrayList<SongDTO> getSongsPerPage(int skip_num, int fetch_num) {
+        ArrayList<SongDTO> song_list = new ArrayList<>();
+        String sql = "{call proc_getItemPerPage(?,?,?)}";
+        try {
+            Connection conn = DBUtils.getConnection();
+            CallableStatement cs = conn.prepareCall(sql);
+            cs.setString(1, "song");
+            cs.setInt(2, skip_num);
+            cs.setInt(3, fetch_num);
+            ResultSet rs = cs.executeQuery();
+            while (rs.next()) {                
+                song_list.add(new SongDTO(rs.getString("songid"), rs.getString("name"),
+                        rs.getString("lyric"), rs.getString("image"), rs.getString("url"),
+                        rs.getString("albumid")));
+            }
+        } catch (SQLException e) {
+            System.out.println("Query all songs error: " + e.getMessage());
+        }
+        return song_list;
+    }
+    public int getTotalNumOfSongs() {
+        int cnt = 0;
+        String sql = "select count(s.songid) as 'song_cnt' from dbo.song s";
+         try {
+            Connection conn = DBUtils.getConnection();
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("song_cnt");
+            }
+        } catch (SQLException e) {
+            System.out.println("Count songs error: " + e.getMessage());
+        }
+        return cnt;
+    }
     public ArrayList<SongDTO> getAllSong() {
         ArrayList<SongDTO> song_list = new ArrayList<>();
         String sql = "select * from dbo.song";
