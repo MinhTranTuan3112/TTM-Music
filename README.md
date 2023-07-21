@@ -31,6 +31,7 @@ that they want to add to the playlist and be able to add them.
 - Shuffle playlists: as the name of this feature suggest this feature will give users a fresh experience when they listen to the playlists.
 - Search songs based on genres or artists: this feature allows user to find their songs easily.
 - Edit your playlists: users can add new songs to playlist, remove songs from playlists, rename the playlist (unfinished)
+- Admin features: manage users
 
 # Wireframe or screenshots of the system:
 
@@ -220,6 +221,31 @@ control buttons for songs (users can pause/continue playing the song).
 ![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/b0cfb809-c106-47aa-b9e6-8f00c5f64f68)
 
 - The results will contain songs, albums, artists and playlists that have the name contains the keyword
+
+### Admin page:
+- This page can only be accessed by admin of the page (role is admin)
+- The first section of the page shows the general data of the page, including total number of songs, albums, artists, playlists and users
+- Admin can click on view to view all items of a category
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/50d47cff-da26-43b4-8b16-63d4006b3051)
+
+- Song view:
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/9f776a71-fa1f-46ab-a6cd-eb4a811c8b2e)
+
+- Album view:
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/ec14001c-7003-4a5b-8026-204d68027963)
+
+- The second section of the admin page contains the all users information:
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/2e2c2c67-9d7b-4dde-950b-dc2422f530b6)
+
+- On each row, there is a button to delete user (require confirmation) and a button to view the details information of the users
+- After clicking on details of an account, admin can make change to password, email and role of that account, admin clicks save to save the information of the account
+
+![image](https://github.com/dunghuynh-teaching/prj301-se1726-09/assets/133552281/c2a9a4ff-f954-4f28-a953-880889a08019)
+
 
 ## Database design:
 
