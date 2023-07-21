@@ -31,7 +31,7 @@ that they want to add to the playlist and be able to add them.
 - Shuffle playlists: as the name of this feature suggest this feature will give users a fresh experience when they listen to the playlists.
 - Search songs based on genres or artists: this feature allows user to find their songs easily.
 - Edit your playlists: users can add new songs to playlist, remove songs from playlists, rename the playlist (unfinished)
-- Admin features: manage users
+- Admin features: manage users(insert, update, delete users)
 
 # Wireframe or screenshots of the system:
 
